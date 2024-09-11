@@ -6,4 +6,4 @@ const Button = ({buttonName, type, bootIcon}) => {
   )
 }
 
-export default Button
+export default Button;
