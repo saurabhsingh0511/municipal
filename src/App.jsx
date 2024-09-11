@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
-import './App.css';
-import Sidebar from './components/sidebar';
-import HomeSection from './components/homesection';
-import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import "./App.css";
+import Sidebar from "./components/sidebar";
+import HomeSection from "./components/homesection";
+import { useState } from "react";
 
 function App() {
   const counter = useSelector((state) => state.myReducer.myVariable);
@@ -15,10 +15,10 @@ function App() {
   };
   return (
     <div>
-       <div className="App">
-      <Sidebar isClosed={isClosed} />
-      <HomeSection toggleSidebar={toggleSidebar} />
-    </div>
+      <div className="App">
+        <Sidebar isClosed={isClosed} />
+        <HomeSection toggleSidebar={toggleSidebar} />
+      </div>
     </div>
   );
 }
