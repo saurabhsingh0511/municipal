@@ -8,46 +8,44 @@ const Sidebar = ({isClosed}) => {
   const handleArrowClick = (index) => {
     setActiveMenu(activeMenu === index ? null : index);
   };
-console.log(activeMenu,"activeMenu")
   return (
     <div className={`sidebar ${isClosed ? 'close' : ''}`}>
       <div className="logo-details">
-        {/* <i className='bx bxl-c-plus-plus'></i> */}
         <img style={{width: !isClosed ? "15%" : "30%",margin:'30px'}} src={icon} alt="icon" />
         <span className="logo_name">CodingLab</span>
       </div>
       <ul className="nav-links">
         <li>
-          <a href="/">
+          <Link to="/">
             <i className='bx bx-grid-alt'></i>
             <span className="link_name">Dashboard</span>
-          </a>
+          </Link>
           <ul className="sub-menu blank">
-            <li><a className="link_name" href="/">Dashboard</a></li>
+            <li><Link className="link_name" to="/">Dashboard</Link></li>
           </ul>
         </li>
 
         {/* Example of active menu */}
         <li className={activeMenu === 1 ? "active" : ""}>
-          <div className="iocn-link">
-            <a href="#">
+          <div className="iocn-link" onClick={() => handleArrowClick(1)}>
+            <a className='cursor-p'>
               <i className='bx bx-collection'></i>
               <span className="link_name f-size">Municipal Master</span>
             </a>
-            <i className={`bx bxs-chevron-down arrow ${activeMenu === 1 ? "rotate" : ""}`} onClick={() => handleArrowClick(1)}></i>
+            <i className={`bx bxs-chevron-down arrow ${activeMenu === 1 ? "rotate" : ""}`}></i>
           </div>
           <ul className={`sub-menu ${activeMenu === 1 ? 'showMenu' : 'sub-menu-hide'}`}>
-            <li><a className="link_name" href="#">Municipal Master</a></li>
-            <li><a href="/municipal-details-list">Municipal Master Form</a></li>
+            <li><a className="link_name">Municipal Master</a></li>
+            <li><Link to="/municipal-details-list">Municipal Master Form</Link></li>
           </ul>
         </li>
         <li className={activeMenu === 2 ? "active" : ""}>
-          <div className="iocn-link">
-            <a href="#">
+          <div className="iocn-link" onClick={() => handleArrowClick(2)}>
+            <a className='cursor-p'>
               <i className='bx bx-collection'></i>
               <span className="link_name f-size">Property Master</span>
             </a>
-            <i className={`bx bxs-chevron-down arrow ${activeMenu === 2 ? "rotate" : ""}`} onClick={() => handleArrowClick(2)}></i>
+            <i className={`bx bxs-chevron-down arrow ${activeMenu === 2 ? "rotate" : ""}`}></i>
           </div>
           <ul className={`sub-menu ${activeMenu === 2 ? 'showMenu' : 'sub-menu-hide'}`}>
             <li><a className="link_name" href="#">Property Master</a></li>
@@ -69,12 +67,12 @@ console.log(activeMenu,"activeMenu")
         </li>
 
         <li className={activeMenu === 3 ? "active" : ""}>
-          <div className="iocn-link">
-            <a href="#">
+          <div className="iocn-link" onClick={() => handleArrowClick(3)}>
+            <a className='cursor-p'>
               <i className='bx bx-collection'></i>
               <span className="link_name f-size">Water Users Setup</span>
             </a>
-            <i className={`bx bxs-chevron-down arrow ${activeMenu === 3 ? "rotate" : ""}`} onClick={() => handleArrowClick(3)}></i>
+            <i className={`bx bxs-chevron-down arrow ${activeMenu === 3 ? "rotate" : ""}`}></i>
           </div>
           <ul className={`sub-menu ${activeMenu === 3 ? 'showMenu' : 'sub-menu-hide'}`}>
             <li><a className="link_name" href="#">Water Users Setup</a></li>
@@ -96,12 +94,12 @@ console.log(activeMenu,"activeMenu")
         </li>
 
         <li className={activeMenu === 4 ? "active" : ""}>
-          <div className="iocn-link">
-            <a href="#">
+          <div className="iocn-link" onClick={() => handleArrowClick(4)}>
+            <a className='cursor-p'>
               <i className='bx bx-collection'></i>
               <span className="link_name f-size">Municipal License</span>
             </a>
-            <i className={`bx bxs-chevron-down arrow ${activeMenu === 4 ? "rotate" : ""}`} onClick={() => handleArrowClick(4)}></i>
+            <i className={`bx bxs-chevron-down arrow ${activeMenu === 4 ? "rotate" : ""}`}></i>
           </div>
           <ul className={`sub-menu ${activeMenu === 4 ? 'showMenu' : 'sub-menu-hide'}`}>
             <li><a className="link_name" href="#">Municipal License</a></li>
@@ -116,17 +114,17 @@ console.log(activeMenu,"activeMenu")
         </li>
 
         <li className={activeMenu === 5 ? "active" : ""}>
-          <div className="iocn-link">
-            <a href="#">
+          <div className="iocn-link" onClick={() => handleArrowClick(5)}>
+            <a className='cursor-p'>
               <i className='bx bx-collection'></i>
               <span className="link_name f-size">Property Master Form</span>
             </a>
-            <i className={`bx bxs-chevron-down arrow ${activeMenu === 5 ? "rotate" : ""}`} onClick={() => handleArrowClick(5)}></i>
+            <i className={`bx bxs-chevron-down arrow ${activeMenu === 5 ? "rotate" : ""}`}></i>
           </div>
           <ul className={`sub-menu ${activeMenu === 5 ? 'showMenu' : 'sub-menu-hide'}`}>
             <li><a className="link_name" href="#">Property Master Form</a></li>
-            <li><a href="#">Property Assessment Form</a></li>
-            <li><a href="#">New Water Connection</a></li>
+            <li><Link to="#">Property Assessment Form</Link></li>
+            <li><Link to="#">New Water Connection</Link></li>
           </ul>
         </li>
 

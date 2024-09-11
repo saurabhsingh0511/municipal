@@ -1,8 +1,21 @@
+import { useDispatch, useSelector } from 'react-redux';
+import HomeSection from '../../components/homesection';
 import './Dashboard.css';
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  const isClosed = useSelector((state) => state.myReducer.isClosed);
+
+  const toggleSidebar = () => {
+    dispatch({
+      type: "TOGGLESIDEBAR",
+      payload: !isClosed // toggle the current state
+  });
+  };
   return (
-    <div className="dashboard-container">
+    <>
+    <HomeSection toggleSidebar={toggleSidebar} 
+    html={<div className="dashboard-container">
       <header className="dashboard-header">
         <h1>Welcome to Dashboard</h1>
       </header>
@@ -20,7 +33,9 @@ const Dashboard = () => {
           <p>Check the latest updates.</p>
         </div>
       </div>
-    </div>
+    </div>}
+    />
+    </>
   );    
 };
 

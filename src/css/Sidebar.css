@@ -327,7 +327,9 @@
   margin: 0 15px;
   cursor: pointer;
 }
-
+.cursor-p{
+  cursor: pointer;
+}
 .home-section .home-content .text{
   font-size: 26px;
   font-weight: 600;

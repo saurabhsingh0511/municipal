@@ -1,25 +1,24 @@
 import "./App.css";
 import Sidebar from "./components/sidebar";
-import HomeSection from "./components/homesection";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import MunicipalDetailsList from "./pages/MunicipalMaster/MunicipalDetailsList/MunicipalDetailsList";
+import MasterPage from "./pages/MunicipalMaster/MasterPage/MasterPage";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
-
-  const dispatch = useDispatch();
-  const toggleSidebar = () => {
-    dispatch({
-      type: "TOGGLESIDEBAR",
-      payload: !isClosed // toggle the current state
-  });
-  };
   return (
-    <div>
+    <Router>
       <div className="App">
-        <Sidebar isClosed={isClosed} />
-        <HomeSection toggleSidebar={toggleSidebar} />
+      <Sidebar isClosed={isClosed} />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/municipal-details-list" element={<MunicipalDetailsList />} />
+          <Route path="/master-page" element={<MasterPage />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 
