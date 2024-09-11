@@ -1,4 +1,4 @@
- export const testtttt = (val) => ({
-    type: 'TEST',
+ export const toggleSidebar = (val) => ({
+    type: 'TOGGLESIDEBAR',
     payload: val
   });

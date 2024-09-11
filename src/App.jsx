@@ -1,13 +1,17 @@
 import "./App.css";
 import Sidebar from "./components/sidebar";
 import HomeSection from "./components/homesection";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
-  const [isClosed, setIsClosed] = useState(false);
+  const isClosed = useSelector((state) => state.myReducer.isClosed);
 
+  const dispatch = useDispatch();
   const toggleSidebar = () => {
-    setIsClosed(!isClosed);
+    dispatch({
+      type: "TOGGLESIDEBAR",
+      payload: !isClosed // toggle the current state
+  });
   };
   return (
     <div>
