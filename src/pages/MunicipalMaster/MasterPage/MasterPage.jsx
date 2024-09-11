@@ -1,21 +1,21 @@
 import React from "react";
 import "./MasterPage.css";
-import Button from "../../components/button/Button";
+import Button from "../../../components/button/Button";
 import { Link } from "react-router-dom";
 
 const MasterPage = () => {
   return (
     <div className="container-fluid form_container">
-      <div className="border">
-        <div className="text-start">
-          <Link to="municipal-details-list">
-            <Button
-              type="btn-success"
-              buttonName="Back to Municipal Details List"
-              bootIcon={<i class="bi bi-list"></i>}
-            />
-          </Link>
-        </div>
+      <div className="text-start mb-2">
+        <Link to="/municipal-details-list">
+          <Button
+            type="btn-success"
+            buttonName="Back to Municipal Details List"
+            bootIcon={<i class="bi bi-list"></i>}
+          />
+        </Link>
+      </div>
+      <div className="border_box">
         <form>
           <div className="row">
             <div className="col-md-6 ">

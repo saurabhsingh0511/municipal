@@ -1,8 +1,9 @@
 import React from 'react'
 import { createBrowserRouter, Route } from 'react-router-dom'
 import Dashboard from '../pages/Dashboard/Dashboard';
-import MasterPage from '../pages/MunicipalMaster/MasterPage';
-import MunicipalDetailsList from '../pages/MunicipalMaster/MunicipalDetailsList';
+import MunicipalDetailsList from '../pages/MunicipalMaster/MunicipalDetailsList/MunicipalDetailsList';
+import MasterPage from '../pages/MunicipalMaster/MasterPage/MasterPage';
+import RoadTypeName from '../pages/PropertyMasterSetup/RoadTypeName/RoadTypeName';
 
 export const appRouter = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ export const appRouter = createBrowserRouter([
     {
         path: "/master-page",
         element: <MasterPage />,
+    },
+    {
+        path: "/road-type-name",
+        element: <RoadTypeName />,
     },
 ])
 

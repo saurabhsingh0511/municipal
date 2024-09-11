@@ -17,12 +17,12 @@ const Sidebar = ({isClosed}) => {
       </div>
       <ul className="nav-links">
         <li>
-          <a href="#">
+          <a href="/">
             <i className='bx bx-grid-alt'></i>
             <span className="link_name">Dashboard</span>
           </a>
           <ul className="sub-menu blank">
-            <li><a className="link_name" href="#">Dashboard</a></li>
+            <li><a className="link_name" href="/">Dashboard</a></li>
           </ul>
         </li>
 
@@ -37,11 +37,9 @@ const Sidebar = ({isClosed}) => {
           </div>
           <ul className={`sub-menu ${activeMenu === 1 ? 'showMenu' : 'sub-menu-hide'}`}>
             <li><a className="link_name" href="#">Municipal Master</a></li>
-            <li><a href="#">Municipal Master Form</a></li>
-            {/* <li><Link to="municipal-details-list">Municipal Details List</Link></li> */}
+            <li><a href="/municipal-details-list">Municipal Master Form</a></li>
           </ul>
         </li>
-
         <li className={activeMenu === 2 ? "active" : ""}>
           <div className="iocn-link">
             <a href="#">
@@ -53,7 +51,7 @@ const Sidebar = ({isClosed}) => {
           <ul className={`sub-menu ${activeMenu === 2 ? 'showMenu' : 'sub-menu-hide'}`}>
             <li><a className="link_name" href="#">Property Master</a></li>
             <li><a href="#">Property Tax Rate</a></li>
-            <li><a href="#">Road Type Name</a></li>
+            <li><a href="/road-type-name">Road Type Name</a></li>
             <li><a href="#">Zone Data</a></li>
             <li><a href="#">Document Group</a></li>
             <li><a href="#">Property Tax Component List</a></li>
