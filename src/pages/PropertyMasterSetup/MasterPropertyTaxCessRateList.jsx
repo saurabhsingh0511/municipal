@@ -1,11 +1,10 @@
 import React from "react";
-import '../../../css/TableForm.css'
 import { Link } from "react-router-dom";
-import Button from "../../../components/button/Button";
+import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import HomeSection from "../../../components/homesection";
+import HomeSection from "../../components/homesection";
 
-const MunicipalDetailsList = () => {
+const PropertyTaxCessRateList = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
 
@@ -16,26 +15,25 @@ const MunicipalDetailsList = () => {
   });
   };
   return (
-    <>
-    <HomeSection toggleSidebar={toggleSidebar} 
-    html={
-      <div className="container-fluid">
+   <>
+   <HomeSection toggleSidebar={toggleSidebar}
+   html={
+    <div className="container-fluid">
       <div className="text-start mb-2">
-          <Link to="/master-page">
+          <Link to="/create-property-tax-cess-rate">
             <Button
               type="btn-success"
-              buttonName="Add New Municipal"
-              bootIcon={<i class="bi bi-list"></i>}
+              buttonName="Add New Property Tax Cess Rate"
+              bootIcon={<i class="bi bi-plus-lg"></i>}
             />
           </Link>
         </div>
       <div className="border_box">
-        {/* Search Bar */}
         <div className="input-group mb-3 search_input">
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Municipal Name or Commissioner Name"
+            placeholder="Search by Property Tax Cess Rate"
           />
           <button className="btn btn-success" type="button">
             <i className="bi bi-search"></i>
@@ -46,32 +44,26 @@ const MunicipalDetailsList = () => {
           <table className="table table-striped master_table">
             <thead>
               <tr>
-                <th scope="col">S.No</th>
-                <th scope="col">Municipal Code</th>
-                <th scope="col">Municipal Name</th>
-                <th scope="col">City</th>
-                <th scope="col">State</th>
-                <th scope="col">Commissioner Name</th>
-                <th scope="col">Contact Number</th>
-                <th scope="col">Toll-Free Number</th>
-                <th scope="col">Logo</th>
+                <th scope="col">Area Range</th>
+                <th scope="col">Property Type</th>
+                <th scope="col">Tax Component</th>
+                <th scope="col">Rate Value</th>
+                <th scope="col">Calculation Type</th>
+                <th scope="col">Effective Date</th>
+                <th scope="col">Financial Year</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
-                <td>MUNI170</td>
-                <td>Delhi Municipal Corporation</td>
-                <td>New Delhi</td>
-                <td>Delhi</td>
-                <td>Savit</td>
-                <td>+919876543212</td>
-                <td>1800123456</td>
-                <td>
-                  <img src="logo.png" alt="logo" width="40" />
-                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td>
                   <Button type="btn-info" buttonName="Update" />
                 </td>
@@ -84,10 +76,10 @@ const MunicipalDetailsList = () => {
         </div>
       </div>
     </div>
-    }
-    />
-    </>
+   }
+    /> 
+   </>
   );
 };
 
-export default MunicipalDetailsList;
+export default PropertyTaxCessRateList;
