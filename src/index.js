@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './dataStore/configureRedux';
 import { Provider } from 'react-redux';
+import 'boxicons/css/boxicons.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
