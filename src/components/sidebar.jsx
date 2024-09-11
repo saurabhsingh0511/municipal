@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
-// import './Sidebar.css'; // Import your CSS file here
 import '../css/Sidebar.css'; // Import your CSS file here
 import icon from '../image/Courthouse.png'
 
 const Sidebar = ({isClosed}) => {
-//   const [isClosed, setIsClosed] = useState(true);
   const [activeMenu, setActiveMenu] = useState(null);
-
-  const toggleSidebar = () => {
-    // setIsClosed(!isClosed);
-  };
-
   const handleArrowClick = (index) => {
     setActiveMenu(activeMenu === index ? null : index);
   };
-console.log(activeMenu,"activeMenu")
   return (
     <div className={`sidebar ${isClosed ? 'close' : ''}`}>
       <div className="logo-details">
@@ -72,6 +64,68 @@ console.log(activeMenu,"activeMenu")
             <li><a href="#">Property Use Type Master</a></li>
             <li><a href="#">Property Assessment Type Master</a></li>
             <li><a href="#">Ownership Type Master</a></li>
+          </ul>
+        </li>
+
+        <li className={activeMenu === 3 ? "active" : ""}>
+          <div className="iocn-link">
+            <a href="#">
+              <i className='bx bx-collection'></i>
+              <span className="link_name f-size">Water Users Setup</span>
+            </a>
+            <i className={`bx bxs-chevron-down arrow ${activeMenu === 3 ? "rotate" : ""}`} onClick={() => handleArrowClick(3)}></i>
+          </div>
+          <ul className={`sub-menu ${activeMenu === 3 ? 'showMenu' : 'sub-menu-hide'}`}>
+            <li><a className="link_name" href="#">Water Users Setup</a></li>
+            <li><a href="#">Water Property Type Master</a></li>
+            <li><a href="#">Unit Rate Master</a></li>
+            <li><a href="#">Unit Master</a></li>
+            <li><a href="#">Application Category Master</a></li>
+            <li><a href="#">Application Type Master</a></li>
+            <li><a href="#">Document Type Master</a></li>
+            <li><a href="#">Document Group Master</a></li>
+            <li><a href="#">PipeLine Type Master</a></li>
+            <li><a href="#">Calculation Type Master</a></li>
+            <li><a href="#">Connection Type</a></li>
+            <li><a href="#">Consumer Category Master</a></li>
+            <li><a href="#">Buildup Area Master</a></li>
+            <li><a href="#">Fee Master</a></li>
+            <li><a href="#">Additional Fee Master</a></li>
+          </ul>
+        </li>
+
+        <li className={activeMenu === 4 ? "active" : ""}>
+          <div className="iocn-link">
+            <a href="#">
+              <i className='bx bx-collection'></i>
+              <span className="link_name f-size">Municipal License</span>
+            </a>
+            <i className={`bx bxs-chevron-down arrow ${activeMenu === 4 ? "rotate" : ""}`} onClick={() => handleArrowClick(4)}></i>
+          </div>
+          <ul className={`sub-menu ${activeMenu === 4 ? 'showMenu' : 'sub-menu-hide'}`}>
+            <li><a className="link_name" href="#">Municipal License</a></li>
+            <li><a href="#">Trade Application Type Master</a></li>
+            <li><a href="#">Trade Type</a></li>
+            <li><a href="#">Firm Type</a></li>
+            <li><a href="#">Business Nature</a></li>
+            <li><a href="#">Business Premises</a></li>
+            <li><a href="#">ML Rate Master</a></li>
+            <li><a href="#">ML Document Master</a></li>
+          </ul>
+        </li>
+
+        <li className={activeMenu === 5 ? "active" : ""}>
+          <div className="iocn-link">
+            <a href="#">
+              <i className='bx bx-collection'></i>
+              <span className="link_name f-size">Property Master Form</span>
+            </a>
+            <i className={`bx bxs-chevron-down arrow ${activeMenu === 5 ? "rotate" : ""}`} onClick={() => handleArrowClick(5)}></i>
+          </div>
+          <ul className={`sub-menu ${activeMenu === 5 ? 'showMenu' : 'sub-menu-hide'}`}>
+            <li><a className="link_name" href="#">Property Master Form</a></li>
+            <li><a href="#">Property Assessment Form</a></li>
+            <li><a href="#">New Water Connection</a></li>
           </ul>
         </li>
 
