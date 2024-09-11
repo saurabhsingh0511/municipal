@@ -1,4 +1,6 @@
 import React from 'react';
+import { RouterProvider } from 'react-router-dom';
+import { appRouter } from '../route/Route';
 
 const HomeSection = ({toggleSidebar}) => {
   return (
@@ -7,6 +9,7 @@ const HomeSection = ({toggleSidebar}) => {
         <i className='bx bx-menu' onClick={()=> toggleSidebar()}></i>
         <span className="text">AHMEDNAGAR MUNICIPAL</span>
       </div>
+      <RouterProvider router={appRouter} />
     </section>
   );
 };
