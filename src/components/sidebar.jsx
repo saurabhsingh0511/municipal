@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import '../css/Sidebar.css'; // Import your CSS file here
 import icon from '../image/Courthouse.png'
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({isClosed}) => {
   const [activeMenu, setActiveMenu] = useState(null);
   const handleArrowClick = (index) => {
     setActiveMenu(activeMenu === index ? null : index);
   };
+console.log(activeMenu,"activeMenu")
   return (
     <div className={`sidebar ${isClosed ? 'close' : ''}`}>
       <div className="logo-details">
