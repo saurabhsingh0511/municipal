@@ -1,10 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../../components/button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import HomeSection from "../../components/homesection";
 
 const RoadTypeName = () => {
+  const dispatch = useDispatch();
+  const isClosed = useSelector((state) => state.myReducer.isClosed);
+
+  const toggleSidebar = () => {
+    dispatch({
+      type: "TOGGLESIDEBAR",
+      payload: !isClosed // toggle the current state
+  });
+  };
   return (
-    <div className="container-fluid">
+    <>
+    <HomeSection toggleSidebar={toggleSidebar} 
+    html={
+      <div className="container-fluid">
       <div className="text-start mb-2">
           <Link to="">
             <Button
@@ -68,6 +82,9 @@ const RoadTypeName = () => {
         </div>
       </div>
     </div>
+    }
+    />
+    </>
   );
 };
 

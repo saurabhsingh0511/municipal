@@ -2,10 +2,24 @@ import React from "react";
 import "./MasterPage.css";
 import Button from "../../../components/button/Button";
 import { Link } from "react-router-dom";
+import HomeSection from "../../../components/homesection";
+import { useDispatch, useSelector } from "react-redux";
 
 const MasterPage = () => {
+  const isClosed = useSelector((state) => state.myReducer.isClosed);
+
+  const dispatch = useDispatch();
+  const toggleSidebar = () => {
+    dispatch({
+      type: "TOGGLESIDEBAR",
+      payload: !isClosed // toggle the current state
+  });
+  };
   return (
-    <div className="container-fluid form_container">
+    <>
+    <HomeSection toggleSidebar={toggleSidebar} 
+    html={
+      <div className="container-fluid form_container">
       <div className="text-start mb-2">
         <Link to="/municipal-details-list">
           <Button
@@ -145,6 +159,9 @@ const MasterPage = () => {
         </form>
       </div>
     </div>
+    }
+    />
+    </>
   );
 };
 

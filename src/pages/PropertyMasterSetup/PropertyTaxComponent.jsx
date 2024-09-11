@@ -2,10 +2,24 @@ import React from "react";
 // import "./MasterPage.css";
 import { Link } from "react-router-dom";
 import Button from "../../components/button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import HomeSection from "../../components/homesection";
 
 const PropertyTaxComponent = () => {
+  const dispatch = useDispatch();
+  const isClosed = useSelector((state) => state.myReducer.isClosed);
+
+  const toggleSidebar = () => {
+    dispatch({
+      type: "TOGGLESIDEBAR",
+      payload: !isClosed // toggle the current state
+  });
+  };
   return (
-    <div className="container-fluid form_container">
+    <>
+    <HomeSection toggleSidebar={toggleSidebar} 
+    html={
+      <div className="container-fluid form_container">
       <div className="text-start mb-2">
         <Link to="/property-tax-component-list">
           <Button
@@ -101,6 +115,9 @@ const PropertyTaxComponent = () => {
         </form>
       </div>
     </div>
+    }
+     /> 
+    </>
   );
 };
 

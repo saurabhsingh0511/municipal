@@ -1,9 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../../components/button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import HomeSection from "../../components/homesection";
 
 const CreatePropertyTaxCess = () => {
+  const dispatch = useDispatch();
+  const isClosed = useSelector((state) => state.myReducer.isClosed);
+
+  const toggleSidebar = () => {
+    dispatch({
+      type: "TOGGLESIDEBAR",
+      payload: !isClosed // toggle the current state
+  });
+  };
   return (
+   <>
+   <HomeSection toggleSidebar={toggleSidebar}
+   html={
     <div className="container-fluid form_container">
       <div className="text-start mb-2">
         <Link to="/property-tax-cess-rate-list">
@@ -121,6 +135,9 @@ const CreatePropertyTaxCess = () => {
         </form>
       </div>
     </div>
+   }
+    />
+   </>
   );
 };
 
