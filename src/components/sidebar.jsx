@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../css/Sidebar.css'; // Import your CSS file here
 import icon from '../image/Courthouse.png'
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({isClosed}) => {
   const [activeMenu, setActiveMenu] = useState(null);
@@ -37,6 +38,7 @@ const Sidebar = ({isClosed}) => {
           <ul className={`sub-menu ${activeMenu === 1 ? 'showMenu' : 'sub-menu-hide'}`}>
             <li><a className="link_name" href="#">Municipal Master</a></li>
             <li><a href="#">Municipal Master Form</a></li>
+            {/* <li><Link to="municipal-details-list">Municipal Details List</Link></li> */}
           </ul>
         </li>
 

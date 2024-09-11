@@ -1,11 +1,11 @@
 import React from "react";
 import "./MunicipalDetailsList.css";
 import { Link } from "react-router-dom";
+import Button from "../../components/button/Button";
 
 const MunicipalDetailsList = () => {
   return (
-    <div className="container-fluid mt-5">
-      {/* Add New Municipal Button */}
+    <div className="container-fluid">
       <div className="d-flex justify-content-between mb-3">
         <Link to="master-page">
           <button className="btn btn-success master_btn">
@@ -26,7 +26,6 @@ const MunicipalDetailsList = () => {
         </button>
       </div>
 
-      {/* Responsive Table */}
       <div className="table-responsive">
         <table className="table table-striped master_table">
           <thead>
@@ -58,10 +57,10 @@ const MunicipalDetailsList = () => {
                 <img src="logo.png" alt="logo" width="40" />
               </td>
               <td>
-                <button className="btn btn-info master_btn">Update</button>
+                <Button type="btn-info" buttonName="Update" />
               </td>
               <td>
-                <button className="btn btn-danger master_btn">Delete</button>
+                <Button type="btn-danger" buttonName="Delete" />
               </td>
             </tr>
           </tbody>
