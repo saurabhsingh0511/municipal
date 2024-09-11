@@ -1,9 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MasterPage.css";
 import Button from "../../../components/button/Button";
 import { Link } from "react-router-dom";
 
 const MasterPage = () => {
+  const [formData, setFormData] = useState({
+    municipalCode: '',
+    municipalName: '',
+    city: '',
+    state: '',
+    addressLine1: '',
+    addressLine2: '',
+    commissionerName: '',
+    contactNumber: '',
+    tollFreeNumber: '',
+    logoFile: null,
+  })
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  }
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({
+      ...formData,
+      logoFile: file
+    });
+  }
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+
+      const dataToSend = new FormData();
+
+      dataToSend.append("muniCode", formData.municipalCode);
+      dataToSend.append("muniName", formData.municipalName);
+      dataToSend.append("city", formData.city);
+      dataToSend.append("state", formData.state);
+      dataToSend.append("addressLine1", formData.addressLine1);
+      dataToSend.append("addressLine2", formData.addressLine2);
+      dataToSend.append("commissionerName", formData.commissionerName);
+      dataToSend.append("contactNumber", formData.contactNumber);
+      dataToSend.append("tollFreeNumber", formData.tollFreeNumber);
+      dataToSend.append("logoFile", formData.logoFile);
+
+      console.log("Payload: ", ...dataToSend);
+  }
+
   return (
     <div className="container-fluid form_container">
       <div className="text-start mb-2">
@@ -25,7 +73,9 @@ const MasterPage = () => {
                   type="text"
                   id="municipalCode"
                   name="municipalCode"
+                  value={formData.municipalCode}
                   className="form-control"
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -37,7 +87,9 @@ const MasterPage = () => {
                   type="text"
                   id="municipalName"
                   name="municipalName"
+                  value={formData.municipalName}
                   className="form-control"
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -49,7 +101,9 @@ const MasterPage = () => {
                   type="text"
                   id="city"
                   name="city"
+                  value={formData.city}
                   className="form-control"
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -61,7 +115,9 @@ const MasterPage = () => {
                   type="text"
                   id="state"
                   name="state"
+                  value={formData.state}
                   className="form-control"
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -73,7 +129,9 @@ const MasterPage = () => {
                   type="text"
                   id="addressLine1"
                   name="addressLine1"
+                  value={formData.addressLine1}
                   className="form-control"
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -85,7 +143,9 @@ const MasterPage = () => {
                   type="text"
                   id="addressLine2"
                   name="addressLine2"
+                  value={formData.addressLine2}
                   className="form-control"
+                  onChange={handleInputChange}
                 />
               </div>
             </div>
@@ -96,7 +156,9 @@ const MasterPage = () => {
                   type="text"
                   id="commissionerName"
                   name="commissionerName"
+                  value={formData.commissionerName}
                   className="form-control"
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -108,7 +170,9 @@ const MasterPage = () => {
                   type="tel"
                   id="contactNumber"
                   name="contactNumber"
+                  value={formData.contactNumber}
                   className="form-control"
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -120,25 +184,29 @@ const MasterPage = () => {
                   type="tel"
                   id="tollFreeNumber"
                   name="tollFreeNumber"
+                  value={formData.tollFreeNumber}
                   className="form-control"
+                  onChange={handleInputChange}
                   required
                 />
               </div>
             </div>
             <div className="col-md-6 ">
               <div className="form-group">
-                <label htmlFor="logo">Logo File:</label>
+                <label htmlFor="logoFile">Logo File:</label>
                 <input
                   type="file"
-                  id="logo"
-                  name="logo"
+                  id="logoFile"
+                  name="logoFile"
+                  value={formData.logoFile}
                   className="form-control-file"
+                  onChange={handleFileChange}
                   accept="image/*"
                 />
               </div>
             </div>
             <div className="col-12 text-center my-3 d-flex justify-content-center gap-4">
-              <Button type="btn-primary" buttonName="Save" />
+              <Button type="btn-primary" onSubmit={handleSubmit} buttonName="Save" />
               <Button type="btn-danger" buttonName="Reset" />
             </div>
           </div>
