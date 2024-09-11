@@ -52,11 +52,11 @@ const Sidebar = ({isClosed}) => {
             <li><a className="link_name" href="#">Property Master</a></li>
             <li><a href="#">Property Tax Rate</a></li>
             <li><a href="/road-type-name">Road Type Name</a></li>
-            <li><a href="#">Zone Data</a></li>
-            <li><a href="#">Document Group</a></li>
-            <li><a href="#">Property Tax Component List</a></li>
+            <li><a href="/zone-data">Zone Data</a></li>
+            {/* <li><a href="#">Document Group</a></li> */}
+            <li><a href="/property-tax-component-list">Property Tax Component List</a></li>
             <li><a href="#">Property Tax Component Name</a></li>
-            <li><a href="#">Property Tax Cess Rate List</a></li>
+            <li><a href="/property-tax-cess-rate-list">Property Tax Cess Rate List</a></li>
             <li><a href="#">Property Area Range</a></li>
             <li><a href="#">Document Upload</a></li>
             <li><a href="#">Ward Master</a></li>

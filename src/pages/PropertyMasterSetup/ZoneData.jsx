@@ -1,16 +1,15 @@
 import React from "react";
-// import "./MunicipalDetailsList.css";
 import { Link } from "react-router-dom";
-import Button from "../../../components/button/Button";
+import Button from "../../components/button/Button";
 
-const RoadTypeName = () => {
+const ZoneData = () => {
   return (
     <div className="container-fluid">
       <div className="text-start mb-2">
           <Link to="">
             <Button
               type="btn-success"
-              buttonName="Add New Road Type"
+              buttonName="Add New Master Zone"
               bootIcon={<i class="bi bi-plus-lg"></i>}
             />
           </Link>
@@ -20,7 +19,7 @@ const RoadTypeName = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Municipal Type ID or Road Type ID"
+            placeholder="Search by Master Zone Name"
           />
           <button className="btn btn-success" type="button">
             <i className="bi bi-search"></i>
@@ -31,14 +30,14 @@ const RoadTypeName = () => {
           <table className="table table-striped master_table">
             <thead>
               <tr>
-                <th scope="col">Road Type Name</th>
+                <th scope="col">Zone Name</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Principal Main Road or Category I</td>
+                <td>Zone A-East</td>
                 <td>
                   <Button type="btn-info" buttonName="Update" />
                 </td>
@@ -47,7 +46,7 @@ const RoadTypeName = () => {
                 </td>
               </tr>
               <tr>
-                <td>Main Road or Category II</td>
+                <td>Zone B-West</td>
                 <td>
                   <Button type="btn-info" buttonName="Update" />
                 </td>
@@ -56,7 +55,16 @@ const RoadTypeName = () => {
                 </td>
               </tr>
               <tr>
-                <td>Other Road or Category III</td>
+                <td>Zone C-North</td>
+                <td>
+                  <Button type="btn-info" buttonName="Update" />
+                </td>
+                <td>
+                  <Button type="btn-danger" buttonName="Delete" />
+                </td>
+              </tr>
+              <tr>
+                <td>Zone D-South</td>
                 <td>
                   <Button type="btn-info" buttonName="Update" />
                 </td>
@@ -72,4 +80,4 @@ const RoadTypeName = () => {
   );
 };
 
-export default RoadTypeName;
+export default ZoneData;
