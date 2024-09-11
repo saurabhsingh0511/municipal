@@ -5,7 +5,7 @@ const MainForm = () => {
   return (
     <div className="container mt-5">
       <div className="d-flex justify-content-between mb-3">
-        <button className="btn btn-success">+Add New Municipal</button>
+        <button className="btn btn-success master_btn">+Add New Municipal</button>
       </div>
 
       <div className="input-group mb-3">
@@ -49,10 +49,10 @@ const MainForm = () => {
               <img src="logo.png" alt="logo" width="40" />
             </td>
             <td>
-              <button className="btn btn-info update_btn">Update</button>
+              <button className="btn btn-info master_btn">Update</button>
             </td>
             <td>
-              <button className="btn btn-danger delete_btn">Delete</button>
+              <button className="btn btn-danger master_btn">Delete</button>
             </td>
           </tr>
         </tbody>
