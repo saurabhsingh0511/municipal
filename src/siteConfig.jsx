@@ -1,6 +1,6 @@
 // src/api/siteConfig.js
 const siteConfig = {
-  BASE_URL: "http://192.168.29.245:8085/muncipal/api",
+  BASE_URL: "http://192.168.29.245:8085/municipal/api",
   API_BASE_URL: "http://192.168.29.245:8085/muncipal",
   // RATE_BASE_URL: "http://192.168.29.113:8080",
 
