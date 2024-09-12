@@ -11,6 +11,8 @@ import PropertyTaxComponent from "./pages/PropertyMasterSetup/PropertyTaxCompone
 import ZoneData from "./pages/PropertyMasterSetup/ZoneData";
 import PropertyTaxCessRateList from "./pages/PropertyMasterSetup/MasterPropertyTaxCessRateList";
 import CreatePropertyTaxCess from "./pages/PropertyMasterSetup/CreatePropertyTaxCess";
+import MasterPropertyTaxComponentName from "./pages/PropertyMasterSetup/MasterPropertyTaxComponentName";
+import FormPropertyTaxComponentName from "./pages/PropertyMasterSetup/FormPropertyTaxComponentName";
 
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
@@ -42,6 +44,14 @@ function App() {
           <Route
             path="/create-property-tax-cess-rate"
             element={<CreatePropertyTaxCess />}
+          />
+          <Route
+            path="/master-property-tax-component-name"
+            element={<MasterPropertyTaxComponentName />}
+          />
+          <Route
+            path="/form-property-tax-component-name"
+            element={<FormPropertyTaxComponentName />}
           />
         </Routes>
       </div>
