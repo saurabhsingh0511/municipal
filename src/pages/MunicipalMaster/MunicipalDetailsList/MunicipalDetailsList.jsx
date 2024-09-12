@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import '../../../css/TableForm.css'
 import { Link } from "react-router-dom";
 import Button from "../../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../../components/homesection";
+import siteConfig from "../../../siteConfig";
+import axios from "axios";
 
 const MunicipalDetailsList = () => {
   const dispatch = useDispatch();
@@ -15,6 +17,14 @@ const MunicipalDetailsList = () => {
       payload: !isClosed // toggle the current state
   });
   };
+
+  useEffect(()=> {
+  //  const fetchMasterFormData = async () => {
+  //   const response = await axios.get(`${siteConfig.BASE_URL}/${siteConfig.FETCH_MASTER_FORM}`)
+  //   console.log("fghjcvbnm,", response.data)
+  //  }
+  //   fetchMasterFormData();
+  }, [])
   return (
     <>
     <HomeSection toggleSidebar={toggleSidebar} 

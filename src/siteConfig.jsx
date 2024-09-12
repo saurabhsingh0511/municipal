@@ -8,7 +8,7 @@ const siteConfig = {
   CREATE_MASTER_FORM: "createMunicipalMaster",
   FETCH_MASTER_FORM: "getAllMunicipalMaster",
   FETCH_BY_MUNI_NAME: "getByMuniName",
-  FETCH_BY_COMMIS_NAME: "getByCommisName",
+  FETCH_BY_COMMIS_NAME: "getByCommisName", 
   UPDATE_SUSPENDED_STATUS: "municipalMaster/suspendedStatus",
   UPDATE_RECORD: "municipalMaster/update",
   IMAGE_SRC: "logo",
