@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../components/homesection";
+import axios from "axios";
+import siteConfig from "../../siteConfig";
 
 const RoadTypeName = () => {
   const dispatch = useDispatch();
@@ -11,9 +13,27 @@ const RoadTypeName = () => {
   const toggleSidebar = () => {
     dispatch({
       type: "TOGGLESIDEBAR",
-      payload: !isClosed // toggle the current state
-  });
+      payload: !isClosed, // toggle the current state
+    });
   };
+
+  const [roadTypes, setRoadTypes] = useState([]);
+
+  const fetchRoadType = async () => {
+    try {
+      const response = await axios.get(
+        `${siteConfig.BASE_URL}/${siteConfig.GET_ALL_ROAD_TYPE}`
+      );
+      setRoadTypes(response.data);
+      console.log("Road Data: ", response.data);
+    } catch (error) {
+      console.log("Faitched data failed: ", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRoadType();
+  }, []);
   return (
     <>
     <HomeSection toggleSidebar={toggleSidebar} 
@@ -41,50 +61,38 @@ const RoadTypeName = () => {
           </button>
         </div>
 
-        <div className="table-responsive">
-          <table className="table table-striped master_table">
-            <thead>
-              <tr>
-                <th scope="col">Road Type Name</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Principal Main Road or Category I</td>
-                <td>
-                  <Button type="btn-info" buttonName="Update" />
-                </td>
-                <td>
-                  <Button type="btn-danger" buttonName="Delete" />
-                </td>
-              </tr>
-              <tr>
-                <td>Main Road or Category II</td>
-                <td>
-                  <Button type="btn-info" buttonName="Update" />
-                </td>
-                <td>
-                  <Button type="btn-danger" buttonName="Delete" />
-                </td>
-              </tr>
-              <tr>
-                <td>Other Road or Category III</td>
-                <td>
-                  <Button type="btn-info" buttonName="Update" />
-                </td>
-                <td>
-                  <Button type="btn-danger" buttonName="Delete" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    }
-    />
+              <div className="table-responsive">
+                <table className="table table-striped master_table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Road Type Name</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {Array.isArray(roadTypes) &&
+                      roadTypes.map((road, index) => {
+                        return (
+                          <tr key={index}>
+                            <td>{road.roadTypeName}</td>
+                            <td>
+                              <Button type="btn-info" buttonName="Update" />
+                            </td>
+                            <td>
+                              <Button type="btn-danger" buttonName="Delete" />
+                            </td>
+                          </tr>
+                        );
+                      })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        }
+      />
     </>
   );
 };
