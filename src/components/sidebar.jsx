@@ -75,8 +75,8 @@ const Sidebar = ({isClosed}) => {
           </div>
           <ul className={`sub-menu ${activeMenu === 3 ? 'showMenu' : 'sub-menu-hide'}`}>
             <li><Link className="link_name" to="#">Water Users Setup</Link></li>
-            <li><Link to="#">Water Property Type Master</Link></li>
-            <li><Link to="#">Unit Rate Master</Link></li>
+            <li><Link to="/water-property-type-master">Water Property Type Master</Link></li>
+            <li><Link to="/unit-rate-master">Unit Rate Master</Link></li>
             <li><Link to="#">Unit Master</Link></li>
             <li><Link to="#">Application Category Master</Link></li>
             <li><Link to="#">Application Type Master</Link></li>

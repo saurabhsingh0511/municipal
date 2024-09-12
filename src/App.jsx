@@ -27,6 +27,10 @@ import OwnershipTypeMaster from "./pages/PropertyMasterSetup/OwnershipTypeMaster
 import CreateOwnershipTypeMaster from "./pages/PropertyMasterSetup/CreateOwnershipTypeMaster";
 import CreateRoadType from "./pages/PropertyMasterSetup/CreateRoadType";
 import CreateZoneData from "./pages/PropertyMasterSetup/CreateZoneData";
+import WaterPropertyTypeMaster from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/WaterPropertyTypeMaster";
+import CreateWaterPropertyType from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/CreateWaterPropertyType";
+import UnitRateMaster from "./pages/WaterUsersSetup/UnitRateMaster/UnitRateMaster";
+import CreateNewUnitRate from "./pages/WaterUsersSetup/UnitRateMaster/CreateNewUnitRate";
 
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
@@ -116,6 +120,22 @@ function App() {
           <Route
             path="/create-ownership-type-master"
             element={<CreateOwnershipTypeMaster />}
+          />
+          <Route
+            path="/water-property-type-master"
+            element={<WaterPropertyTypeMaster />}
+          />
+          <Route
+            path="/create-water-property-type"
+            element={<CreateWaterPropertyType />}
+          />
+          <Route
+            path="/unit-rate-master"
+            element={<UnitRateMaster />}
+          />
+          <Route
+            path="/create-new-unit-rate"
+            element={<CreateNewUnitRate />}
           />
 
 
