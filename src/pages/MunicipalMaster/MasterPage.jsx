@@ -81,7 +81,7 @@ const MasterPage = () => {
         <form>
           <div className="row">
             <div className="col-md-6 ">
-              <div className="form-group">
+              <div className="form-group text-start">
                 <label htmlFor="municipalCode">Municipal Code:</label>
                 <input
                   type="text"
@@ -95,7 +95,7 @@ const MasterPage = () => {
               </div>
             </div>
             <div className="col-md-6 ">
-              <div className="form-group">
+              <div className="form-group text-start">
                 <label htmlFor="municipalName">Municipal Name:</label>
                 <input
                   type="text"
@@ -109,7 +109,7 @@ const MasterPage = () => {
               </div>
             </div>
             <div className="col-md-6 ">
-              <div className="form-group">
+              <div className="form-group text-start">
                 <label htmlFor="city">City:</label>
                 <input
                   type="text"
@@ -123,7 +123,7 @@ const MasterPage = () => {
               </div>
             </div>
             <div className="col-md-6 ">
-              <div className="form-group">
+              <div className="form-group text-start">
                 <label htmlFor="state">State:</label>
                 <input
                   type="text"
@@ -137,7 +137,7 @@ const MasterPage = () => {
               </div>
             </div>
             <div className="col-md-12 ">
-              <div className="form-group">
+              <div className="form-group text-start">
                 <label htmlFor="addressLine1">Address Line 1:</label>
                 <input
                   type="text"
@@ -151,7 +151,7 @@ const MasterPage = () => {
               </div>
             </div>
             <div className="col-md-12 ">
-              <div className="form-group">
+              <div className="form-group text-start">
                 <label htmlFor="addressLine2">Address Line 2:</label>
                 <input
                   type="text"
@@ -164,7 +164,7 @@ const MasterPage = () => {
               </div>
             </div>
             <div className="col-md-6 ">
-              <div className="form-group">
+              <div className="form-group text-start">
                 <label htmlFor="commissionerName">Commissioner Name:</label>
                 <input
                   type="text"
@@ -178,7 +178,7 @@ const MasterPage = () => {
               </div>
             </div>
             <div className="col-md-6 ">
-              <div className="form-group">
+              <div className="form-group text-start">
                 <label htmlFor="contactNumber">Contact Number:</label>
                 <input
                   type="tel"
@@ -192,7 +192,7 @@ const MasterPage = () => {
               </div>
             </div>
             <div className="col-md-6 ">
-              <div className="form-group">
+              <div className="form-group text-start">
                 <label htmlFor="tollFreeNumber">Toll-Free Number:</label>
                 <input
                   type="tel"
@@ -206,8 +206,8 @@ const MasterPage = () => {
               </div>
             </div>
             <div className="col-md-6 ">
-              <div className="form-group">
-                <label htmlFor="logoFile">Logo File:</label>
+              <div className="form-group text-start">
+                <label htmlFor="logoFile" className="m-4">Logo File:</label> 
                 <input
                   type="file"
                   id="logoFile"

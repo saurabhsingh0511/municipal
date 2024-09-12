@@ -66,9 +66,9 @@ const MunicipalDetailsList = () => {
                   value={searchTerm}
                   onChange={(e) => handleSearch(e)}
                 />
-                <button className="btn btn-success" type="button">
+                {/* <button className="btn btn-success" type="button">
                   <i className="bi bi-search"></i>
-                </button>
+                </button> */}
               </div>
 
               <div className="table-responsive">
