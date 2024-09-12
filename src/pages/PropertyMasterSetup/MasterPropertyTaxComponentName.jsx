@@ -87,7 +87,7 @@ const MasterPropertyTaxComponentName = () => {
             <tbody>
               {dataToDisplay.length > 0 ? (
                 <>
-                  {Array.isArray(componentName) && componentName.map((component, index)=> {
+                  {Array.isArray(componentName) && dataToDisplay.map((component, index)=> {
                     return (
                       <tr key={index}>
                 <td>{component.componentName}</td>

@@ -94,7 +94,7 @@ const PropertyTaxComponentList = () => {
                     {dataToDisplay.length > 0 ? (
                        <>
                           {Array.isArray(propertyTaxComponent) &&
-                      propertyTaxComponent.map((propertyTax, index) => {
+                      dataToDisplay.map((propertyTax, index) => {
                         return (
                           <tr key={index}>
                             <td>

@@ -91,7 +91,7 @@ const ZoneData = () => {
                     {dataToDisplay.length > 0 ? (
                       <>
                         {Array.isArray(zones) &&
-                          zones.map((zone, index) => {
+                          dataToDisplay.map((zone, index) => {
                             return (
                               <tr key={index}>
                                 <td>{zone.zoneName}</td>

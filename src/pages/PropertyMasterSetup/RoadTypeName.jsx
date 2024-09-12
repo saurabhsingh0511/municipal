@@ -95,7 +95,7 @@ const RoadTypeName = () => {
                     {dataToDisplay.length > 0 ? (
                       <>
                         {Array.isArray(roadTypes) &&
-                      roadTypes.map((road, index) => {
+                      dataToDisplay.map((road, index) => {
                         return (
                           <tr key={index}>
                             <td>{road.roadTypeName}</td>
