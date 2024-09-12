@@ -18,13 +18,22 @@ const MunicipalDetailsList = () => {
   });
   };
 
-  useEffect(()=> {
-  //  const fetchMasterFormData = async () => {
-  //   const response = await axios.get(`${siteConfig.BASE_URL}/${siteConfig.FETCH_MASTER_FORM}`)
-  //   console.log("fghjcvbnm,", response.data)
-  //  }
-  //   fetchMasterFormData();
-  }, [])
+  const fetchMasterFormData = async () => {
+    try {
+      const response = await axios.get(`${siteConfig.BASE_URL}/${siteConfig.FETCH_MASTER_FORM}`);
+      console.log("Response Data:", response.data);
+    } catch (error) {
+      console.error("Failed to fetch data:", error.message);
+    } finally{
+      console.log("Network Issue...")
+    }
+};
+
+useEffect(() => {
+   console.log("Fetching data...");
+   fetchMasterFormData();
+}, []);
+
   return (
     <>
     <HomeSection toggleSidebar={toggleSidebar} 
