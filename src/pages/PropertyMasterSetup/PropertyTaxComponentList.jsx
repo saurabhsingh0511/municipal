@@ -9,6 +9,9 @@ import siteConfig from "../../siteConfig";
 const PropertyTaxComponentList = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
+  const [propertyTaxComponent, setPropertyTaxComponent] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredData, setFilteredData] = useState(propertyTaxComponent);
 
   const toggleSidebar = () => {
     dispatch({
@@ -16,8 +19,7 @@ const PropertyTaxComponentList = () => {
       payload: !isClosed, // toggle the current state
     });
   };
-
-  const [propertyTaxComponent, setPropertyTaxComponent] = useState([]);
+ 
 
   const fetchPropertyTaxComponent = async () => {
     try {
@@ -34,6 +36,18 @@ const PropertyTaxComponentList = () => {
   useEffect(() => {
     fetchPropertyTaxComponent();
   }, []);
+
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    setSearchTerm(searchValue);
+
+    const filtered = propertyTaxComponent.filter((data) =>
+      data.propertyTaxComponent.componentName.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilteredData(filtered);
+  };
+
+  const dataToDisplay = searchTerm ? filteredData : propertyTaxComponent;
 
   return (
     <>
@@ -56,6 +70,8 @@ const PropertyTaxComponentList = () => {
             type="text"
             className="form-control"
             placeholder="Search by Component ID"
+            value={searchTerm}
+            onChange={(e) => handleSearch(e)}
           />
           <button className="btn btn-success" type="button">
             <i className="bi bi-search"></i>
@@ -75,7 +91,9 @@ const PropertyTaxComponentList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {Array.isArray(propertyTaxComponent) &&
+                    {dataToDisplay.length > 0 ? (
+                       <>
+                          {Array.isArray(propertyTaxComponent) &&
                       propertyTaxComponent.map((propertyTax, index) => {
                         return (
                           <tr key={index}>
@@ -94,6 +112,10 @@ const PropertyTaxComponentList = () => {
                           </tr>
                         );
                       })}
+                       </>
+                    ) : (
+                      <p>No results found</p>
+                    )}
                   </tbody>
                 </table>
               </div>

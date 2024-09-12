@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../components/homesection";
+import axios from "axios";
+import siteConfig from "../../siteConfig";
 
 const MasterPropertyTaxComponentName = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
+  const [componentName, setComponentName] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredData, setFilteredData] = useState(componentName);
 
   const toggleSidebar = () => {
     dispatch({
@@ -14,6 +19,33 @@ const MasterPropertyTaxComponentName = () => {
       payload: !isClosed // toggle the current state
   });
   };
+
+  const fetchComponent = async () => {
+      try {
+        const response = await axios.get(`${siteConfig.BASE_URL}/${siteConfig.GET_ALL_PROPERTY_TAX_COMPONENT_NAME_MASTER}`)
+        setComponentName(response.data)
+        console.log("component Name: ", response.data)
+      } catch (error) {
+        console.log("Failed to fetch Data", error)
+      }
+  }
+
+  useEffect(()=>{
+    fetchComponent();
+  }, [])
+
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    setSearchTerm(searchValue);
+
+    const filtered = componentName.filter((data) =>
+      data.componentName.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilteredData(filtered);
+  };
+
+  const dataToDisplay = searchTerm ? filteredData : componentName;
+
   return (
     <>
     <HomeSection toggleSidebar={toggleSidebar} 
@@ -35,6 +67,8 @@ const MasterPropertyTaxComponentName = () => {
             type="text"
             className="form-control"
             placeholder="Search by Property Tax Component Name"
+            value={searchTerm}
+            onChange={(e) => handleSearch(e)}
           />
           <button className="btn btn-success" type="button">
             <i className="bi bi-search"></i>
@@ -51,8 +85,12 @@ const MasterPropertyTaxComponentName = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td></td>
+              {dataToDisplay.length > 0 ? (
+                <>
+                  {Array.isArray(componentName) && componentName.map((component, index)=> {
+                    return (
+                      <tr key={index}>
+                <td>{component.componentName}</td>
                 <td>
                   <Button type="btn-info" buttonName="Update" />
                 </td>
@@ -60,6 +98,13 @@ const MasterPropertyTaxComponentName = () => {
                   <Button type="btn-danger" buttonName="Delete" />
                 </td>
               </tr>
+                    )
+                  })}
+                </>
+              ) : (
+                <p>No results found</p>
+              )}
+             
             </tbody>
           </table>
         </div>
