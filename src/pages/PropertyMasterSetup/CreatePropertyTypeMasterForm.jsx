@@ -4,14 +4,14 @@ import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../components/homesection";
 
-const FormPropertyTaxComponentName = () => {
+const CreatePropertyTypeMasterForm = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
 
   const toggleSidebar = () => {
     dispatch({
       type: "TOGGLESIDEBAR",
-      payload: !isClosed // toggle the current state
+      payload: !isClosed 
   });
   };
   return (
@@ -19,12 +19,12 @@ const FormPropertyTaxComponentName = () => {
     <HomeSection toggleSidebar={toggleSidebar} 
     html={
       <div className="container-fluid form_container">
-      <h1 className="heading_h1">Master Property Tax Component Name</h1>
+      <h1 className="heading_h1">Create New Property Type</h1>
       <div className="text-start mb-2">
-        <Link to="/master-property-tax-component-name">
+        <Link to="/property-type-master">
           <Button
             type="btn-success"
-            buttonName="Back to Master Property Tax Component Name List"
+            buttonName="Back to Property Type Master"
             bootIcon={<i class="bi bi-list"></i>}
           />
         </Link>
@@ -34,20 +34,19 @@ const FormPropertyTaxComponentName = () => {
           <div className="row justify-content-center">
             <div className="col-md-6 ">
               <div className="form-group">
-                <label htmlFor="componentName">Component Name:</label>
+                <label htmlFor="propertyTypeName">Enter Property Type Name:</label>
                 <input
                   type="text"
-                  id="componentName"
-                  name="componentName"
+                  id="propertyTypeName"
+                  name="propertyTypeName"
                   className="form-control"
-                  placeholder="Enter Component Name"
                   required
                 />
               </div>
             </div>
             <div className="col-12 text-center my-3 d-flex justify-content-center gap-4">
-              <Button type="btn-primary" buttonName="Save" />
-              <Button type="btn-danger" buttonName="Reset" />
+              <Button type="btn-success" buttonName="Submit" />
+              <Button type="btn-warning" buttonName="Reset" />
             </div>
           </div>
         </form>
@@ -59,4 +58,4 @@ const FormPropertyTaxComponentName = () => {
   );
 };
 
-export default FormPropertyTaxComponentName;
+export default CreatePropertyTypeMasterForm;

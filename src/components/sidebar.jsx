@@ -49,20 +49,19 @@ const Sidebar = ({isClosed}) => {
           </div>
           <ul className={`sub-menu ${activeMenu === 2 ? 'showMenu' : 'sub-menu-hide'}`}>
             <li><Link className="link_name" to="#">Property Master</Link></li>
-            <li><Link to="#">Property Tax Rate</Link></li>
+            {/* <li><Link to="#">Property Tax Rate</Link></li> */}
             <li><Link to="/road-type-name">Road Type Name</Link></li>
             <li><Link to="/zone-data">Zone Data</Link></li>
             {/* <li><Link to="#">Document Group</Link></li> */}
             <li><Link to="/property-tax-component-list">Property Tax Component List</Link></li>
-            <li><Link to="#">Property Tax Component Name</Link></li>
+            <li><Link to="/master-property-tax-component-name">Property Tax Component Name</Link></li>
             <li><Link to="/property-tax-cess-rate-list">Property Tax Cess Rate List</Link></li>
-            <li><Link to="#">Property Area Range</Link></li>
-            <li><Link to="#">Document Upload</Link></li>
-            <li><Link to="#">Ward Master</Link></li>
-            <li><Link to="#">Property Type Master</Link></li>
-            <li><Link to="#">Property Use Type Master</Link></li>
-            <li><Link to="#">Property Assessment Type Master</Link></li>
-            <li><Link to="#">Ownership Type Master</Link></li>
+            <li><Link to="/property-area-range-master-list">Property Area Range</Link></li>
+            <li><Link to="/ward-master">Ward Master</Link></li>
+            <li><Link to="/property-type-master">Property Type Master</Link></li>
+            <li><Link to="/property-use-type-master">Property Use Type Master</Link></li>
+            <li><Link to="/property-assessment-type-master">Property Assessment Type Master</Link></li>
+            <li><Link to="/ownership-type-master">Ownership Type Master</Link></li>
           </ul>
         </li>
 

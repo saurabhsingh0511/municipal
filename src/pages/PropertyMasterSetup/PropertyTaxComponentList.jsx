@@ -37,30 +37,30 @@ const PropertyTaxComponentList = () => {
 
   return (
     <>
-      <HomeSection
-        toggleSidebar={toggleSidebar}
-        html={
-          <div className="container-fluid">
-            <div className="text-start mb-2">
-              <Link to="/create-property-tax-component">
-                <Button
-                  type="btn-success"
-                  buttonName="Add New Property Tax Component"
-                  bootIcon={<i class="bi bi-plus-lg"></i>}
-                />
-              </Link>
-            </div>
-            <div className="border_box">
-              <div className="input-group mb-3 search_input">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Search by Component ID"
-                />
-                <button className="btn btn-success" type="button">
-                  <i className="bi bi-search"></i>
-                </button>
-              </div>
+    <HomeSection toggleSidebar={toggleSidebar} 
+    html={
+      <div className="container-fluid">
+      <h1 className="heading_h1">Property Tax Component List</h1>
+      <div className="text-start mb-2">
+          <Link to="/create-property-tax-component">
+            <Button
+              type="btn-success"
+              buttonName="Add New Property Tax Component"
+              bootIcon={<i class="bi bi-plus-lg"></i>}
+            />
+          </Link>
+        </div>
+      <div className="border_box">
+        <div className="input-group mb-3 search_input">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search by Component ID"
+          />
+          <button className="btn btn-success" type="button">
+            <i className="bi bi-search"></i>
+          </button>
+        </div>
 
               <div className="table-responsive">
                 <table className="table table-striped master_table">
