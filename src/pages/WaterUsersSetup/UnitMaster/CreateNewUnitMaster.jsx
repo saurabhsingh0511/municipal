@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../../components/homesection";
 import Button from "../../../components/button/Button";
 
-const CreateNewUnitRate = () => {
+const CreateNewUnitMaster = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
 
@@ -22,7 +22,7 @@ const CreateNewUnitRate = () => {
           <div className="container-fluid form_container">
             <h1 className="heading_h1">Create New Unit Type</h1>
             <div className="text-start mb-2">
-              <Link to="/unit-rate-master">
+              <Link to="/unit-master">
                 <Button
                   type="btn-success"
                   buttonName="Back to Unit Type Master Details"
@@ -95,4 +95,4 @@ const CreateNewUnitRate = () => {
   );
 };
 
-export default CreateNewUnitRate;
+export default CreateNewUnitMaster;

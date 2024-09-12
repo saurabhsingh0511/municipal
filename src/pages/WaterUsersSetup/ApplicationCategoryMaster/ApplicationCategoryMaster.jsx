@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../../components/homesection";
 import Button from "../../../components/button/Button";
 
-const UnitRateMaster = () => {
+const ApplicationCategoryMaster = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
 
@@ -20,12 +20,12 @@ const UnitRateMaster = () => {
         toggleSidebar={toggleSidebar}
         html={
           <div className="container-fluid">
-            <h1 className="heading_h1">Unit Master List</h1>
+            <h1 className="heading_h1">Master Application Category List</h1>
             <div className="text-start mb-2">
-              <Link to="/create-new-unit-rate">
+              <Link to="/create-application">
                 <Button
                   type="btn-success"
-                  buttonName="Add New Unit Details"
+                  buttonName="Add New Application Category"
                   bootIcon={<i class="bi bi-plus-lg"></i>}
                 />
               </Link>
@@ -35,7 +35,7 @@ const UnitRateMaster = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Search By Name"
+                  placeholder="Search By Application Category Name"
                 />
                 <button className="btn btn-success" type="button">
                   <i className="bi bi-search"></i>
@@ -46,29 +46,28 @@ const UnitRateMaster = () => {
                 <table className="table table-striped master_table">
                   <thead>
                     <tr>
-                      <th scope="col">S. No.</th>
-                      <th scope="col">Unit Name</th>
-                      <th scope="col">Abbreviation</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">Conversion Factor</th>
-                      <th scope="col">Municipal Id</th>
+                      <th scope="col">Application Category Name</th>
                       <th scope="col">Edit</th>
                       <th scope="col">Delete</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>1</td>
-                      <td>gallon</td>
-                      <td>gallon</td>
-                      <td>3.7 litre</td>
-                      <td>3.7</td>
-                      <td>15</td>
+                      <td>BPL</td>
                       <td>
                         <Button type="btn-info" buttonName="Update" />
                       </td>
                       <td>
-                        <Button type="btn-danger" buttonName="Suspend" />
+                        <Button type="btn-danger" buttonName="Delete" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>APL</td>
+                      <td>
+                        <Button type="btn-info" buttonName="Update" />
+                      </td>
+                      <td>
+                        <Button type="btn-danger" buttonName="Delete" />
                       </td>
                     </tr>
                   </tbody>
@@ -82,4 +81,4 @@ const UnitRateMaster = () => {
   );
 };
 
-export default UnitRateMaster;
+export default ApplicationCategoryMaster;

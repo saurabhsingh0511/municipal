@@ -29,8 +29,12 @@ import CreateRoadType from "./pages/PropertyMasterSetup/CreateRoadType";
 import CreateZoneData from "./pages/PropertyMasterSetup/CreateZoneData";
 import WaterPropertyTypeMaster from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/WaterPropertyTypeMaster";
 import CreateWaterPropertyType from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/CreateWaterPropertyType";
-import UnitRateMaster from "./pages/WaterUsersSetup/UnitRateMaster/UnitRateMaster";
-import CreateNewUnitRate from "./pages/WaterUsersSetup/UnitRateMaster/CreateNewUnitRate";
+import CreateNewUnitMaster from "./pages/WaterUsersSetup/UnitMaster/CreateNewUnitMaster";
+import UnitMaster from "./pages/WaterUsersSetup/UnitMaster/UnitMaster";
+import ApplicationCategoryMaster from "./pages/WaterUsersSetup/ApplicationCategoryMaster/ApplicationCategoryMaster";
+import CreateApplication from "./pages/WaterUsersSetup/ApplicationCategoryMaster/CreateApplication";
+import ApplicationTypeMaster from "./pages/WaterUsersSetup/ApplicationTypeMaster/ApplicationTypeMaster";
+import CreateApplicationType from "./pages/WaterUsersSetup/ApplicationTypeMaster/CreateApplicationType";
 
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
@@ -130,12 +134,28 @@ function App() {
             element={<CreateWaterPropertyType />}
           />
           <Route
-            path="/unit-rate-master"
-            element={<UnitRateMaster />}
+            path="/unit-master"
+            element={<UnitMaster />}
           />
           <Route
-            path="/create-new-unit-rate"
-            element={<CreateNewUnitRate />}
+            path="/create-new-unit-master"
+            element={<CreateNewUnitMaster />}
+          />
+          <Route
+            path="/application-category-master"
+            element={<ApplicationCategoryMaster />}
+          />
+          <Route
+            path="/create-application"
+            element={<CreateApplication />}
+          />
+          <Route
+            path="/application-type-master"
+            element={<ApplicationTypeMaster />}
+          />
+          <Route
+            path="/create-application-type"
+            element={<CreateApplicationType />}
           />
 
 
