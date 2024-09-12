@@ -48,14 +48,15 @@ const Sidebar = ({isClosed}) => {
             <i className={`bx bxs-chevron-down arrow ${activeMenu === 2 ? "rotate" : ""}`}></i>
           </div>
           <ul className={`sub-menu ${activeMenu === 2 ? 'showMenu' : 'sub-menu-hide'}`}>
+
             <li><Link className="link_name" href="#">Property Master</Link></li>
             <li><Link to="#">Property Tax Rate</Link></li>
             <li><Link to="/road-type-name">Road Type Name</Link></li>
-            <li><Link to="#">Zone Data</Link></li>
+            <li><Link to="zone-data">Zone Data</Link></li>
             <li><Link to="#">Document Group</Link></li>
-            <li><Link to="#">Property Tax Component List</Link></li>
+            <li><Link to="/property-tax-component-list">Property Tax Component List</Link></li>
             <li><Link to="#">Property Tax Component Name</Link></li>
-            <li><Link to="#">Property Tax Cess Rate List</Link></li>
+            <li><Link to="/property-tax-cess-rate-list">Property Tax Cess Rate List</Link></li>
             <li><Link to="#">Property Area Range</Link></li>
             <li><Link to="#">Document Upload</Link></li>
             <li><Link to="#">Ward Master</Link></li>
@@ -63,6 +64,7 @@ const Sidebar = ({isClosed}) => {
             <li><Link to="#">Property Use Type Master</Link></li>
             <li><Link to="#">Property Assessment Type Master</Link></li>
             <li><Link to="#">Ownership Type Master</Link></li>
+
           </ul>
         </li>
 

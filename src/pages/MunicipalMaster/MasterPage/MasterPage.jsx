@@ -35,21 +35,20 @@ const MasterPage = () => {
       ...formData,
       [name]: value
     });
-  }
+  };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
+    console.log(file)
     setFormData({
       ...formData,
       logoFile: file
     });
-  }
+  };
 
   const handleSubmit = (e) => {
       e.preventDefault();
-
-      const dataToSend = new FormData();
-
+       const dataToSend = new FormData();
       dataToSend.append("muniCode", formData.municipalCode);
       dataToSend.append("muniName", formData.municipalName);
       dataToSend.append("city", formData.city);
@@ -60,8 +59,8 @@ const MasterPage = () => {
       dataToSend.append("contactNumber", formData.contactNumber);
       dataToSend.append("tollFreeNumber", formData.tollFreeNumber);
       dataToSend.append("logoFile", formData.logoFile);
-
-      console.log("Payload: ", ...dataToSend);
+    console.log(formData,"iiiiiiiiiiiiiiiiiiiiiiiiiiii")
+      
   }
 
   return (
@@ -217,12 +216,12 @@ const MasterPage = () => {
                   className="form-control-file"
                   onChange={handleFileChange}
                   accept="image/*"
-                />
+                />{console.log("file", formData.logoFile)}
               </div>
             </div>
             <div className="col-12 text-center my-3 d-flex justify-content-center gap-4">
-              <Button type="btn-primary" onSubmit={handleSubmit} buttonName="Save" />
-              <Button type="btn-danger" buttonName="Reset" />
+              <Button type="btn-primary" buttonName="Save" onClick={handleSubmit} ariaLabel="Save the form" htmlType="button" />
+              <Button type="btn-danger" buttonName="Reset"  ariaLabel="Reset the form" htmlType="button" />
             </div>
           </div>
         </form>

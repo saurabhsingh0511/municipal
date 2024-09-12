@@ -1,5 +1,5 @@
 const initialState = {
-    isClosed: false,
+    isClosed: true,
 }
 
 const myReducers =(state = initialState, action)=>{

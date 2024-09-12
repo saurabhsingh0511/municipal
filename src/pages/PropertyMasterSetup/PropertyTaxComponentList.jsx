@@ -1,16 +1,29 @@
 import React from "react";
-// import "./MunicipalDetailsList.css";
 import { Link } from "react-router-dom";
-import Button from "../../../components/button/Button";
+import Button from "../../components/button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import HomeSection from "../../components/homesection";
 
-const RoadTypeName = () => {
+const PropertyTaxComponentList = () => {
+  const dispatch = useDispatch();
+  const isClosed = useSelector((state) => state.myReducer.isClosed);
+
+  const toggleSidebar = () => {
+    dispatch({
+      type: "TOGGLESIDEBAR",
+      payload: !isClosed // toggle the current state
+  });
+  };
   return (
-    <div className="container-fluid">
+    <>
+    <HomeSection toggleSidebar={toggleSidebar} 
+    html={
+      <div className="container-fluid">
       <div className="text-start mb-2">
-          <Link to="">
+          <Link to="/create-property-tax-component">
             <Button
               type="btn-success"
-              buttonName="Add New Road Type"
+              buttonName="Add New Property Tax Component"
               bootIcon={<i class="bi bi-plus-lg"></i>}
             />
           </Link>
@@ -20,7 +33,7 @@ const RoadTypeName = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Municipal Type ID or Road Type ID"
+            placeholder="Search by Component ID"
           />
           <button className="btn btn-success" type="button">
             <i className="bi bi-search"></i>
@@ -31,14 +44,20 @@ const RoadTypeName = () => {
           <table className="table table-striped master_table">
             <thead>
               <tr>
-                <th scope="col">Road Type Name</th>
+                <th scope="col">Component Name</th>
+                <th scope="col">Rate Value</th>
+                <th scope="col">Financial Year</th>
+                <th scope="col">Effective Date</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Principal Main Road or Category I</td>
+                <td>General Tax</td>
+                <td>30</td>
+                <td>2023-2024</td>
+                <td>2024-09-10</td>
                 <td>
                   <Button type="btn-info" buttonName="Update" />
                 </td>
@@ -47,7 +66,10 @@ const RoadTypeName = () => {
                 </td>
               </tr>
               <tr>
-                <td>Main Road or Category II</td>
+                <td>Road Tax</td>
+                <td>3</td>
+                <td>2023-2024</td>
+                <td>2023-04-01</td>
                 <td>
                   <Button type="btn-info" buttonName="Update" />
                 </td>
@@ -55,21 +77,16 @@ const RoadTypeName = () => {
                   <Button type="btn-danger" buttonName="Delete" />
                 </td>
               </tr>
-              <tr>
-                <td>Other Road or Category III</td>
-                <td>
-                  <Button type="btn-info" buttonName="Update" />
-                </td>
-                <td>
-                  <Button type="btn-danger" buttonName="Delete" />
-                </td>
-              </tr>
+              
             </tbody>
           </table>
         </div>
       </div>
     </div>
+    }
+    />
+    </>
   );
 };
 
-export default RoadTypeName;
+export default PropertyTaxComponentList;
