@@ -1,10 +1,11 @@
 import React from "react";
+// import "./MasterPage.css";
 import { Link } from "react-router-dom";
 import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../components/homesection";
 
-const CreatePropertyTaxCess = () => {
+const PropertyTaxComponent = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
 
@@ -15,15 +16,16 @@ const CreatePropertyTaxCess = () => {
   });
   };
   return (
-   <>
-   <HomeSection toggleSidebar={toggleSidebar}
-   html={
-    <div className="container-fluid form_container">
+    <>
+    <HomeSection toggleSidebar={toggleSidebar} 
+    html={
+      <div className="container-fluid form_container">
+      <h1 className="heading_h1">Create Property Tax Component</h1>
       <div className="text-start mb-2">
-        <Link to="/property-tax-cess-rate-list">
+        <Link to="/property-tax-component-list">
           <Button
             type="btn-success"
-            buttonName="Back to Property Details List"
+            buttonName="Back to Property Tax Component List"
             bootIcon={<i class="bi bi-list"></i>}
           />
         </Link>
@@ -33,59 +35,47 @@ const CreatePropertyTaxCess = () => {
           <div className="row">
             <div className="col-md-6 ">
               <div className="form-group">
-                <label htmlFor="municipalCode">Area Range Value:</label>
+                <label htmlFor="municipalCode">Component Name ID:</label>
                 <select className="form-control">
-                    <option value="">Select Area Range Value</option>
-                    <option value="road-tax">ALV Value Between 1 to 150</option>
-                    <option value="road-tax">ALV Value Between 151 to 300</option>
-                    <option value="road-tax">ALV Value Between 301 to 3000</option>
+                    <option value="">Select Component Name</option>
+                    <option value="road-tax">Raod Tax</option>
+                    <option value="general-tax">General Tax</option>
+                    <option value="fire-fighter-tax">Fire Figher Tax</option>
                 </select>
               </div>
             </div>
             <div className="col-md-6 ">
               <div className="form-group">
-                <label htmlFor="municipalCode">Property Type:</label>
-                <select className="form-control">
-                    <option value="">Select Property Type</option>
-                    <option value="road-tax">Super Structure</option>
-                    <option value="road-tax">Independent Value</option>
-                </select>
-              </div>
-            </div>
-            <div className="col-md-6 ">
-              <div className="form-group">
-                <label htmlFor="municipalCode">Tax Component:</label>
-                <select className="form-control">
-                    <option value="">Select Tax Component</option>
-                    <option value="road-tax">General Tax</option>
-                    <option value="road-tax">Road Tax</option>
-                </select>
-              </div>
-            </div>
-            <div className="col-md-6 ">
-              <div className="form-group">
-                <label htmlFor="calculationValue">Rate Value:</label>
+                <label htmlFor="ratevalue">Rate Value:</label>
                 <input
-                  type="Number"
+                  type="text"
+                  id="ratevalue"
+                  name="ratevalue"
+                  className="form-control"
+                  required
+                />
+              </div>
+            </div>
+            <div className="col-md-6 ">
+              <div className="form-group">
+                <label htmlFor="calculationValue">Calculation Value:</label>
+                <input
+                  type="text"
                   id="calculationValue"
                   name="calculationValue"
                   className="form-control"
-                  placeholder="Rate Value"
                   required
                 />
               </div>
             </div>
             <div className="col-md-6 ">
               <div className="form-group">
-                <label htmlFor="effectiveDate">Calculation in Percentage:</label>
-                <input
-                  type="text"
-                  id="effectiveDate"
-                  name="effectiveDate"
-                  className="form-control"
-                  placeholder="Calculation in Percentage"
-                  required
-                />
+                <label htmlFor="state">Financial Year:</label>
+                <select id="" className="form-control">
+                    <option value="">Select By Year</option>
+                    <option value="23-24">Year 2023-2024</option>
+                    <option value="24-25">Year 2024-2025</option>
+                </select>
               </div>
             </div>
             <div className="col-md-6 ">
@@ -98,16 +88,6 @@ const CreatePropertyTaxCess = () => {
                   className="form-control"
                   required
                 />
-              </div>
-            </div>
-            <div className="col-md-6 ">
-              <div className="form-group">
-                <label htmlFor="municipalCode">Financial Year:</label>
-                <select className="form-control">
-                    <option value="">Select Financial Year</option>
-                    <option value="23-24">2023-2024</option>
-                    <option value="24-25">2024-2025</option>
-                </select>
               </div>
             </div>
             <div className="col-md-6">
@@ -127,6 +107,7 @@ const CreatePropertyTaxCess = () => {
                 </div>
               </div>
             </div>
+
             <div className="col-12 text-center my-3 d-flex justify-content-center gap-4">
               <Button type="btn-primary" buttonName="Save" />
               <Button type="btn-danger" buttonName="Reset" />
@@ -135,10 +116,10 @@ const CreatePropertyTaxCess = () => {
         </form>
       </div>
     </div>
-   }
-    />
-   </>
+    }
+     /> 
+    </>
   );
 };
 
-export default CreatePropertyTaxCess;
+export default PropertyTaxComponent;

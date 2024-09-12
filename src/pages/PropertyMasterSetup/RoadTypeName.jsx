@@ -19,8 +19,9 @@ const RoadTypeName = () => {
     <HomeSection toggleSidebar={toggleSidebar} 
     html={
       <div className="container-fluid">
+      <h1 className="heading_h1">Master Road Type List</h1>
       <div className="text-start mb-2">
-          <Link to="">
+          <Link to="/create-road-type">
             <Button
               type="btn-success"
               buttonName="Add New Road Type"

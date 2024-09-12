@@ -1,10 +1,11 @@
 import React from "react";
+import '../../css/TableForm.css'
 import { Link } from "react-router-dom";
 import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../components/homesection";
 
-const PropertyTaxComponentList = () => {
+const MunicipalDetailsList = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
 
@@ -19,22 +20,23 @@ const PropertyTaxComponentList = () => {
     <HomeSection toggleSidebar={toggleSidebar} 
     html={
       <div className="container-fluid">
-      <h1 className="heading_h1">Property Tax Component List</h1>
+      <h1 className="heading_h1">Municipal Details List</h1>
       <div className="text-start mb-2">
-          <Link to="/create-property-tax-component">
+          <Link to="/master-page">
             <Button
               type="btn-success"
-              buttonName="Add New Property Tax Component"
-              bootIcon={<i class="bi bi-plus-lg"></i>}
+              buttonName="Add New Municipal"
+              bootIcon={<i class="bi bi-list"></i>}
             />
           </Link>
         </div>
       <div className="border_box">
+        {/* Search Bar */}
         <div className="input-group mb-3 search_input">
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Component ID"
+            placeholder="Search by Municipal Name or Commissioner Name"
           />
           <button className="btn btn-success" type="button">
             <i className="bi bi-search"></i>
@@ -45,20 +47,32 @@ const PropertyTaxComponentList = () => {
           <table className="table table-striped master_table">
             <thead>
               <tr>
-                <th scope="col">Component Name</th>
-                <th scope="col">Rate Value</th>
-                <th scope="col">Financial Year</th>
-                <th scope="col">Effective Date</th>
+                <th scope="col">S.No</th>
+                <th scope="col">Municipal Code</th>
+                <th scope="col">Municipal Name</th>
+                <th scope="col">City</th>
+                <th scope="col">State</th>
+                <th scope="col">Commissioner Name</th>
+                <th scope="col">Contact Number</th>
+                <th scope="col">Toll-Free Number</th>
+                <th scope="col">Logo</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>General Tax</td>
-                <td>30</td>
-                <td>2023-2024</td>
-                <td>2024-09-10</td>
+                <td>1</td>
+                <td>MUNI170</td>
+                <td>Delhi Municipal Corporation</td>
+                <td>New Delhi</td>
+                <td>Delhi</td>
+                <td>Savit</td>
+                <td>+919876543212</td>
+                <td>1800123456</td>
+                <td>
+                  <img src="logo.png" alt="logo" width="40" />
+                </td>
                 <td>
                   <Button type="btn-info" buttonName="Update" />
                 </td>
@@ -66,19 +80,6 @@ const PropertyTaxComponentList = () => {
                   <Button type="btn-danger" buttonName="Delete" />
                 </td>
               </tr>
-              <tr>
-                <td>Road Tax</td>
-                <td>3</td>
-                <td>2023-2024</td>
-                <td>2023-04-01</td>
-                <td>
-                  <Button type="btn-info" buttonName="Update" />
-                </td>
-                <td>
-                  <Button type="btn-danger" buttonName="Delete" />
-                </td>
-              </tr>
-              
             </tbody>
           </table>
         </div>
@@ -90,4 +91,4 @@ const PropertyTaxComponentList = () => {
   );
 };
 
-export default PropertyTaxComponentList;
+export default MunicipalDetailsList;

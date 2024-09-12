@@ -11,7 +11,7 @@ const PropertyTaxCessRateList = () => {
   const toggleSidebar = () => {
     dispatch({
       type: "TOGGLESIDEBAR",
-      payload: !isClosed // toggle the current state
+      payload: !isClosed 
   });
   };
   return (
@@ -19,6 +19,7 @@ const PropertyTaxCessRateList = () => {
    <HomeSection toggleSidebar={toggleSidebar}
    html={
     <div className="container-fluid">
+    <h1 className="heading_h1">Master Property Tax Cess Rate List</h1>
       <div className="text-start mb-2">
           <Link to="/create-property-tax-cess-rate">
             <Button
