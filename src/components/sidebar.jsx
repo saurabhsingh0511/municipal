@@ -28,101 +28,101 @@ const Sidebar = ({isClosed}) => {
         {/* Example of active menu */}
         <li className={activeMenu === 1 ? "active" : ""}>
           <div className="iocn-link" onClick={() => handleArrowClick(1)}>
-            <a className='cursor-p'>
+            <Link className='cursor-p'>
               <i className='bx bx-collection'></i>
               <span className="link_name f-size">Municipal Master</span>
-            </a>
+            </Link>
             <i className={`bx bxs-chevron-down arrow ${activeMenu === 1 ? "rotate" : ""}`}></i>
           </div>
           <ul className={`sub-menu ${activeMenu === 1 ? 'showMenu' : 'sub-menu-hide'}`}>
-            <li><a className="link_name">Municipal Master</a></li>
+            <li><Link className="link_name">Municipal Master</Link></li>
             <li><Link to="/municipal-details-list">Municipal Master Form</Link></li>
           </ul>
         </li>
         <li className={activeMenu === 2 ? "active" : ""}>
           <div className="iocn-link" onClick={() => handleArrowClick(2)}>
-            <a className='cursor-p'>
+            <Link className='cursor-p'>
               <i className='bx bx-collection'></i>
               <span className="link_name f-size">Property Master</span>
-            </a>
+            </Link>
             <i className={`bx bxs-chevron-down arrow ${activeMenu === 2 ? "rotate" : ""}`}></i>
           </div>
           <ul className={`sub-menu ${activeMenu === 2 ? 'showMenu' : 'sub-menu-hide'}`}>
-            <li><a className="link_name" href="#">Property Master</a></li>
-            <li><a href="#">Property Tax Rate</a></li>
-            <li><a href="/road-type-name">Road Type Name</a></li>
-            <li><a href="/zone-data">Zone Data</a></li>
-            {/* <li><a href="#">Document Group</a></li> */}
-            <li><a href="/property-tax-component-list">Property Tax Component List</a></li>
-            <li><a href="#">Property Tax Component Name</a></li>
-            <li><a href="/property-tax-cess-rate-list">Property Tax Cess Rate List</a></li>
-            <li><a href="#">Property Area Range</a></li>
-            <li><a href="#">Document Upload</a></li>
-            <li><a href="#">Ward Master</a></li>
-            <li><a href="#">Property Type Master</a></li>
-            <li><a href="#">Property Use Type Master</a></li>
-            <li><a href="#">Property Assessment Type Master</a></li>
-            <li><a href="#">Ownership Type Master</a></li>
+            <li><Link className="link_name" to="#">Property Master</Link></li>
+            <li><Link to="#">Property Tax Rate</Link></li>
+            <li><Link to="/road-type-name">Road Type Name</Link></li>
+            <li><Link to="/zone-data">Zone Data</Link></li>
+            {/* <li><Link to="#">Document Group</Link></li> */}
+            <li><Link to="/property-tax-component-list">Property Tax Component List</Link></li>
+            <li><Link to="#">Property Tax Component Name</Link></li>
+            <li><Link to="/property-tax-cess-rate-list">Property Tax Cess Rate List</Link></li>
+            <li><Link to="#">Property Area Range</Link></li>
+            <li><Link to="#">Document Upload</Link></li>
+            <li><Link to="#">Ward Master</Link></li>
+            <li><Link to="#">Property Type Master</Link></li>
+            <li><Link to="#">Property Use Type Master</Link></li>
+            <li><Link to="#">Property Assessment Type Master</Link></li>
+            <li><Link to="#">Ownership Type Master</Link></li>
           </ul>
         </li>
 
         <li className={activeMenu === 3 ? "active" : ""}>
           <div className="iocn-link" onClick={() => handleArrowClick(3)}>
-            <a className='cursor-p'>
+            <Link className='cursor-p'>
               <i className='bx bx-collection'></i>
               <span className="link_name f-size">Water Users Setup</span>
-            </a>
+            </Link>
             <i className={`bx bxs-chevron-down arrow ${activeMenu === 3 ? "rotate" : ""}`}></i>
           </div>
           <ul className={`sub-menu ${activeMenu === 3 ? 'showMenu' : 'sub-menu-hide'}`}>
-            <li><a className="link_name" href="#">Water Users Setup</a></li>
-            <li><a href="#">Water Property Type Master</a></li>
-            <li><a href="#">Unit Rate Master</a></li>
-            <li><a href="#">Unit Master</a></li>
-            <li><a href="#">Application Category Master</a></li>
-            <li><a href="#">Application Type Master</a></li>
-            <li><a href="#">Document Type Master</a></li>
-            <li><a href="#">Document Group Master</a></li>
-            <li><a href="#">PipeLine Type Master</a></li>
-            <li><a href="#">Calculation Type Master</a></li>
-            <li><a href="#">Connection Type</a></li>
-            <li><a href="#">Consumer Category Master</a></li>
-            <li><a href="#">Buildup Area Master</a></li>
-            <li><a href="#">Fee Master</a></li>
-            <li><a href="#">Additional Fee Master</a></li>
+            <li><Link className="link_name" to="#">Water Users Setup</Link></li>
+            <li><Link to="#">Water Property Type Master</Link></li>
+            <li><Link to="#">Unit Rate Master</Link></li>
+            <li><Link to="#">Unit Master</Link></li>
+            <li><Link to="#">Application Category Master</Link></li>
+            <li><Link to="#">Application Type Master</Link></li>
+            <li><Link to="#">Document Type Master</Link></li>
+            <li><Link to="#">Document Group Master</Link></li>
+            <li><Link to="#">PipeLine Type Master</Link></li>
+            <li><Link to="#">Calculation Type Master</Link></li>
+            <li><Link to="#">Connection Type</Link></li>
+            <li><Link to="#">Consumer Category Master</Link></li>
+            <li><Link to="#">Buildup Area Master</Link></li>
+            <li><Link to="#">Fee Master</Link></li>
+            <li><Link to="#">Additional Fee Master</Link></li>
           </ul>
         </li>
 
         <li className={activeMenu === 4 ? "active" : ""}>
           <div className="iocn-link" onClick={() => handleArrowClick(4)}>
-            <a className='cursor-p'>
+            <Link className='cursor-p'>
               <i className='bx bx-collection'></i>
               <span className="link_name f-size">Municipal License</span>
-            </a>
+            </Link>
             <i className={`bx bxs-chevron-down arrow ${activeMenu === 4 ? "rotate" : ""}`}></i>
           </div>
           <ul className={`sub-menu ${activeMenu === 4 ? 'showMenu' : 'sub-menu-hide'}`}>
-            <li><a className="link_name" href="#">Municipal License</a></li>
-            <li><a href="#">Trade Application Type Master</a></li>
-            <li><a href="#">Trade Type</a></li>
-            <li><a href="#">Firm Type</a></li>
-            <li><a href="#">Business Nature</a></li>
-            <li><a href="#">Business Premises</a></li>
-            <li><a href="#">ML Rate Master</a></li>
-            <li><a href="#">ML Document Master</a></li>
+            <li><Link className="link_name" to="#">Municipal License</Link></li>
+            <li><Link to="#">Trade Application Type Master</Link></li>
+            <li><Link to="#">Trade Type</Link></li>
+            <li><Link to="#">Firm Type</Link></li>
+            <li><Link to="#">Business Nature</Link></li>
+            <li><Link to="#">Business Premises</Link></li>
+            <li><Link to="#">ML Rate Master</Link></li>
+            <li><Link to="#">ML Document Master</Link></li>
           </ul>
         </li>
 
         <li className={activeMenu === 5 ? "active" : ""}>
           <div className="iocn-link" onClick={() => handleArrowClick(5)}>
-            <a className='cursor-p'>
+            <Link className='cursor-p'>
               <i className='bx bx-collection'></i>
               <span className="link_name f-size">Property Master Form</span>
-            </a>
+            </Link>
             <i className={`bx bxs-chevron-down arrow ${activeMenu === 5 ? "rotate" : ""}`}></i>
           </div>
           <ul className={`sub-menu ${activeMenu === 5 ? 'showMenu' : 'sub-menu-hide'}`}>
-            <li><a className="link_name" href="#">Property Master Form</a></li>
+            <li><Link className="link_name" to="#">Property Master Form</Link></li>
             <li><Link to="#">Property Assessment Form</Link></li>
             <li><Link to="#">New Water Connection</Link></li>
           </ul>
