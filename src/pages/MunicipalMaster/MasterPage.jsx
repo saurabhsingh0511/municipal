@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import "./MasterPage.css";
-import Button from "../../../components/button/Button";
+import Button from "../../components/button/Button";
 import { Link } from "react-router-dom";
-import HomeSection from "../../../components/homesection";
+import HomeSection from "../../components/homesection";
 import { useDispatch, useSelector } from "react-redux";
 
 const MasterPage = () => {
@@ -68,6 +67,7 @@ const MasterPage = () => {
     <HomeSection toggleSidebar={toggleSidebar} 
     html={
       <div className="container-fluid form_container">
+      <h1 className="heading_h1">Municipal Master</h1>
       <div className="text-start mb-2">
         <Link to="/municipal-details-list">
           <Button

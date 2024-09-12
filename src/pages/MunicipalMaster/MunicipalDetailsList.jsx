@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import '../../../css/TableForm.css'
+import '../../css/TableForm.css'
 import { Link } from "react-router-dom";
-import Button from "../../../components/button/Button";
+import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import HomeSection from "../../../components/homesection";
-import siteConfig from "../../../siteConfig";
+import HomeSection from "../../components/homesection";
+import siteConfig from "../../siteConfig";
 import axios from "axios";
 
 const MunicipalDetailsList = () => {

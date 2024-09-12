@@ -11,7 +11,7 @@ const ZoneData = () => {
   const toggleSidebar = () => {
     dispatch({
       type: "TOGGLESIDEBAR",
-      payload: !isClosed // toggle the current state
+      payload: !isClosed 
   });
   };
   return (
@@ -19,8 +19,9 @@ const ZoneData = () => {
     <HomeSection toggleSidebar={toggleSidebar} 
     html={
       <div className="container-fluid">
+      <h1 className="heading_h1">Master Zone List</h1>
       <div className="text-start mb-2">
-          <Link to="">
+          <Link to="/create-zone-data">
             <Button
               type="btn-success"
               buttonName="Add New Master Zone"
