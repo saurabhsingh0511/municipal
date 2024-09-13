@@ -3,7 +3,7 @@ const municipalId = 15;
 // src/api/siteConfig.js
 const siteConfig = {
   BASE_URL: "http://192.168.29.245:8085/municipal/api",
-  // API_BASE_URL: "http://192.168.29.245:8085/muncipal",
+  API_BASE_URL: "http://192.168.29.245:8085/municipal",
   // RATE_BASE_URL: "http://192.168.29.113:8080",
 
   // Master Form
@@ -159,14 +159,14 @@ const siteConfig = {
   GET_WATER_PROPERTY_TYPE: "/water/propertyType/all",
   UPDATE_WATER_PROPERTY_TYPE: "/water/propertyType/update?updatedBy=1",
   DELETE_WATER_PROPERTY_TYPE: "/water/propertyType/delete/",
-  WATER_PROPERTY_TYPE_BY_MUNIID: "/water/propertyType/municipal/15",
+  WATER_PROPERTY_TYPE_BY_MUNIID: `water/propertyType/municipal/${municipalId}`,
    
   //Unit Master Water
   CREATE_UNIT_MASTER: "/water/createUnitMaster",
   GET_UNIT_MASTER: "/water/getAllUnitMaster",
   UPDATE_UNIT_MASTER: "/water/unitMaster/update/",
   DELETE_UNIT_MASTER: "/water/unitMaster/suspendedStatus/",
-  UNIT_MASTER_BY_MUNIID: "/water/getUnitMasterByMunicipalId?municipalId=15",
+  UNIT_MASTER_BY_MUNIID: `water/getUnitMasterByMunicipalId?municipalId=${municipalId}`,
   
   //Unit Rate Master
   CREATE_UNIT_RATE_MASTER: "/water/unitRate/create?createdBy=1",
