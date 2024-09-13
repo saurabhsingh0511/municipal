@@ -128,7 +128,7 @@ const siteConfig = {
   UPDATE_OWNERSHIP_TYPE: "/ownership/updated/",
   DELETE_OWNERSHIP_TYPE: "/ownership/delete/",
   GET_OWNERSHIP_TYPE_BY_ID: "/ownership/{id}",
-  GET_OWNERSHIP_TYPE_BY_MUNIID: "/ownership/municipal/15",
+  GET_OWNERSHIP_TYPE_BY_MUNIID: `ownership/municipal/${municipalId}`,
   GET_ACTIVE_OWNERSHIP_TYPE: "/ownership/active?status=0",
 
   //WardMaster
