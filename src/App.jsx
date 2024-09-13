@@ -53,15 +53,18 @@ import FeeMaster from "./pages/WaterUsersSetup/FeeMaster/FeeMaster";
 import CreateFeeDetails from "./pages/WaterUsersSetup/FeeMaster/CreateFeeDetails";
 import AdditionalFee from "./pages/WaterUsersSetup/AdditionalFeeMaster/AdditionalFee";
 import CreateAdditionalFee from "./pages/WaterUsersSetup/AdditionalFeeMaster/CreateAdditionalFee";
+import  Login  from "./pages/Login/Login";
 
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
+  const isLogin = useSelector((state) => state.myReducer.isLogin);
   return (
     <Router>
+     {isLogin ? 
       <div className="App">
         <Sidebar isClosed={isClosed} />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route
             path="/municipal-details-list"
             element={<MunicipalDetailsList />}
@@ -247,11 +250,10 @@ function App() {
             path="/create-additional-fee"
             element={<CreateAdditionalFee />}
           />
-
-
-
         </Routes>
-      </div>
+      </div> :
+      <Login />
+       }
     </Router>
   );
 }
