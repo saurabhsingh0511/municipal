@@ -9,6 +9,9 @@ import siteConfig from "../../siteConfig";
 const ZoneData = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
+  const [zones, setZones] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredData, setFilteredData] = useState(zones);
 
   const toggleSidebar = () => {
     dispatch({
@@ -16,8 +19,6 @@ const ZoneData = () => {
       payload: !isClosed, // toggle the current state
     });
   };
-
-  const [zones, setZones] = useState([]);
 
   const fetchZones = async () => {
     try {
@@ -35,32 +36,47 @@ const ZoneData = () => {
     fetchZones();
   }, []);
 
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    setSearchTerm(searchValue);
+
+    const filtered = zones.filter((data) =>
+      data.zoneName.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilteredData(filtered);
+  };
+
+  const dataToDisplay = searchTerm ? filteredData : zones;
+
   return (
     <>
-    <HomeSection toggleSidebar={toggleSidebar} 
-    html={
-      <div className="container-fluid">
-      <h1 className="heading_h1">Master Zone List</h1>
-      <div className="text-start mb-2">
-          <Link to="/create-zone-data">
-            <Button
-              type="btn-success"
-              buttonName="Add New Master Zone"
-              bootIcon={<i class="bi bi-plus-lg"></i>}
-            />
-          </Link>
-        </div>
-      <div className="border_box">
-        <div className="input-group mb-3 search_input">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search by Master Zone Name"
-          />
-          <button className="btn btn-success" type="button">
-            <i className="bi bi-search"></i>
-          </button>
-        </div>
+      <HomeSection
+        toggleSidebar={toggleSidebar}
+        html={
+          <div className="container-fluid">
+            <h1 className="heading_h1">Master Zone List</h1>
+            <div className="text-start mb-2">
+              <Link to="/create-zone-data">
+                <Button
+                  type="btn-success"
+                  buttonName="Add New Master Zone"
+                  bootIcon={<i class="bi bi-plus-lg"></i>}
+                />
+              </Link>
+            </div>
+            <div className="border_box">
+              <div className="input-group mb-3 search_input">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Search by Master Zone Name"
+                  value={searchTerm}
+                  onChange={(e) => handleSearch(e)}
+                />
+                <button className="btn btn-success" type="button">
+                  <i className="bi bi-search"></i>
+                </button>
+              </div>
 
               <div className="table-responsive">
                 <table className="table table-striped master_table">
@@ -72,20 +88,29 @@ const ZoneData = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {Array.isArray(zones) &&
-                      zones.map((zone, index) => {
-                        return (
-                          <tr key={index}>
-                            <td>{zone.zoneName}</td>
-                            <td>
-                              <Button type="btn-info" buttonName="Update" />
-                            </td>
-                            <td>
-                              <Button type="btn-danger" buttonName="Delete" />
-                            </td>
-                          </tr>
-                        );
-                      })}
+                    {dataToDisplay.length > 0 ? (
+                      <>
+                        {Array.isArray(zones) &&
+                          dataToDisplay.map((zone, index) => {
+                            return (
+                              <tr key={index}>
+                                <td>{zone.zoneName}</td>
+                                <td>
+                                  <Button type="btn-info" buttonName="Update" />
+                                </td>
+                                <td>
+                                  <Button
+                                    type="btn-danger"
+                                    buttonName="Delete"
+                                  />
+                                </td>
+                              </tr>
+                            );
+                          })}
+                      </>
+                    ) : (
+                      <p>No results found</p>
+                    )}
                   </tbody>
                 </table>
               </div>
