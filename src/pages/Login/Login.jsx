@@ -9,7 +9,7 @@ const Login = () => {
         <div className="login-container">
           <div className="left-container">
             <div className="left-container__content">
-              <h1>Ahmednagar Municipal Corporation</h1>
+              <h1>Ahmednagar <span className="text-success"> Municipal</span> Corporation</h1>
               <p>Your gateway to municipal services.</p>
             </div>
           </div>
