@@ -26,8 +26,12 @@ const PropertyTaxComponentList = () => {
       const response = await axios.get(
         `${siteConfig.BASE_URL}/${siteConfig.GET_ALL_PROPERTY_TAX_COMPONENT}`
       );
-      setPropertyTaxComponent(response.data);
-      console.log("fffffffff: ", response.data);
+      //filtered with suspended status 0 (active)
+      const filteredData = response.data.filter(
+        (item) => item.suspendedStatus === 0
+      );
+      setPropertyTaxComponent(filteredData);
+      console.log("fffffffff: ", filteredData);
     } catch (error) {
       console.log("Failed to fetch Data", error);
     }
