@@ -26,7 +26,7 @@ const MasterPage = () => {
     state: '',
     addressLine1: '',
     addressLine2: '',
-    commissionerName: '',
+    commisName: '',
     contactNumber: '',
     tollFreeNumber: '',
     logoFile: "",
@@ -85,14 +85,14 @@ const MasterPage = () => {
     dataToSend.append("state", formData.state);
     dataToSend.append("addressLine1", formData.addressLine1);
     dataToSend.append("addressLine2", formData.addressLine2);
-    dataToSend.append("commissionerName", formData.commissionerName);
+    dataToSend.append("commisName", formData.commisName);
     dataToSend.append("contactNumber", formData.contactNumber);
     dataToSend.append("tollFreeNumber", formData.tollFreeNumber);
     dataToSend.append("logoFile", formData.logoFile);
     if(municipalData){
-      updateMasterFormData(formData);
+      updateMasterFormData(dataToSend);
     }else{
-      postMasterFormData(formData);
+      postMasterFormData(dataToSend);
     }
   }
 
@@ -108,7 +108,7 @@ const MasterPage = () => {
         state: municipalData?.state || '',
         addressLine1: municipalData?.addressLine1 || '',
         addressLine2: municipalData?.addressLine2 || '',
-        commissionerName: municipalData?.commisName || '',
+        commisName: municipalData?.commisName || '',
         contactNumber: municipalData?.contactNumber || '',
         tollFreeNumber: municipalData?.tollFreeNumber || '',
         logoFile: municipalData?.logoFile || '', 
@@ -219,12 +219,12 @@ const MasterPage = () => {
                   </div>
                   <div className="col-md-6 ">
                     <div className="form-group text-start">
-                      <label htmlFor="commissionerName">Commissioner Name:</label>
+                      <label htmlFor="commisName">Commissioner Name:</label>
                       <input
                         type="text"
-                        id="commissionerName"
-                        name="commissionerName"
-                        value={formData.commissionerName}
+                        id="commisName"
+                        name="commisName"
+                        value={formData.commisName}
                         className="form-control"
                         onChange={handleInputChange}
                         required
