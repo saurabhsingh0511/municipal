@@ -15,7 +15,7 @@ const Sidebar = ({isClosed}) => {
         <span className="logo_name">CodingLab</span>
       </div>
       <ul className="nav-links">
-        <li>
+        <li className='menuList'>
           <Link to="/">
             <i className='bx bx-grid-alt'></i>
             <span className="link_name">Dashboard</span>
@@ -26,7 +26,7 @@ const Sidebar = ({isClosed}) => {
         </li>
 
         {/* Example of active menu */}
-        <li className={activeMenu === 1 ? "active" : ""}>
+        <li className={activeMenu === 1 ? "active menuList" : "menuList"}>
           <div className="iocn-link" onClick={() => handleArrowClick(1)}>
             <Link className='cursor-p'>
               <i className='bx bx-collection'></i>
@@ -39,7 +39,7 @@ const Sidebar = ({isClosed}) => {
             <li><Link to="/municipal-details-list">Municipal Master Form</Link></li>
           </ul>
         </li>
-        <li className={activeMenu === 2 ? "active" : ""}>
+        <li className={activeMenu === 2 ? "active menuList" : "menuList"}>
           <div className="iocn-link" onClick={() => handleArrowClick(2)}>
             <Link className='cursor-p'>
               <i className='bx bx-collection'></i>
@@ -60,12 +60,12 @@ const Sidebar = ({isClosed}) => {
             <li><Link to="/ward-master">Ward Master</Link></li>
             <li><Link to="/property-type-master">Property Type Master</Link></li>
             <li><Link to="/property-use-type-master">Property Use Type Master</Link></li>
-            <li><Link to="/property-assessment-type-master">Property Assessment Type Master</Link></li>
+            <li><Link to="/property-assessment-type-master">Property Assessment Type</Link></li>
             <li><Link to="/ownership-type-master">Ownership Type Master</Link></li>
           </ul>
         </li>
 
-        <li className={activeMenu === 3 ? "active" : ""}>
+        <li className={activeMenu === 3 ? "active menuList" : "menuList"}>
           <div className="iocn-link" onClick={() => handleArrowClick(3)}>
             <Link className='cursor-p'>
               <i className='bx bx-collection'></i>
@@ -92,7 +92,7 @@ const Sidebar = ({isClosed}) => {
           </ul>
         </li>
 
-        <li className={activeMenu === 4 ? "active" : ""}>
+        <li className={activeMenu === 4 ? "active menuList" : "menuList"}>
           <div className="iocn-link" onClick={() => handleArrowClick(4)}>
             <Link className='cursor-p'>
               <i className='bx bx-collection'></i>
@@ -112,7 +112,7 @@ const Sidebar = ({isClosed}) => {
           </ul>
         </li>
 
-        <li className={activeMenu === 5 ? "active" : ""}>
+        <li className={activeMenu === 5 ? "active menuList" : "menuList"}>
           <div className="iocn-link" onClick={() => handleArrowClick(5)}>
             <Link className='cursor-p'>
               <i className='bx bx-collection'></i>

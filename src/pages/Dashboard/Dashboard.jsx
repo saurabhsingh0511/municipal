@@ -19,7 +19,7 @@ const Dashboard = () => {
         html={
           <div className="dashboard-container">
             <header className="dashboard-header">
-              <h1>Welcome to Dashboard</h1>
+              <h1 className="heading_h1">Welcome to Dashboard</h1>
             </header>
             <div className="">
               <div className="row justify-content-center my-4">
