@@ -1,8 +1,23 @@
 import React from "react";
-import "./Login.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/button/Button";
+import "./Login.css";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const isLogin = useSelector((state) => state.myReducer.isLogin);
+
+ const handleLogin = () =>{
+  localStorage.setItem('userLogin', true);
+  dispatch({
+    type: "ISLOGIN",
+    payload: true, // toggle the current state
+  });
+  navigate("/dashboard");
+ }
   return (
     <>
       <div className="loginPage">
@@ -50,7 +65,7 @@ const Login = () => {
                 />
                 <label htmlFor="checkbox">Remember me</label>
               </div>
-              <Button type="btn-success" buttonName="Login" />
+              <Button type="btn-success" buttonName="Login" onClick={()=> handleLogin()} />
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ const municipalId = 15;
 // src/api/siteConfig.js
 const siteConfig = {
   BASE_URL: "http://192.168.29.245:8085/municipal/api",
-  // API_BASE_URL: "http://192.168.29.245:8085/muncipal",
+  API_BASE_URL: "http://192.168.29.245:8085/municipal",
   // RATE_BASE_URL: "http://192.168.29.113:8080",
 
   // Master Form
@@ -13,7 +13,7 @@ const siteConfig = {
   FETCH_BY_COMMIS_NAME: "getByCommisName", 
   UPDATE_SUSPENDED_STATUS: "municipalMaster/suspendedStatus",
   UPDATE_RECORD: "municipalMaster/update",
-  IMAGE_SRC: "logo",
+  LOGO_SRC: "municipalMasterLogo",
 
   //Property Tax
   GET_ALL_PROPERTY_TAX_COMPONENT: 'getAllPropertyTaxComponent',
@@ -128,7 +128,7 @@ const siteConfig = {
   UPDATE_OWNERSHIP_TYPE: "/ownership/updated/",
   DELETE_OWNERSHIP_TYPE: "/ownership/delete/",
   GET_OWNERSHIP_TYPE_BY_ID: "/ownership/{id}",
-  GET_OWNERSHIP_TYPE_BY_MUNIID: "/ownership/municipal/15",
+  GET_OWNERSHIP_TYPE_BY_MUNIID: `ownership/municipal/${municipalId}`,
   GET_ACTIVE_OWNERSHIP_TYPE: "/ownership/active?status=0",
 
   //WardMaster
@@ -159,14 +159,14 @@ const siteConfig = {
   GET_WATER_PROPERTY_TYPE: "/water/propertyType/all",
   UPDATE_WATER_PROPERTY_TYPE: "/water/propertyType/update?updatedBy=1",
   DELETE_WATER_PROPERTY_TYPE: "/water/propertyType/delete/",
-  WATER_PROPERTY_TYPE_BY_MUNIID: "/water/propertyType/municipal/15",
+  WATER_PROPERTY_TYPE_BY_MUNIID: `water/propertyType/municipal/${municipalId}`,
    
   //Unit Master Water
   CREATE_UNIT_MASTER: "/water/createUnitMaster",
   GET_UNIT_MASTER: "/water/getAllUnitMaster",
   UPDATE_UNIT_MASTER: "/water/unitMaster/update/",
   DELETE_UNIT_MASTER: "/water/unitMaster/suspendedStatus/",
-  UNIT_MASTER_BY_MUNIID: "/water/getUnitMasterByMunicipalId?municipalId=15",
+  UNIT_MASTER_BY_MUNIID: `water/getUnitMasterByMunicipalId?municipalId=${municipalId}`,
   
   //Unit Rate Master
   CREATE_UNIT_RATE_MASTER: "/water/unitRate/create?createdBy=1",

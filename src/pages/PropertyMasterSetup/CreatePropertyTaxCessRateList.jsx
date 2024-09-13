@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import HomeSection from "../../components/homesection";
 const CreatePropertyTaxCess = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
+  const [isRateActive, setIsRateActive] = useState(true);
 
   const toggleSidebar = () => {
     dispatch({
@@ -14,6 +15,11 @@ const CreatePropertyTaxCess = () => {
       payload: !isClosed // toggle the current state
   });
   };
+
+  const handleCheckboxChange = () => {
+    setIsRateActive(prevState => !prevState);
+  };
+
   return (
    <>
    <HomeSection toggleSidebar={toggleSidebar}
@@ -119,6 +125,8 @@ const CreatePropertyTaxCess = () => {
                     type="checkbox"
                     id="isRate"
                     name="isRate"
+                    checked={isRateActive}
+                    onChange={handleCheckboxChange}
                     className="form-check-input mt-2"
                     required
                   />

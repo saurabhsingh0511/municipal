@@ -1,70 +1,71 @@
+import { useSelector } from "react-redux";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import Sidebar from "./components/sidebar";
-import { useSelector } from "react-redux";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import MunicipalDetailsList from "./pages/MunicipalMaster/MunicipalDetailsList";
+import Login from "./pages/Login/Login";
 import MasterPage from "./pages/MunicipalMaster/MasterPage";
-import RoadTypeName from "./pages/PropertyMasterSetup/RoadTypeName";
-import PropertyTaxComponentList from "./pages/PropertyMasterSetup/PropertyTaxComponentList";
-import PropertyTaxComponent from "./pages/PropertyMasterSetup/CreatePropertyTaxComponent";
-import ZoneData from "./pages/PropertyMasterSetup/ZoneData";
-import PropertyTaxCessRateList from "./pages/PropertyMasterSetup/MasterPropertyTaxCessRateList";
-import CreatePropertyTaxCess from "./pages/PropertyMasterSetup/CreatePropertyTaxCessRateList";
-import MasterPropertyTaxComponentName from "./pages/PropertyMasterSetup/MasterPropertyTaxComponentName";
-import FormPropertyTaxComponentName from "./pages/PropertyMasterSetup/FormPropertyTaxComponentName";
-import PropertyAreaRangeMasterList from "./pages/PropertyMasterSetup/PropertyAreaRangeMasterList";
-import CreatePropertyAreaRangeMaster from "./pages/PropertyMasterSetup/CreatePropertyAreaRangeMaster";
-import WardMaster from "./pages/PropertyMasterSetup/WardMaster";
-import CreateWardDetails from "./pages/PropertyMasterSetup/CreateWardDetails";
-import PropertyTypeMaster from "./pages/PropertyMasterSetup/PropertyTypeMaster";
-import CreatePropertyTypeMasterForm from "./pages/PropertyMasterSetup/CreatePropertyTypeMasterForm";
-import PropertyUseTypeMaster from "./pages/PropertyMasterSetup/PropertyUseTypeMaster";
-import CreatePropertyUseTypeMater from "./pages/PropertyMasterSetup/CreatePropertyUseTypeMater";
-import PropertyAssessmentTypeMaster from "./pages/PropertyMasterSetup/PropertyAssessmentTypeMaster";
-import CreatePropertyAssessmentType from "./pages/PropertyMasterSetup/CreatePropertyAssessmentType";
-import OwnershipTypeMaster from "./pages/PropertyMasterSetup/OwnershipTypeMaster";
+import MunicipalDetailsList from "./pages/MunicipalMaster/MunicipalDetailsList";
 import CreateOwnershipTypeMaster from "./pages/PropertyMasterSetup/CreateOwnershipTypeMaster";
+import CreatePropertyAreaRangeMaster from "./pages/PropertyMasterSetup/CreatePropertyAreaRangeMaster";
+import CreatePropertyAssessmentType from "./pages/PropertyMasterSetup/CreatePropertyAssessmentType";
+import CreatePropertyTaxCess from "./pages/PropertyMasterSetup/CreatePropertyTaxCessRateList";
+import PropertyTaxComponent from "./pages/PropertyMasterSetup/CreatePropertyTaxComponent";
+import CreatePropertyTypeMasterForm from "./pages/PropertyMasterSetup/CreatePropertyTypeMasterForm";
+import CreatePropertyUseTypeMater from "./pages/PropertyMasterSetup/CreatePropertyUseTypeMater";
 import CreateRoadType from "./pages/PropertyMasterSetup/CreateRoadType";
+import CreateWardDetails from "./pages/PropertyMasterSetup/CreateWardDetails";
 import CreateZoneData from "./pages/PropertyMasterSetup/CreateZoneData";
-import WaterPropertyTypeMaster from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/WaterPropertyTypeMaster";
-import CreateWaterPropertyType from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/CreateWaterPropertyType";
-import CreateNewUnitMaster from "./pages/WaterUsersSetup/UnitMaster/CreateNewUnitMaster";
-import UnitMaster from "./pages/WaterUsersSetup/UnitMaster/UnitMaster";
+import FormPropertyTaxComponentName from "./pages/PropertyMasterSetup/FormPropertyTaxComponentName";
+import PropertyTaxCessRateList from "./pages/PropertyMasterSetup/MasterPropertyTaxCessRateList";
+import MasterPropertyTaxComponentName from "./pages/PropertyMasterSetup/MasterPropertyTaxComponentName";
+import OwnershipTypeMaster from "./pages/PropertyMasterSetup/OwnershipTypeMaster";
+import PropertyAreaRangeMasterList from "./pages/PropertyMasterSetup/PropertyAreaRangeMasterList";
+import PropertyAssessmentTypeMaster from "./pages/PropertyMasterSetup/PropertyAssessmentTypeMaster";
+import PropertyTaxComponentList from "./pages/PropertyMasterSetup/PropertyTaxComponentList";
+import PropertyTypeMaster from "./pages/PropertyMasterSetup/PropertyTypeMaster";
+import PropertyUseTypeMaster from "./pages/PropertyMasterSetup/PropertyUseTypeMaster";
+import RoadTypeName from "./pages/PropertyMasterSetup/RoadTypeName";
+import WardMaster from "./pages/PropertyMasterSetup/WardMaster";
+import ZoneData from "./pages/PropertyMasterSetup/ZoneData";
+import AdditionalFee from "./pages/WaterUsersSetup/AdditionalFeeMaster/AdditionalFee";
+import CreateAdditionalFee from "./pages/WaterUsersSetup/AdditionalFeeMaster/CreateAdditionalFee";
 import ApplicationCategoryMaster from "./pages/WaterUsersSetup/ApplicationCategoryMaster/ApplicationCategoryMaster";
 import CreateApplication from "./pages/WaterUsersSetup/ApplicationCategoryMaster/CreateApplication";
 import ApplicationTypeMaster from "./pages/WaterUsersSetup/ApplicationTypeMaster/ApplicationTypeMaster";
 import CreateApplicationType from "./pages/WaterUsersSetup/ApplicationTypeMaster/CreateApplicationType";
-import DocumentTypeMaster from "./pages/WaterUsersSetup/DocumentTypeMaster/DocumentTypeMaster";
-import CreateDocumentType from "./pages/WaterUsersSetup/DocumentTypeMaster/CreateDocumentType";
-import DocumentGroupMaster from "./pages/WaterUsersSetup/DocumentGroupMaster/DocumentGroupMaster";
-import CreateNewDocumentGroup from "./pages/WaterUsersSetup/DocumentGroupMaster/CreateNewDocumentGroup";
-import PipelineType from "./pages/WaterUsersSetup/PipelineType/PipelineType";
-import CreatePipelineType from "./pages/WaterUsersSetup/PipelineType/CreatePipelineType";
+import BuildUpArea from "./pages/WaterUsersSetup/BuildUpAreaMaster/BuildUpArea";
+import CreateBuildUpArea from "./pages/WaterUsersSetup/BuildUpAreaMaster/CreateBuildUpArea";
 import CalculationTypeList from "./pages/WaterUsersSetup/CalculationTypeMaster/CalculationTypeList";
 import CreateCalculationType from "./pages/WaterUsersSetup/CalculationTypeMaster/CreateCalculationType";
 import ConnectionType from "./pages/WaterUsersSetup/ConnectionType/ConnectionType";
 import CreateConnection from "./pages/WaterUsersSetup/ConnectionType/CreateConnection";
 import ConsumerCategory from "./pages/WaterUsersSetup/ConsumerCategoryMaster/ConsumerCategory";
 import CreateConsumerCategory from "./pages/WaterUsersSetup/ConsumerCategoryMaster/CreateConsumerCategory";
-import BuildUpArea from "./pages/WaterUsersSetup/BuildUpAreaMaster/BuildUpArea";
-import CreateBuildUpArea from "./pages/WaterUsersSetup/BuildUpAreaMaster/CreateBuildUpArea";
-import FeeMaster from "./pages/WaterUsersSetup/FeeMaster/FeeMaster";
+import CreateNewDocumentGroup from "./pages/WaterUsersSetup/DocumentGroupMaster/CreateNewDocumentGroup";
+import DocumentGroupMaster from "./pages/WaterUsersSetup/DocumentGroupMaster/DocumentGroupMaster";
+import CreateDocumentType from "./pages/WaterUsersSetup/DocumentTypeMaster/CreateDocumentType";
+import DocumentTypeMaster from "./pages/WaterUsersSetup/DocumentTypeMaster/DocumentTypeMaster";
 import CreateFeeDetails from "./pages/WaterUsersSetup/FeeMaster/CreateFeeDetails";
-import AdditionalFee from "./pages/WaterUsersSetup/AdditionalFeeMaster/AdditionalFee";
-import CreateAdditionalFee from "./pages/WaterUsersSetup/AdditionalFeeMaster/CreateAdditionalFee";
-import  Login  from "./pages/Login/Login";
+import FeeMaster from "./pages/WaterUsersSetup/FeeMaster/FeeMaster";
+import CreatePipelineType from "./pages/WaterUsersSetup/PipelineType/CreatePipelineType";
+import PipelineType from "./pages/WaterUsersSetup/PipelineType/PipelineType";
+import CreateNewUnitMaster from "./pages/WaterUsersSetup/UnitMaster/CreateNewUnitMaster";
+import UnitMaster from "./pages/WaterUsersSetup/UnitMaster/UnitMaster";
+import CreateWaterPropertyType from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/CreateWaterPropertyType";
+import WaterPropertyTypeMaster from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/WaterPropertyTypeMaster";
 
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
   const isLogin = useSelector((state) => state.myReducer.isLogin);
+  const userLogin = localStorage.getItem('userLogin');
   return (
     <Router>
-     {isLogin ? 
+     {userLogin ? 
       <div className="App">
         <Sidebar isClosed={isClosed} />
         <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
           <Route
             path="/municipal-details-list"
             element={<MunicipalDetailsList />}
