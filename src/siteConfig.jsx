@@ -1,7 +1,9 @@
+const municipalId = 15;
+
 // src/api/siteConfig.js
 const siteConfig = {
   BASE_URL: "http://192.168.29.245:8085/municipal/api",
-  API_BASE_URL: "http://192.168.29.245:8085/muncipal",
+  // API_BASE_URL: "http://192.168.29.245:8085/muncipal",
   // RATE_BASE_URL: "http://192.168.29.113:8080",
 
   // Master Form
@@ -71,7 +73,7 @@ const siteConfig = {
   POST_CREATE_PROPERTY_TAX_COMPONENT_NAME_MASTER: 'createPropertyTaxComponentNameMaster',
   SEARCH_PROPERTY_TAX_COMPONENT_NAME_MASTER_BY_COMPONENT_NAME: 'getPropertyTaxComponentNameMasterByComponentName',
   GET_SEARCH_PROPERTY_COMPONENT_NAME_MASTER_ID: 'getPropertyTaxComponentNameMaster',
-  GET_ALL_PROPERTY_TAX_COMPONENT_NAME_MASTER: 'getAllPropertyTaxComponentNameMaster',
+  GET_ALL_PROPERTY_TAX_COMPONENT_NAME_MASTER: `getAllPropertyTaxComponentNameMaster/${municipalId}`,
   
   //PropertyType
   GET_ALL_PROPERTY_TYPE: "/propertytype/alls",

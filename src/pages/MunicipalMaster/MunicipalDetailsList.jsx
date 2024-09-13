@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import '../../css/TableForm.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../components/homesection";
@@ -9,6 +9,7 @@ import axios from "axios";
 
 const MunicipalDetailsList = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
   const [municipalData, setMunicipalData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -42,6 +43,13 @@ const MunicipalDetailsList = () => {
     setFilteredData(filtered);
   };
   const dataToDisplay = searchTerm ? filteredData : municipalData;
+
+  const handleEdit = (data) =>{
+    console.log("edit button clicked",data)
+    navigate("/master-page", { 
+      state:{ municipalData : data },
+    });
+  }
   return (
     <>
       <HomeSection toggleSidebar={toggleSidebar}
@@ -106,7 +114,7 @@ const MunicipalDetailsList = () => {
                                 <img src={data?.logoFile} alt="logo" width="40" />
                               </td>
                               <td>
-                                <Button type="btn-info" buttonName="Update" />
+                                <Button type="btn-info" buttonName="Update" onClick={()=> handleEdit(data)} />
                               </td>
                               <td>
                                 <Button type="btn-danger" buttonName="Delete" />
