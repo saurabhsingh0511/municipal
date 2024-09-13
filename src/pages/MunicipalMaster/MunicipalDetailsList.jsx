@@ -123,7 +123,7 @@ const MunicipalDetailsList = () => {
                               <td>{data?.contactNumber}</td>
                               <td>{data?.tollFreeNumber}</td>
                               <td>
-                                <img src={data?.logoFile} alt="logo" width="40" />
+                                <img src={`${siteConfig.BASE_URL}/${siteConfig.LOGO_SRC}/${data?.id}`} alt="logo" width="40" />
                               </td>
                               <td>
                                 <Button type="btn-info" buttonName="Update" onClick={()=> handleEdit(data)} />

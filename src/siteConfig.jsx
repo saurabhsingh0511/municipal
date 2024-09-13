@@ -13,7 +13,7 @@ const siteConfig = {
   FETCH_BY_COMMIS_NAME: "getByCommisName", 
   UPDATE_SUSPENDED_STATUS: "municipalMaster/suspendedStatus",
   UPDATE_RECORD: "municipalMaster/update",
-  IMAGE_SRC: "logo",
+  LOGO_SRC: "municipalMasterLogo",
 
   //Property Tax
   GET_ALL_PROPERTY_TAX_COMPONENT: 'getAllPropertyTaxComponent',
