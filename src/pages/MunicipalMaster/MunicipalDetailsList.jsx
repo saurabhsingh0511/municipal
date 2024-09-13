@@ -23,9 +23,13 @@ const MunicipalDetailsList = () => {
   };
 
   const fetchMasterFormData = async () => {
-    const response = await axios.get(`${siteConfig.BASE_URL}/${siteConfig.FETCH_MASTER_FORM}`)
+    const response = await axios.get(`${siteConfig.BASE_URL}/${siteConfig.FETCH_MASTER_FORM}`);
+     //filtered with suspended status 0 (active)
+     const filteredMunicipal = response.data.filter(
+      (item) => item.suspendedStatus === 0
+    );
     console.log("iiiiiiiiiiiiiiiiii,", response.data)
-    setMunicipalData(response.data);
+    setMunicipalData(filteredMunicipal);
   }
 
   useEffect(() => {
@@ -123,7 +127,7 @@ const MunicipalDetailsList = () => {
                               <td>{data?.contactNumber}</td>
                               <td>{data?.tollFreeNumber}</td>
                               <td>
-                                <img src={data?.logoFile} alt="logo" width="40" />
+                                <img src={`${siteConfig.BASE_URL}/${siteConfig.LOGO_SRC}/${data?.id}`} alt="logo" width="40" />
                               </td>
                               <td>
                                 <Button type="btn-info" buttonName="Update" onClick={()=> handleEdit(data)} />
