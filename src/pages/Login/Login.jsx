@@ -1,0 +1,62 @@
+import React from "react";
+import "./Login.css";
+import Button from "../../components/button/Button";
+
+const Login = () => {
+  return (
+    <>
+      <div className="loginPage">
+        <div className="login-container">
+          <div className="left-container">
+            <div className="left-container__content">
+              <h1>Ahmednagar Municipal Corporation</h1>
+              <p>Your gateway to municipal services.</p>
+            </div>
+          </div>
+          <div className="right-container">
+            <div className="right-container__box">
+              <h2 className="right-container__h2">Welcome!</h2>
+              <p className="right-container__p">
+              Ahmednagar Municipal Log in.
+              </p>
+              <div className="input-container">
+                <label htmlFor="email" className="right-container__label">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="right-container__input"
+                  name="email"
+                  placeholder="Your email address"
+                />
+                <label htmlFor="password" className="right-container__label">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  className="right-container__input"
+                  name="password"
+                  placeholder="Your password"
+                />
+              </div>
+              <div className="toggle-container">
+                <input
+                  type="checkbox"
+                  id="checkbox"
+                  className="toggle-box"
+                  name="checkbox"
+                />
+                <label htmlFor="checkbox">Remember me</label>
+              </div>
+              <Button type="btn-success" buttonName="Login" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Login;
