@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import Button from "../../components/button/Button";
-import { Link, useLocation } from "react-router-dom";
-import HomeSection from "../../components/homesection";
-import { useDispatch, useSelector } from "react-redux";
-import siteConfig from "../../siteConfig";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import Button from "../../components/button/Button";
+import HomeSection from "../../components/homesection";
+import siteConfig from "../../siteConfig";
 
 const MasterPage = () => {
 
@@ -95,6 +95,23 @@ const MasterPage = () => {
       postMasterFormData(dataToSend);
     }
   }
+
+  const handleReset  = () => {  
+    setFormData({
+      ...formData,
+      municipalCode:'',
+      municipalName:'',
+      city:'',
+      state:'',
+      addressLine1:'',
+      addressLine2:'',
+      commisName:'',
+      contactNumber:'',
+      tollFreeNumber: '',
+      logoFile:'', 
+    });
+  }
+
 
   const { municipalData } = location?.state || {};
 
@@ -274,8 +291,8 @@ const MasterPage = () => {
                     </div>
                   </div>
                   <div className="col-12 text-center my-3 d-flex justify-content-center gap-4">
-                    <Button type="btn-primary" buttonName="Save" onClick={handleSubmit} ariaLabel="Save the form" htmlType="button" />
-                    <Button type="btn-danger" buttonName="Reset" ariaLabel="Reset the form" htmlType="button" />
+                    <Button type="btn-primary" buttonName="Save" onClick={()=> handleSubmit()} ariaLabel="Save the form" htmlType="button" />
+                    <Button type="btn-danger" buttonName="Reset" onClick={()=> handleReset()} ariaLabel="Reset the form" htmlType="button" />
                   </div>
                 </div>
               </form>
