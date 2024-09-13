@@ -43,6 +43,16 @@ import PipelineType from "./pages/WaterUsersSetup/PipelineType/PipelineType";
 import CreatePipelineType from "./pages/WaterUsersSetup/PipelineType/CreatePipelineType";
 import CalculationTypeList from "./pages/WaterUsersSetup/CalculationTypeMaster/CalculationTypeList";
 import CreateCalculationType from "./pages/WaterUsersSetup/CalculationTypeMaster/CreateCalculationType";
+import ConnectionType from "./pages/WaterUsersSetup/ConnectionType/ConnectionType";
+import CreateConnection from "./pages/WaterUsersSetup/ConnectionType/CreateConnection";
+import ConsumerCategory from "./pages/WaterUsersSetup/ConsumerCategoryMaster/ConsumerCategory";
+import CreateConsumerCategory from "./pages/WaterUsersSetup/ConsumerCategoryMaster/CreateConsumerCategory";
+import BuildUpArea from "./pages/WaterUsersSetup/BuildUpAreaMaster/BuildUpArea";
+import CreateBuildUpArea from "./pages/WaterUsersSetup/BuildUpAreaMaster/CreateBuildUpArea";
+import FeeMaster from "./pages/WaterUsersSetup/FeeMaster/FeeMaster";
+import CreateFeeDetails from "./pages/WaterUsersSetup/FeeMaster/CreateFeeDetails";
+import AdditionalFee from "./pages/WaterUsersSetup/AdditionalFeeMaster/AdditionalFee";
+import CreateAdditionalFee from "./pages/WaterUsersSetup/AdditionalFeeMaster/CreateAdditionalFee";
 
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
@@ -196,6 +206,46 @@ function App() {
           <Route
             path="/create-calculation-type"
             element={<CreateCalculationType />}
+          />
+          <Route
+            path="/connection-type"
+            element={<ConnectionType />}
+          />
+          <Route
+            path="/create-connection"
+            element={<CreateConnection />}
+          />
+          <Route
+            path="/consumer-category-master"
+            element={<ConsumerCategory />}
+          />
+          <Route
+            path="/create-consumer-category"
+            element={<CreateConsumerCategory />}
+          />
+          <Route
+            path="/buildup-area"
+            element={<BuildUpArea />}
+          />
+          <Route
+            path="/create-buildup-area"
+            element={<CreateBuildUpArea />}
+          />
+          <Route
+            path="/fee-master"
+            element={<FeeMaster />}
+          />
+          <Route
+            path="/create-fee-details"
+            element={<CreateFeeDetails />}
+          />
+          <Route
+            path="/additional-fee"
+            element={<AdditionalFee />}
+          />
+          <Route
+            path="/create-additional-fee"
+            element={<CreateAdditionalFee />}
           />
 
 

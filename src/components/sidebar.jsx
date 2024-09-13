@@ -84,11 +84,11 @@ const Sidebar = ({isClosed}) => {
             <li><Link to="/document-group-master">Document Group Master</Link></li>
             <li><Link to="/pipeline-type">PipeLine Type Master</Link></li>
             <li><Link to="/calculation-type">Calculation Type Master</Link></li>
-            <li><Link to="#">Connection Type</Link></li>
-            <li><Link to="#">Consumer Category Master</Link></li>
-            <li><Link to="#">Buildup Area Master</Link></li>
-            <li><Link to="#">Fee Master</Link></li>
-            <li><Link to="#">Additional Fee Master</Link></li>
+            <li><Link to="/connection-type">Connection Type</Link></li>
+            <li><Link to="/consumer-category-master">Consumer Category Master</Link></li>
+            <li><Link to="/buildup-area">Buildup Area Master</Link></li>
+            <li><Link to="/fee-master">Fee Master</Link></li>
+            <li><Link to="/additional-fee">Additional Fee Master</Link></li>
           </ul>
         </li>
 
