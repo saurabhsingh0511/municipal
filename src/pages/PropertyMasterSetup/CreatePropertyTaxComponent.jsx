@@ -22,7 +22,7 @@ const PropertyTaxComponent = () => {
       <div className="container-fluid form_container">
       <h1 className="heading_h1">Create Property Tax Component</h1>
       <div className="text-start mb-2">
-        <Link to="/property-tax-component-list">
+        <Link to="/property-tax">
           <Button
             type="btn-success"
             buttonName="Back to Property Tax Component List"
@@ -58,7 +58,7 @@ const PropertyTaxComponent = () => {
             </div>
             <div className="col-md-6 ">
               <div className="form-group">
-                <label htmlFor="calculationValue">Calculation Value:</label>
+                <label htmlFor="calculationValue">Calculation Type:</label>
                 <input
                   type="text"
                   id="calculationValue"

@@ -32,12 +32,12 @@ const CreateApplication = () => {
             </div>
             <div className="border_box">
               <form>
-                <div className="row justify-content-center">
+                <div className="row justify-content-center_">
                   <div className="col-md-6 ">
                     <div className="form-group">
                       <label htmlFor="applicationCategory">Application Category Name:</label>
                       <input
-                        type="number"
+                        type="text"
                         id="applicationCategory"
                         name="applicationCategory"
                         className="form-control"
@@ -45,7 +45,7 @@ const CreateApplication = () => {
                       />
                     </div>
                   </div>
-                  <div className="col-12 text-center my-3 d-flex justify-content-center gap-4">
+                  <div className="col-12 text-center my-3 d-flex justify-content-center_ gap-4">
                     <Button type="btn-success" buttonName="Submit" />
                     <Button type="btn-warning" buttonName="Reset" />
                   </div>
