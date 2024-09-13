@@ -21,7 +21,7 @@ const CreatePropertyTaxCess = () => {
     <div className="container-fluid form_container">
     <h1 className="heading_h1">Create Property Tax Cess Rate</h1>
       <div className="text-start mb-2">
-        <Link to="/property-tax-cess-rate-list">
+        <Link to="/state-cess-rate-calculation">
           <Button
             type="btn-success"
             buttonName="Back to Property Details List"

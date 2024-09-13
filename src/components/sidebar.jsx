@@ -53,9 +53,9 @@ const Sidebar = ({isClosed}) => {
             <li><Link to="/road-type-name">Road Type Name</Link></li>
             <li><Link to="/zone-data">Zone Data</Link></li>
             {/* <li><Link to="#">Document Group</Link></li> */}
-            <li><Link to="/property-tax-component-list">Property Tax Component List</Link></li>
+            <li><Link to="/property-tax">Property Tax Component List</Link></li>
             <li><Link to="/master-property-tax-component-name">Property Tax Component Name</Link></li>
-            <li><Link to="/property-tax-cess-rate-list">Property Tax Cess Rate List</Link></li>
+            <li><Link to="/state-cess-rate-calculation">Property Tax Cess Rate List</Link></li>
             <li><Link to="/property-area-range-master-list">Property Area Range</Link></li>
             <li><Link to="/ward-master">Ward Master</Link></li>
             <li><Link to="/property-type-master">Property Type Master</Link></li>
@@ -80,10 +80,10 @@ const Sidebar = ({isClosed}) => {
             <li><Link to="/unit-master">Unit Master</Link></li>
             <li><Link to="/application-category-master">Application Category Master</Link></li>
             <li><Link to="/application-type-master">Application Type Master</Link></li>
-            <li><Link to="#">Document Type Master</Link></li>
-            <li><Link to="#">Document Group Master</Link></li>
-            <li><Link to="#">PipeLine Type Master</Link></li>
-            <li><Link to="#">Calculation Type Master</Link></li>
+            <li><Link to="/document-type">Document Type Master</Link></li>
+            <li><Link to="/document-group-master">Document Group Master</Link></li>
+            <li><Link to="/pipeline-type">PipeLine Type Master</Link></li>
+            <li><Link to="/calculation-type">Calculation Type Master</Link></li>
             <li><Link to="#">Connection Type</Link></li>
             <li><Link to="#">Consumer Category Master</Link></li>
             <li><Link to="#">Buildup Area Master</Link></li>

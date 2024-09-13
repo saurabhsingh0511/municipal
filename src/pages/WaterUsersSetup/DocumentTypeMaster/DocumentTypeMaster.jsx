@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import HomeSection from "../../components/homesection";
+import HomeSection from "../../../components/homesection";
+import Button from "../../../components/button/Button";
 
-const PropertyTaxComponentList = () => {
+const DocumentTypeMaster = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
 
@@ -19,12 +19,12 @@ const PropertyTaxComponentList = () => {
     <HomeSection toggleSidebar={toggleSidebar} 
     html={
       <div className="container-fluid">
-      <h1 className="heading_h1">Property Tax Component List</h1>
+      <h1 className="heading_h1">Master Document Type List</h1>
       <div className="text-start mb-2">
-          <Link to="/property-tax-calculation">
+          <Link to="/create-document-type">
             <Button
               type="btn-success"
-              buttonName="Add New Property Tax Component"
+              buttonName="Add New Document Type"
               bootIcon={<i class="bi bi-plus-lg"></i>}
             />
           </Link>
@@ -34,31 +34,29 @@ const PropertyTaxComponentList = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Component ID"
+            placeholder="Search By Document Type Name"
           />
           <button className="btn btn-success" type="button">
             <i className="bi bi-search"></i>
           </button>
-        </div>
+        </div>      
 
         <div className="table-responsive">
           <table className="table table-striped master_table">
             <thead>
               <tr>
-                <th scope="col">Component Name</th>
-                <th scope="col">Rate Value</th>
-                <th scope="col">Financial Year</th>
-                <th scope="col">Effective Date</th>
+                <th scope="col">Document Type Name</th>
+                <th scope="col">Application Type Name</th>
+                <th scope="col">Document Group Name</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>General Tax</td>
-                <td>30</td>
-                <td>2023-2024</td>
-                <td>2024-09-10</td>
+                <td>Water Connection Form</td>
+                <td>New Application</td>
+                <td>Identity Proof</td>
                 <td>
                   <Button type="btn-info" buttonName="Update" />
                 </td>
@@ -67,10 +65,9 @@ const PropertyTaxComponentList = () => {
                 </td>
               </tr>
               <tr>
-                <td>Road Tax</td>
-                <td>3</td>
-                <td>2023-2024</td>
-                <td>2023-04-01</td>
+                <td>Pan Card</td>
+                <td>New Application</td>
+                <td>Identity Proof</td>
                 <td>
                   <Button type="btn-info" buttonName="Update" />
                 </td>
@@ -78,7 +75,17 @@ const PropertyTaxComponentList = () => {
                   <Button type="btn-danger" buttonName="Delete" />
                 </td>
               </tr>
-              
+              <tr>
+                <td>Aadhaar Card</td>
+                <td>New Application</td>
+                <td>Identity Proof</td>
+                <td>
+                  <Button type="btn-info" buttonName="Update" />
+                </td>
+                <td>
+                  <Button type="btn-danger" buttonName="Delete" />
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -90,4 +97,4 @@ const PropertyTaxComponentList = () => {
   );
 };
 
-export default PropertyTaxComponentList;
+export default DocumentTypeMaster; 
