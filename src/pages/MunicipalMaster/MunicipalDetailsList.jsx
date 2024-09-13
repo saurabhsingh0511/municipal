@@ -50,6 +50,18 @@ const MunicipalDetailsList = () => {
       state:{ municipalData : data },
     });
   }
+
+  const updateSuspendedStatus = async (id, newStatus) => {
+    try {
+      const response = await axios.patch(
+        `${siteConfig.BASE_URL}/${siteConfig.UPDATE_SUSPENDED_STATUS}/${id}?suspendedStatus=${newStatus}`
+      );
+      console.log("Response data:", response.data);
+    } catch (error) {
+      console.error("Error while updating suspended status:", error);
+    }
+  };
+
   return (
     <>
       <HomeSection toggleSidebar={toggleSidebar}
@@ -117,7 +129,7 @@ const MunicipalDetailsList = () => {
                                 <Button type="btn-info" buttonName="Update" onClick={()=> handleEdit(data)} />
                               </td>
                               <td>
-                                <Button type="btn-danger" buttonName="Delete" />
+                                <Button type="btn-danger" buttonName="Delete" onClick={()=> updateSuspendedStatus(data?.id,1)} />
                               </td>
                             </tr>
                           </tbody>
