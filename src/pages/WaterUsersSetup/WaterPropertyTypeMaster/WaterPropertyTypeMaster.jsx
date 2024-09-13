@@ -19,12 +19,12 @@ const WaterPropertyTypeMaster = () => {
     <HomeSection toggleSidebar={toggleSidebar} 
     html={
       <div className="container-fluid">
-      <h1 className="heading_h1">Heading_Here</h1>
+      <h1 className="heading_h1">Property Type List</h1>
       <div className="text-start mb-2">
-          <Link to="Link_Here">
+          <Link to="/create-water-property-type">
             <Button
               type="btn-success"
-              buttonName="Add New Button_Name"
+              buttonName="Add New Water Property Type"
               bootIcon={<i class="bi bi-plus-lg"></i>}
             />
           </Link>

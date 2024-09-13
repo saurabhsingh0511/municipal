@@ -94,7 +94,7 @@ const siteConfig = {
   DELETE_PROPERTY_USE_TYPE: "/propertycategoryusestype/delete/",
   GET_PROPERTY_USE_TYPE_BY_ID: "/propertycategoryusestype/1",
   GET_ACTIVE_PROPERTY_USE_TYPE: "/propertycategoryusestype/active",
-  PROPERTY_USE_TYPE_BY_MUNIID: "/propertycategoryusestype/municipal/15",
+  PROPERTY_USE_TYPE_BY_MUNIID: `propertycategoryusestype/municipal/${municipalId}`,
 
   //PropertyAssessmentType
   FETCH_PROPERTY_ASSESSMENT_TYPE: "/propertyassismenttype/allusers",
@@ -103,7 +103,7 @@ const siteConfig = {
   DELETE_PROPERTY_ASSESSMENT_TYPE: "/propertyassismenttype/delete/",
   GET_PROPERTY_ASSESSMENT_TYPE_BY_ID: "/propertyassismenttype/{id}",
   GET_PROPERTY_ASSESSMENT_TYPE_BY_MUNIID: "/propertyassismenttype/municipal/{municipalId}",
-  GET_ACTIVE_PROPERTY_ASSESSMENT_TYPE: "/propertyassismenttype/active",
+  GET_ACTIVE_PROPERTY_ASSESSMENT_TYPE: "propertyassismenttype/active",
 
   //ConstructionType
   CREATE_CONSTRUCTION_TYPE: "/createPropertyConstructionType",

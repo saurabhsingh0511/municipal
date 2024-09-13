@@ -60,7 +60,7 @@ const PropertyTaxComponentList = () => {
       <div className="container-fluid">
       <h1 className="heading_h1">Property Tax Component List</h1>
       <div className="text-start mb-2">
-          <Link to="/create-property-tax-component">
+          <Link to="/property-tax-calculation">
             <Button
               type="btn-success"
               buttonName="Add New Property Tax Component"

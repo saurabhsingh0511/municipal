@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../../components/homesection";
 import Button from "../../../components/button/Button";
 
-const WaterPropertyTypeMaster = () => {
+const CalculationTypeList = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
 
@@ -19,12 +19,12 @@ const WaterPropertyTypeMaster = () => {
     <HomeSection toggleSidebar={toggleSidebar} 
     html={
       <div className="container-fluid">
-      <h1 className="heading_h1">Heading_Here</h1>
+      <h1 className="heading_h1">Master Calculation Type List</h1>
       <div className="text-start mb-2">
-          <Link to="Link_Here">
+          <Link to="/create-calculation-type">
             <Button
               type="btn-success"
-              buttonName="Add New Button_Name"
+              buttonName="Add New Calculation Type"
               bootIcon={<i class="bi bi-plus-lg"></i>}
             />
           </Link>
@@ -34,7 +34,7 @@ const WaterPropertyTypeMaster = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Search By Name"
+            placeholder="Search By Calculation Type Name or Municipale ID"
           />
           <button className="btn btn-success" type="button">
             <i className="bi bi-search"></i>
@@ -45,20 +45,23 @@ const WaterPropertyTypeMaster = () => {
           <table className="table table-striped master_table">
             <thead>
               <tr>
-                <th scope="col">S. No.</th>
-                <th scope="col">Property Type Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Municipal Id</th>
+                <th scope="col">Calculation Type Name</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
-                <td>home</td>
-                <td>78</td>
-                <td>15</td>
+                <td>fixed</td>
+                <td>
+                  <Button type="btn-info" buttonName="Update" />
+                </td>
+                <td>
+                  <Button type="btn-danger" buttonName="Delete" />
+                </td>
+              </tr>
+              <tr>
+                <td>String</td>
                 <td>
                   <Button type="btn-info" buttonName="Update" />
                 </td>
@@ -77,4 +80,4 @@ const WaterPropertyTypeMaster = () => {
   );
 };
 
-export default WaterPropertyTypeMaster; 
+export default CalculationTypeList; 

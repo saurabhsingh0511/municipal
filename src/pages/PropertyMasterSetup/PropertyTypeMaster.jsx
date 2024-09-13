@@ -26,11 +26,11 @@ const PropertyTypeMaster = () => {
         `${siteConfig.BASE_URL}/${siteConfig.GET_PROPERTY_TYPE_BY_MUNIID}`
       );
       //filtered with suspended status 0 (active)
-      const filteredData = response.data.filter(
+      const filteredProperty = response.data.filter(
         (item) => item.suspendedStatus === 0
       );
-      setPropertyType(filteredData);
-      console.log("Property Type: ", filteredData);
+      setPropertyType(filteredProperty);
+      console.log("Property Type: ", filteredProperty);
     } catch (error) {
       console.log("Failed to fetch data", error);
     }
