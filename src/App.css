@@ -40,6 +40,9 @@
   border: 1px solid #d2d2d2 !important;
   padding: 2em;
   border-radius: 5px;
+  /* new line added  */
+  overflow-y: scroll;
+  height: 74.4vh;
 }
 .border_box label {
   display: flex;
