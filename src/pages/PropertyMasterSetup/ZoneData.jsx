@@ -25,8 +25,12 @@ const ZoneData = () => {
       const response = await axios.get(
         `${siteConfig.BASE_URL}/${siteConfig.GET_ALL_ZONE_DATA}`
       );
-      setZones(response.data);
-      console.log("Zones: ", response.data);
+      //filtered with suspended status 0 (active)
+      const filteredData = response.data.filter(
+        (item) => item.suspendedStatus === 0
+      );
+      setZones(filteredData);
+      console.log("Zones: ", filteredData);
     } catch (error) {
       console.log("Failed to fetch data: ", error);
     }

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import Button from "../../components/button/Button";
-import { Link, useLocation } from "react-router-dom";
-import HomeSection from "../../components/homesection";
-import { useDispatch, useSelector } from "react-redux";
-import siteConfig from "../../siteConfig";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import Button from "../../components/button/Button";
+import HomeSection from "../../components/homesection";
+import siteConfig from "../../siteConfig";
 
 const MasterPage = () => {
 
@@ -26,7 +26,7 @@ const MasterPage = () => {
     state: '',
     addressLine1: '',
     addressLine2: '',
-    commissionerName: '',
+    commisName: '',
     contactNumber: '',
     tollFreeNumber: '',
     logoFile: "",
@@ -85,16 +85,33 @@ const MasterPage = () => {
     dataToSend.append("state", formData.state);
     dataToSend.append("addressLine1", formData.addressLine1);
     dataToSend.append("addressLine2", formData.addressLine2);
-    dataToSend.append("commissionerName", formData.commissionerName);
+    dataToSend.append("commisName", formData.commisName);
     dataToSend.append("contactNumber", formData.contactNumber);
     dataToSend.append("tollFreeNumber", formData.tollFreeNumber);
     dataToSend.append("logoFile", formData.logoFile);
     if(municipalData){
-      updateMasterFormData(formData);
+      updateMasterFormData(dataToSend);
     }else{
-      postMasterFormData(formData);
+      postMasterFormData(dataToSend);
     }
   }
+
+  const handleReset  = () => {  
+    setFormData({
+      ...formData,
+      municipalCode:'',
+      municipalName:'',
+      city:'',
+      state:'',
+      addressLine1:'',
+      addressLine2:'',
+      commisName:'',
+      contactNumber:'',
+      tollFreeNumber: '',
+      logoFile:'', 
+    });
+  }
+
 
   const { municipalData } = location?.state || {};
 
@@ -108,7 +125,7 @@ const MasterPage = () => {
         state: municipalData?.state || '',
         addressLine1: municipalData?.addressLine1 || '',
         addressLine2: municipalData?.addressLine2 || '',
-        commissionerName: municipalData?.commisName || '',
+        commisName: municipalData?.commisName || '',
         contactNumber: municipalData?.contactNumber || '',
         tollFreeNumber: municipalData?.tollFreeNumber || '',
         logoFile: municipalData?.logoFile || '', 
@@ -219,12 +236,12 @@ const MasterPage = () => {
                   </div>
                   <div className="col-md-6 ">
                     <div className="form-group text-start">
-                      <label htmlFor="commissionerName">Commissioner Name:</label>
+                      <label htmlFor="commisName">Commissioner Name:</label>
                       <input
                         type="text"
-                        id="commissionerName"
-                        name="commissionerName"
-                        value={formData.commissionerName}
+                        id="commisName"
+                        name="commisName"
+                        value={formData.commisName}
                         className="form-control"
                         onChange={handleInputChange}
                         required
@@ -274,8 +291,8 @@ const MasterPage = () => {
                     </div>
                   </div>
                   <div className="col-12 text-center my-3 d-flex justify-content-center gap-4">
-                    <Button type="btn-primary" buttonName="Save" onClick={handleSubmit} ariaLabel="Save the form" htmlType="button" />
-                    <Button type="btn-danger" buttonName="Reset" ariaLabel="Reset the form" htmlType="button" />
+                    <Button type="btn-primary" buttonName="Save" onClick={()=> handleSubmit()} ariaLabel="Save the form" htmlType="button" />
+                    <Button type="btn-danger" buttonName="Reset" onClick={()=> handleReset()} ariaLabel="Reset the form" htmlType="button" />
                   </div>
                 </div>
               </form>

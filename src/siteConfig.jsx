@@ -74,6 +74,9 @@ const siteConfig = {
   SEARCH_PROPERTY_TAX_COMPONENT_NAME_MASTER_BY_COMPONENT_NAME: 'getPropertyTaxComponentNameMasterByComponentName',
   GET_SEARCH_PROPERTY_COMPONENT_NAME_MASTER_ID: 'getPropertyTaxComponentNameMaster',
   GET_ALL_PROPERTY_TAX_COMPONENT_NAME_MASTER: `getAllPropertyTaxComponentNameMaster/${municipalId}`,
+
+  //Property cess rate
+  GET_PROPERTY_TAX_CESS_RATE_BY_MUNICIPAL_ID: `getPropertyTaxCessRateMasterByMunicipalId/${municipalId}`,
   
   //PropertyType
   GET_ALL_PROPERTY_TYPE: "/propertytype/alls",
@@ -81,7 +84,7 @@ const siteConfig = {
   UPDATE_PROPERTY_TYPE: "/propertytype/updated/",
   DELETE_PROPERTY_TYPE: "/propertytype/delete/",
   GET_PROPERTY_TYPE_BY_ID: "/propertytype/{id}",
-  GET_PROPERTY_TYPE_BY_MUNIID: "/propertytype/municipal/15",
+  GET_PROPERTY_TYPE_BY_MUNIID: `propertytype/municipal/${municipalId}`,
   GET_ACTIVE_PROPERTY_TYPE: "/propertytype/active",
 
   //PropertyUseType
@@ -91,7 +94,7 @@ const siteConfig = {
   DELETE_PROPERTY_USE_TYPE: "/propertycategoryusestype/delete/",
   GET_PROPERTY_USE_TYPE_BY_ID: "/propertycategoryusestype/1",
   GET_ACTIVE_PROPERTY_USE_TYPE: "/propertycategoryusestype/active",
-  PROPERTY_USE_TYPE_BY_MUNIID: "/propertycategoryusestype/municipal/15",
+  PROPERTY_USE_TYPE_BY_MUNIID: `propertycategoryusestype/municipal/${municipalId}`,
 
   //PropertyAssessmentType
   FETCH_PROPERTY_ASSESSMENT_TYPE: "/propertyassismenttype/allusers",
@@ -100,7 +103,7 @@ const siteConfig = {
   DELETE_PROPERTY_ASSESSMENT_TYPE: "/propertyassismenttype/delete/",
   GET_PROPERTY_ASSESSMENT_TYPE_BY_ID: "/propertyassismenttype/{id}",
   GET_PROPERTY_ASSESSMENT_TYPE_BY_MUNIID: "/propertyassismenttype/municipal/{municipalId}",
-  GET_ACTIVE_PROPERTY_ASSESSMENT_TYPE: "/propertyassismenttype/active",
+  GET_ACTIVE_PROPERTY_ASSESSMENT_TYPE: "propertyassismenttype/active",
 
   //ConstructionType
   CREATE_CONSTRUCTION_TYPE: "/createPropertyConstructionType",
@@ -134,7 +137,7 @@ const siteConfig = {
   UPDATE_WARD: "/update/",
   DELETE_WARD: "/ward/suspendedStatus/",
   GET_ACTIVE_WARD: "",
-  GET_WARD_BY_MUNICIPALID: "/geZoneWardByMunicipalId",
+  GET_WARD_BY_MUNICIPALID: `geZoneWardByMunicipalId?municipalId=${municipalId}`,
 
   //Water Setups
   CREATE_APPLICATION: "water/createWaterApplication",

@@ -25,8 +25,12 @@ const RoadTypeName = () => {
       const response = await axios.get(
         `${siteConfig.BASE_URL}/${siteConfig.GET_ALL_ROAD_TYPE}`
       );
-      setRoadTypes(response.data);
-      console.log("Road Data: ", response.data);
+      //filtered with suspended status 0 (active)
+      const filteredData = response.data.filter(
+        (item) => item.suspendedStatus === 0
+      );
+      setRoadTypes(filteredData);
+      console.log("Road Data: ", filteredData);
     } catch (error) {
       console.log("Faitched data failed: ", error);
     }
