@@ -13,7 +13,8 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 260px;
+  /* width: 260px; */
+  width: 275px;
   z-index: 100;
   transition: all 0.5s ease;
 }
@@ -107,15 +108,19 @@
   min-width: 78px;
   text-align: center;
   line-height: 50px;
-  color: #11101d;
+  color: #93181a;
   font-size: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.sidebar .nav-links li.active i,
+/* .sidebar .nav-links li.active i,
 .sidebar .nav-links li:hover i {
   color: #93181a;
+} */
+
+.sidebar .nav-links li.active i, .sidebar .nav-links li:hover i{
+  color: #fff;
 }
 
 .sidebar .nav-links li.showMenu i.arrow {
@@ -139,14 +144,15 @@
 
 .sidebar .nav-links li a .link_name {
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
   color: #11101d;
   transition: all 0.4s ease;
 }
 
 .sidebar .nav-links li.active a .link_name,
 .sidebar .nav-links li:hover a .link_name {
-  color: #93181a;
+  /* color: #93181a; */
+  color: #fff;
 }
 
 .sidebar.close .nav-links li a .link_name {
@@ -183,8 +189,12 @@
   white-space: nowrap;
   opacity: 0.6;
   transition: all 0.3s ease;
+  padding: 10px 5px;
 }
-
+ .sub-menu li:hover a {
+  background: #93181a;
+  color: white !important;
+}
 .sidebar .nav-links li .sub-menu a:hover {
   opacity: 1;
 }
@@ -301,8 +311,10 @@
   position: relative;
   background: #E4E9F7;
   height: 100%;
-  left: 260px;
-  width: calc(100% - 260px);
+  /* left: 260px;
+  width: calc(100% - 260px); */
+  left: 275px;
+  width: calc(100% - 275px);
   transition: all 0.5s ease;
   /* new line added  */
   overflow-y: hidden;
@@ -322,10 +334,12 @@
 
 .home-section .home-content .bx-menu,
 .home-section .home-content .text {
-  color: #11101d;
+  color: black;
   font-size: 35px;
 }
-
+span.text strong {
+  color: #198754;
+}
 .home-section .home-content .bx-menu {
   margin: 0 15px;
   cursor: pointer;
@@ -339,6 +353,25 @@
   font-size: 26px;
   font-weight: 600;
 }
+
+
+
+
+
+
+
+
+.menuList:hover {
+  background: #198754;
+}
+.active.menuList {
+  background: #93181a;
+}
+
+
+
+
+
 
 @media (max-width: 625px) {
   .home-content .text {
