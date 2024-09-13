@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import '../../css/TableForm.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../components/homesection";
@@ -9,6 +9,7 @@ import axios from "axios";
 
 const MunicipalDetailsList = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
   const [municipalData, setMunicipalData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -42,6 +43,25 @@ const MunicipalDetailsList = () => {
     setFilteredData(filtered);
   };
   const dataToDisplay = searchTerm ? filteredData : municipalData;
+
+  const handleEdit = (data) =>{
+    console.log("edit button clicked",data)
+    navigate("/master-page", { 
+      state:{ municipalData : data },
+    });
+  }
+
+  const updateSuspendedStatus = async (id, newStatus) => {
+    try {
+      const response = await axios.patch(
+        `${siteConfig.BASE_URL}/${siteConfig.UPDATE_SUSPENDED_STATUS}/${id}?suspendedStatus=${newStatus}`
+      );
+      console.log("Response data:", response.data);
+    } catch (error) {
+      console.error("Error while updating suspended status:", error);
+    }
+  };
+
   return (
     <>
       <HomeSection toggleSidebar={toggleSidebar}
@@ -66,9 +86,9 @@ const MunicipalDetailsList = () => {
                   value={searchTerm}
                   onChange={(e) => handleSearch(e)}
                 />
-                <button className="btn btn-success" type="button">
+                {/* <button className="btn btn-success" type="button">
                   <i className="bi bi-search"></i>
-                </button>
+                </button> */}
               </div>
 
               <div className="table-responsive">
@@ -106,10 +126,10 @@ const MunicipalDetailsList = () => {
                                 <img src={data?.logoFile} alt="logo" width="40" />
                               </td>
                               <td>
-                                <Button type="btn-info" buttonName="Update" />
+                                <Button type="btn-info" buttonName="Update" onClick={()=> handleEdit(data)} />
                               </td>
                               <td>
-                                <Button type="btn-danger" buttonName="Delete" />
+                                <Button type="btn-danger" buttonName="Delete" onClick={()=> updateSuspendedStatus(data?.id,1)} />
                               </td>
                             </tr>
                           </tbody>

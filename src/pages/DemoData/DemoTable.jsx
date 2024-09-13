@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import HomeSection from "../../components/homesection";
+import HomeSection from "../../../components/homesection";
+import Button from "../../../components/button/Button";
 
-const WardMaster = () => {
+const WaterPropertyTypeMaster = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
 
@@ -34,7 +34,7 @@ const WardMaster = () => {
           <input
             type="text"
             className="form-control"
-            placeholder=""
+            placeholder="Search By Name"
           />
           <button className="btn btn-success" type="button">
             <i className="bi bi-search"></i>
@@ -46,8 +46,9 @@ const WardMaster = () => {
             <thead>
               <tr>
                 <th scope="col">S. No.</th>
-                <th scope="col">Ward Number</th>
-                <th scope="col">Zone</th>
+                <th scope="col">Property Type Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Municipal Id</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
               </tr>
@@ -55,30 +56,9 @@ const WardMaster = () => {
             <tbody>
               <tr>
                 <td>1</td>
-                <td>A1</td>
-                <td>Zone A-East</td>
-                <td>
-                  <Button type="btn-info" buttonName="Update" />
-                </td>
-                <td>
-                  <Button type="btn-danger" buttonName="Delete" />
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>A2</td>
-                <td>Zone A-East</td>
-                <td>
-                  <Button type="btn-info" buttonName="Update" />
-                </td>
-                <td>
-                  <Button type="btn-danger" buttonName="Delete" />
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>A3</td>
-                <td>Zone A-East</td>
+                <td>home</td>
+                <td>78</td>
+                <td>15</td>
                 <td>
                   <Button type="btn-info" buttonName="Update" />
                 </td>
@@ -97,4 +77,4 @@ const WardMaster = () => {
   );
 };
 
-export default WardMaster; 
+export default WaterPropertyTypeMaster; 

@@ -9,6 +9,9 @@ import siteConfig from "../../siteConfig";
 const PropertyTaxComponentList = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
+  const [propertyTaxComponent, setPropertyTaxComponent] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredData, setFilteredData] = useState(propertyTaxComponent);
 
   const toggleSidebar = () => {
     dispatch({
@@ -16,16 +19,19 @@ const PropertyTaxComponentList = () => {
       payload: !isClosed, // toggle the current state
     });
   };
-
-  const [propertyTaxComponent, setPropertyTaxComponent] = useState([]);
+ 
 
   const fetchPropertyTaxComponent = async () => {
     try {
       const response = await axios.get(
         `${siteConfig.BASE_URL}/${siteConfig.GET_ALL_PROPERTY_TAX_COMPONENT}`
       );
-      setPropertyTaxComponent(response.data);
-      console.log("fffffffff: ", response.data);
+      //filtered with suspended status 0 (active)
+      const filteredData = response.data.filter(
+        (item) => item.suspendedStatus === 0
+      );
+      setPropertyTaxComponent(filteredData);
+      console.log("fffffffff: ", filteredData);
     } catch (error) {
       console.log("Failed to fetch Data", error);
     }
@@ -35,6 +41,18 @@ const PropertyTaxComponentList = () => {
     fetchPropertyTaxComponent();
   }, []);
 
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    setSearchTerm(searchValue);
+
+    const filtered = propertyTaxComponent.filter((data) =>
+      data.propertyTaxComponent.componentName.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilteredData(filtered);
+  };
+
+  const dataToDisplay = searchTerm ? filteredData : propertyTaxComponent;
+
   return (
     <>
     <HomeSection toggleSidebar={toggleSidebar} 
@@ -42,7 +60,7 @@ const PropertyTaxComponentList = () => {
       <div className="container-fluid">
       <h1 className="heading_h1">Property Tax Component List</h1>
       <div className="text-start mb-2">
-          <Link to="/create-property-tax-component">
+          <Link to="/property-tax-calculation">
             <Button
               type="btn-success"
               buttonName="Add New Property Tax Component"
@@ -56,6 +74,8 @@ const PropertyTaxComponentList = () => {
             type="text"
             className="form-control"
             placeholder="Search by Component ID"
+            value={searchTerm}
+            onChange={(e) => handleSearch(e)}
           />
           <button className="btn btn-success" type="button">
             <i className="bi bi-search"></i>
@@ -75,8 +95,10 @@ const PropertyTaxComponentList = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {Array.isArray(propertyTaxComponent) &&
-                      propertyTaxComponent.map((propertyTax, index) => {
+                    {dataToDisplay.length > 0 ? (
+                       <>
+                          {Array.isArray(propertyTaxComponent) &&
+                      dataToDisplay.map((propertyTax, index) => {
                         return (
                           <tr key={index}>
                             <td>
@@ -94,6 +116,10 @@ const PropertyTaxComponentList = () => {
                           </tr>
                         );
                       })}
+                       </>
+                    ) : (
+                      <p>No results found</p>
+                    )}
                   </tbody>
                 </table>
               </div>

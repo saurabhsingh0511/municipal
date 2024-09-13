@@ -9,6 +9,9 @@ import siteConfig from "../../siteConfig";
 const RoadTypeName = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
+  const [roadTypes, setRoadTypes] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredData, setFilteredData] = useState(roadTypes);
 
   const toggleSidebar = () => {
     dispatch({
@@ -17,15 +20,17 @@ const RoadTypeName = () => {
     });
   };
 
-  const [roadTypes, setRoadTypes] = useState([]);
-
   const fetchRoadType = async () => {
     try {
       const response = await axios.get(
         `${siteConfig.BASE_URL}/${siteConfig.GET_ALL_ROAD_TYPE}`
       );
-      setRoadTypes(response.data);
-      console.log("Road Data: ", response.data);
+      //filtered with suspended status 0 (active)
+      const filteredData = response.data.filter(
+        (item) => item.suspendedStatus === 0
+      );
+      setRoadTypes(filteredData);
+      console.log("Road Data: ", filteredData);
     } catch (error) {
       console.log("Faitched data failed: ", error);
     }
@@ -34,32 +39,51 @@ const RoadTypeName = () => {
   useEffect(() => {
     fetchRoadType();
   }, []);
+
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    setSearchTerm(searchValue);
+
+    const filtered = roadTypes.filter(
+      (data) =>
+        data.roadTypeName.toLowerCase().includes(searchValue.toLowerCase()) ||
+        data.municipalMasterId.toString().includes(searchValue.toLowerCase()) // Convert number to string
+    );
+
+    setFilteredData(filtered);
+  };
+
+  const dataToDisplay = searchTerm ? filteredData : roadTypes;
+
   return (
     <>
-    <HomeSection toggleSidebar={toggleSidebar} 
-    html={
-      <div className="container-fluid">
-      <h1 className="heading_h1">Master Road Type List</h1>
-      <div className="text-start mb-2">
-          <Link to="/create-road-type">
-            <Button
-              type="btn-success"
-              buttonName="Add New Road Type"
-              bootIcon={<i class="bi bi-plus-lg"></i>}
-            />
-          </Link>
-        </div>
-      <div className="border_box">
-        <div className="input-group mb-3 search_input">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search by Municipal Type ID or Road Type ID"
-          />
-          <button className="btn btn-success" type="button">
-            <i className="bi bi-search"></i>
-          </button>
-        </div>
+      <HomeSection
+        toggleSidebar={toggleSidebar}
+        html={
+          <div className="container-fluid">
+            <h1 className="heading_h1">Master Road Type List</h1>
+            <div className="text-start mb-2">
+              <Link to="/create-road-type">
+                <Button
+                  type="btn-success"
+                  buttonName="Add New Road Type"
+                  bootIcon={<i class="bi bi-plus-lg"></i>}
+                />
+              </Link>
+            </div>
+            <div className="border_box">
+              <div className="input-group mb-3 search_input">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Search by Municipal Type ID or Road Type ID"
+                  value={searchTerm}
+                  onChange={(e) => handleSearch(e)}
+                />
+                <button className="btn btn-success" type="button">
+                  <i className="bi bi-search"></i>
+                </button>
+              </div>
 
               <div className="table-responsive">
                 <table className="table table-striped master_table">
@@ -72,8 +96,10 @@ const RoadTypeName = () => {
                   </thead>
 
                   <tbody>
-                    {Array.isArray(roadTypes) &&
-                      roadTypes.map((road, index) => {
+                    {dataToDisplay.length > 0 ? (
+                      <>
+                        {Array.isArray(roadTypes) &&
+                      dataToDisplay.map((road, index) => {
                         return (
                           <tr key={index}>
                             <td>{road.roadTypeName}</td>
@@ -86,6 +112,12 @@ const RoadTypeName = () => {
                           </tr>
                         );
                       })}
+                      </>
+                    ) : (
+                      <p>No results found</p>
+                    )
+                  }
+                    
                   </tbody>
                 </table>
               </div>
