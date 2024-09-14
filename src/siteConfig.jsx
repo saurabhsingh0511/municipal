@@ -1,4 +1,5 @@
 const municipalId = 15;
+const waterMuniId = 1; // will change
 
 // src/api/siteConfig.js
 const siteConfig = {
@@ -282,7 +283,7 @@ const siteConfig = {
     GET_ACTIVE_TRADE_AllMlBUSINESS_NATURE: 'tradeLicence/activeMlBusinessNature',
     
     //consumerCategoryMasterController
-    GET_ALL_CONSUMER_CATEGORY: "/water/getAllWaterApplication",
+    GET_ALL_CONSUMER_CATEGORY: "water/getAllWaterApplication",
     GET_CONSUMER_CATEGORY_BY_MUNIID: "/water/getWaterApplicationNameByMunicipalId",
     GET_BY_CONSUMER_CATEGORY_NAME: "/water/getByApplicationCategoryName",
     GET_CONSUMER_CATEGORY_BY_ID: "/water/waterApplication/",
@@ -291,7 +292,7 @@ const siteConfig = {
     DELETE_CONSUMER_CATEGORY: "/water/waterApplication/suspendedStatus/",
 
     //BuildupAreaMasters
-    GET_BUILDUP_AREA_BY_MUNIID: "/water/buildupArea/municipal/1",
+    GET_BUILDUP_AREA_BY_MUNIID: `water/buildupArea/municipal/${waterMuniId}`, 
     CREATE_BUILDUP_AREA: "/water/buildupArea/create",
     UPDATE_BUILDUP_AREA: "/water/buildupArea/update/",
     DELETE_BUILDUP_AREA: "/water/buildupArea/delete/",

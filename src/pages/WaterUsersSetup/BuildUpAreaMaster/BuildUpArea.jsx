@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../../components/homesection";
 import Button from "../../../components/button/Button";
+import axios from "axios";
+import siteConfig from "../../../siteConfig";
 
 const BuildUpArea = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
+  const [buildupArea, setBuildupArea] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredData, setFilteredData] = useState(buildupArea);
 
   const toggleSidebar = () => {
     dispatch({
@@ -14,6 +19,39 @@ const BuildUpArea = () => {
       payload: !isClosed 
   });
   };
+
+  const fetchBuildupArea = async () => {
+       try {
+        const response = await axios.get(
+          `${siteConfig.API_BASE_URL}/${siteConfig.GET_BUILDUP_AREA_BY_MUNIID}`
+        );
+        const filteredBuildupArea = response.data.filter(
+          (item) => item.suspendedStatus === 0
+        );
+        setBuildupArea(filteredBuildupArea);
+      console.log("Filtered Buildup Area: ", filteredBuildupArea);
+      console.log("Buildup Area: ", response.data);
+       } catch (error) {
+        console.log("Failed to fetch data: ", error);
+       }
+  }
+
+  useEffect(() => {
+    fetchBuildupArea();
+  }, []);
+
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    setSearchTerm(searchValue);
+
+    const filtered = buildupArea.filter((data) =>
+      data.buildupArea.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilteredData(filtered);
+  };
+
+  const dataToDisplay = searchTerm ? filteredData : buildupArea;
+
   return (
     <>
     <HomeSection toggleSidebar={toggleSidebar} 
@@ -35,6 +73,8 @@ const BuildUpArea = () => {
             type="text"
             className="form-control"
             placeholder="Search By Buildup Area"
+            value={searchTerm}
+            onChange={(e) => handleSearch(e)}
           />
           <button className="btn btn-success" type="button">
             <i className="bi bi-search"></i>
@@ -53,39 +93,27 @@ const BuildUpArea = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>1000</td>
-                <td>1</td>
-                <td>
-                  <Button type="btn-info" buttonName="Update" />
-                </td>
-                <td>
-                  <Button type="btn-danger" buttonName="Delete" />
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>2000</td>
-                <td>1</td>
-                <td>
-                  <Button type="btn-info" buttonName="Update" />
-                </td>
-                <td>
-                  <Button type="btn-danger" buttonName="Delete" />
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>1500</td>
-                <td>1</td>
-                <td>
-                  <Button type="btn-info" buttonName="Update" />
-                </td>
-                <td>
-                  <Button type="btn-danger" buttonName="Delete" />
-                </td>
-              </tr>
+              {dataToDisplay.length > 0 ? (
+                  <>
+                    {Array.isArray(buildupArea) && dataToDisplay.map((area, index) => {
+                      return (
+                        <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{area.buildupArea}</td>
+                        <td>{area.municipalId}</td>
+                        <td>
+                          <Button type="btn-info" buttonName="Update" />
+                        </td>
+                        <td>
+                          <Button type="btn-danger" buttonName="Delete" />
+                        </td>
+                      </tr>
+                      )
+                    })}
+                  </>
+              ) : (
+                <p>No results found</p>
+              )}
             </tbody>
           </table>
         </div>
