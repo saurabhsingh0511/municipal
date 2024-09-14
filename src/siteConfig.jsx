@@ -1,7 +1,9 @@
 const municipalId = 15;
+// const waterMuniId = 1; // will change
 
 // src/api/siteConfig.js
 const siteConfig = {
+  userID: 101,
   BASE_URL: "http://192.168.29.245:8085/municipal/api",
   API_BASE_URL: "http://192.168.29.245:8085/municipal",
   // RATE_BASE_URL: "http://192.168.29.113:8080",
@@ -211,7 +213,7 @@ const siteConfig = {
 
     //Document Type Name
     CREATE_DOCUMENT_TYPE: "water/createDocumentTypeMaster",
-    FETCH_ALL_DOCUMENT_TYPE: "water/getDocumentTypeMasterByMunicipalId?municipalId=15",
+    FETCH_ALL_DOCUMENT_TYPE: `water/getDocumentTypeMasterByMunicipalId?municipalId=${municipalId}`,
     SEARCH_BY_ALLDOCUMENT_NAME: "water/getByDocumentTypeName",
     UPDATE_SUSPENDED_DOC_STATUS: "water/documentTypeMaster/suspendedStatus",
     UPDATE_DOCUMENT_TYPE: "water/documentTypeMaster/update",
@@ -225,7 +227,7 @@ const siteConfig = {
     UPDATE_SUSPENDED_PIPE_STATUS: "water/pipelinetype/delete",
     UPDATE_PIPELINE_TYPE: "water/pipelinetype/updated",
 	  ACTIVE_PIPELINE_TYPE: "water/pipelinetype/active",
-    PIPELINE_TYPE_BY_MUNIID: "water/pipelinetype/municipal/15",
+    PIPELINE_TYPE_BY_MUNIID: `water/pipelinetype/municipal/${municipalId}`,
 
     //Calculation Type
     CREATE_CALCULATION_TYPE: "water/calculationtype/create",
@@ -282,7 +284,7 @@ const siteConfig = {
     GET_ACTIVE_TRADE_AllMlBUSINESS_NATURE: 'tradeLicence/activeMlBusinessNature',
     
     //consumerCategoryMasterController
-    GET_ALL_CONSUMER_CATEGORY: "/water/getAllWaterApplication",
+    GET_ALL_CONSUMER_CATEGORY: "water/getAllWaterApplication",
     GET_CONSUMER_CATEGORY_BY_MUNIID: "/water/getWaterApplicationNameByMunicipalId",
     GET_BY_CONSUMER_CATEGORY_NAME: "/water/getByApplicationCategoryName",
     GET_CONSUMER_CATEGORY_BY_ID: "/water/waterApplication/",
@@ -291,19 +293,19 @@ const siteConfig = {
     DELETE_CONSUMER_CATEGORY: "/water/waterApplication/suspendedStatus/",
 
     //BuildupAreaMasters
-    GET_BUILDUP_AREA_BY_MUNIID: "/water/buildupArea/municipal/1",
+    GET_BUILDUP_AREA_BY_MUNIID: `water/buildupArea/municipal/${municipalId}`, 
     CREATE_BUILDUP_AREA: "/water/buildupArea/create",
     UPDATE_BUILDUP_AREA: "/water/buildupArea/update/",
     DELETE_BUILDUP_AREA: "/water/buildupArea/delete/",
 
     //FeeMaster
-    GET_FEE_BY_MUNIID: "/water/fee/municipal/15",
+    GET_FEE_BY_MUNIID: `water/fee/municipal/${municipalId}`,
     CREATE_FEE: "/water/fee/create?createdBy=1",
     UPDATE_FEE: "/water/fee/update/",
     DELETE_FEE: "/water/fee/delete/",
 
     //AdditionalFeeMaster
-    GET_ADDITIONAL_FEE_BY_MUNIID: "/water/additionalfee/municipal/15",
+    GET_ADDITIONAL_FEE_BY_MUNIID: `water/additionalfee/municipal/${municipalId}`,
     CREATE_ADDITIONAL_FEE: "/water/additionalfee/create",
     UPDATE_ADDITIONAL_FEE: "/water/additionalfee/update/",
     DELETE_ADDITIONAL_FEE: "/water/additionalfee/delete/",
@@ -331,7 +333,7 @@ const siteConfig = {
     GET_WATER_FY_YEAR: "/water/financialYear/get",
 
     //DocumentGroupMaster
-    DOCUMENT_GROUP_BY_MUNIID: "/documentGroupMasters/municipal/15",
+    DOCUMENT_GROUP_BY_MUNIID: `documentGroupMasters/municipal/${municipalId}`,
     CREATE_DOCUMENT_GROUP: "/documentGroupMasters/create?createdBy=1",
     UPDATE_DOCUMENT_GROUP: "/documentGroupMasters/update/",
     DELETE_DOCUMENT_GROUP: "/documentGroupMasters/delete/",

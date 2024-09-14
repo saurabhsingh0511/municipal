@@ -118,16 +118,6 @@ const ApplicationCategoryMaster = () => {
                     ) : (
                       <p>No results found</p>
                     )}
-
-                    <tr>
-                      <td>APL</td>
-                      <td>
-                        <Button type="btn-info" buttonName="Update" />
-                      </td>
-                      <td>
-                        <Button type="btn-danger" buttonName="Delete" />
-                      </td>
-                    </tr>
                   </tbody>
                 </table>
               </div>

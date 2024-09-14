@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../../components/homesection";
 import Button from "../../../components/button/Button";
 
-const CreateCalculationType = () => {
+const CreateFirmType = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
 
@@ -14,19 +14,18 @@ const CreateCalculationType = () => {
       payload: !isClosed,
     });
   };
-
   return (
     <>
       <HomeSection
         toggleSidebar={toggleSidebar}
         html={
           <div className="container-fluid form_container">
-            <h1 className="heading_h1">Calculation Type Master</h1>
+            <h1 className="heading_h1">Firm Type Controller</h1>
             <div className="text-start mb-2">
-              <Link to="/calculation-type">
+              <Link to="/firm-type">
                 <Button
                   type="btn-success"
-                  buttonName="Back to Calculation Type List"
+                  buttonName="Back to Firm Type List"
                   bootIcon={<i class="bi bi-list"></i>}
                 />
               </Link>
@@ -36,11 +35,11 @@ const CreateCalculationType = () => {
                 <div className="row">
                   <div className="col-md-6 ">
                     <div className="form-group">
-                      <label htmlFor="calculationTypeName">Calculation Type Name:</label>
+                      <label htmlFor="firmTypeName">Firm Type Name:</label>
                       <input
                         type="text"
-                        id="calculationTypeName"
-                        name="calculationTypeName"
+                        id="firmTypeName"
+                        name="firmTypeName"
                         className="form-control"
                         required
                       />
@@ -60,4 +59,4 @@ const CreateCalculationType = () => {
   );
 };
 
-export default CreateCalculationType;
+export default CreateFirmType;
