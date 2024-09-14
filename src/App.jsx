@@ -316,6 +316,13 @@ function App() {
             path="/create-trade-application"
             element={renderProtectedRoute(<CreateTradeApplication />)}
           />
+          {/* Catch-all route for redirecting to login if no match is found */}
+          <Route
+            path={ROUTES.DEFAULT}
+            element={
+              <Navigate to={userLogin ? ROUTES.DASHBOARD : ROUTES.LOGIN} />
+            }
+          />
         </Routes>
       </div>
     </Router>
