@@ -66,6 +66,8 @@ import TradeType from "./pages/MunicipalLicenseSetup/TradeType/TradeType";
 import CreateTradeType from "./pages/MunicipalLicenseSetup/TradeType/CreateTradeType";
 import FirmType from "./pages/MunicipalLicenseSetup/FirmType/FirmType";
 import CreateFirmType from "./pages/MunicipalLicenseSetup/FirmType/CreateFirmType";
+import BusinessNature from "./pages/MunicipalLicenseSetup/BusinessNature/BusinessNature";
+import CreateBusinessNature from "./pages/MunicipalLicenseSetup/BusinessNature/CreateBusinessNature";
 
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
@@ -335,6 +337,14 @@ function App() {
           <Route
             path="/create-firm-type"
             element={renderProtectedRoute(<CreateFirmType />)}
+          />
+          <Route
+            path="/business-nature"
+            element={renderProtectedRoute(<BusinessNature />)}
+          />
+          <Route
+            path="/create-business-nature"
+            element={renderProtectedRoute(<CreateBusinessNature />)}
           />
 
 

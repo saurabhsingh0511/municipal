@@ -91,6 +91,7 @@
     background-color: #2d3748;
     color: #fff;
     font-size: 1rem;
+    width: 100%;
   }
   
   .right-container__input::placeholder {
@@ -113,7 +114,18 @@
     width: 100%;
     transition: background-color 0.3s;
   }
+  .right-container__input-container {
+    position: relative;
+  }
   
+  .eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #a0aec0;
+  }
   /* Responsive Styles */
   @media (max-width: 768px) {
     .loginPage {
@@ -161,4 +173,39 @@
       opacity: 1;
     }
   }
-  
+  /* Error Message Styling */
+.error-message {
+  display: none;
+  color: #ff4d4d; 
+  background-color: #ffe6e6; 
+  border: 1px solid #ff4d4d;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.2);
+}
+
+.error-message.show {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.error-message i {
+  margin-right: 8px;
+  color: #ff4d4d;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
