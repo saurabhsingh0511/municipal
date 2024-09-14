@@ -211,7 +211,7 @@ const siteConfig = {
 
     //Document Type Name
     CREATE_DOCUMENT_TYPE: "water/createDocumentTypeMaster",
-    FETCH_ALL_DOCUMENT_TYPE: "water/getDocumentTypeMasterByMunicipalId?municipalId=15",
+    FETCH_ALL_DOCUMENT_TYPE: `water/getDocumentTypeMasterByMunicipalId?municipalId=${municipalId}`,
     SEARCH_BY_ALLDOCUMENT_NAME: "water/getByDocumentTypeName",
     UPDATE_SUSPENDED_DOC_STATUS: "water/documentTypeMaster/suspendedStatus",
     UPDATE_DOCUMENT_TYPE: "water/documentTypeMaster/update",
@@ -225,7 +225,7 @@ const siteConfig = {
     UPDATE_SUSPENDED_PIPE_STATUS: "water/pipelinetype/delete",
     UPDATE_PIPELINE_TYPE: "water/pipelinetype/updated",
 	  ACTIVE_PIPELINE_TYPE: "water/pipelinetype/active",
-    PIPELINE_TYPE_BY_MUNIID: "water/pipelinetype/municipal/15",
+    PIPELINE_TYPE_BY_MUNIID: `water/pipelinetype/municipal/${municipalId}`,
 
     //Calculation Type
     CREATE_CALCULATION_TYPE: "water/calculationtype/create",
@@ -331,7 +331,7 @@ const siteConfig = {
     GET_WATER_FY_YEAR: "/water/financialYear/get",
 
     //DocumentGroupMaster
-    DOCUMENT_GROUP_BY_MUNIID: "/documentGroupMasters/municipal/15",
+    DOCUMENT_GROUP_BY_MUNIID: `documentGroupMasters/municipal/${municipalId}`,
     CREATE_DOCUMENT_GROUP: "/documentGroupMasters/create?createdBy=1",
     UPDATE_DOCUMENT_GROUP: "/documentGroupMasters/update/",
     DELETE_DOCUMENT_GROUP: "/documentGroupMasters/delete/",
