@@ -1,5 +1,4 @@
 const municipalId = 15;
-// const waterMuniId = 1; // will change
 
 // src/api/siteConfig.js
 const siteConfig = {
