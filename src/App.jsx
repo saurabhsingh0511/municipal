@@ -70,7 +70,7 @@ import CreateFirmType from "./pages/MunicipalLicenseSetup/FirmType/CreateFirmTyp
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
   const isLogin = useSelector((state) => state.myReducer.isLogin);
-  const [userLogin, setUserLogin] = useState(false);
+  const [userLogin, setUserLogin] = useState(isLogin);
 
   const ROUTES = {
     LOGIN: "/login",
