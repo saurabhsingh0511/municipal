@@ -16,12 +16,12 @@ const Sidebar = ({isClosed}) => {
       </div>
       <ul className="nav-links">
         <li className='menuList'>
-          <Link to="/">
+          <Link to="/dashboard">
             <i className='bx bx-grid-alt'></i>
             <span className="link_name">Dashboard</span>
           </Link>
           <ul className="sub-menu blank">
-            <li><Link className="link_name" to="/">Dashboard</Link></li>
+            <li><Link className="link_name" to="/dashboard">Dashboard</Link></li>
           </ul>
         </li>
 
