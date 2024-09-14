@@ -1,6 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const HomeSection = ({ toggleSidebar, html }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () =>{
+    localStorage.removeItem('userLogin');
+    dispatch({
+      type: "ISLOGIN",
+      payload: false, 
+    });
+    navigate("/login");
+  }
   return (
     <section className="home-section">
       <div
@@ -15,7 +28,7 @@ const HomeSection = ({ toggleSidebar, html }) => {
         </div>
         <div className="logout_btn">
           <img src="/images/avatar.png" alt="User Avatar" />
-          <button className="logout_button">Logout</button>
+          <button className="logout_button" onClick={()=> handleLogout()}>Logout</button>
         </div>
       </div>
       {html}
