@@ -106,7 +106,7 @@ const Sidebar = ({isClosed}) => {
             <li><Link to="/trade-type">Trade Type</Link></li>
             <li><Link to="/firm-type">Firm Type</Link></li>
             <li><Link to="/business-nature">Business Nature</Link></li>
-            <li><Link to="#">Business Premises</Link></li>
+            <li><Link to="/business-premises">Business Premises</Link></li>
             <li><Link to="#">ML Rate Master</Link></li>
             <li><Link to="#">ML Document Master</Link></li>
           </ul>

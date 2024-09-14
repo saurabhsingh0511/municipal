@@ -68,6 +68,8 @@ import FirmType from "./pages/MunicipalLicenseSetup/FirmType/FirmType";
 import CreateFirmType from "./pages/MunicipalLicenseSetup/FirmType/CreateFirmType";
 import BusinessNature from "./pages/MunicipalLicenseSetup/BusinessNature/BusinessNature";
 import CreateBusinessNature from "./pages/MunicipalLicenseSetup/BusinessNature/CreateBusinessNature";
+import BusinessPremises from "./pages/MunicipalLicenseSetup/BusinessPremises/BusinessPremises";
+import CreateBusinessPremises from "./pages/MunicipalLicenseSetup/BusinessPremises/CreateBusinessPremises";
 
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
@@ -345,6 +347,14 @@ function App() {
           <Route
             path="/create-business-nature"
             element={renderProtectedRoute(<CreateBusinessNature />)}
+          />
+          <Route
+            path="/business-premises"
+            element={renderProtectedRoute(<BusinessPremises />)}
+          />
+          <Route
+            path="/create-business-premises"
+            element={renderProtectedRoute(<CreateBusinessPremises />)}
           />
 
 
