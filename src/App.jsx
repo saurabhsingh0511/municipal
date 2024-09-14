@@ -356,14 +356,6 @@ function App() {
             path="/create-business-premises"
             element={renderProtectedRoute(<CreateBusinessPremises />)}
           />
-
-
-
-
-
-
-
-
           {/* Catch-all route for redirecting to login if no match is found */}
           <Route
             path={ROUTES.DEFAULT}
