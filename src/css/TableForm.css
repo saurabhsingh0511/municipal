@@ -17,7 +17,12 @@
 .search_input input::placeholder {
     font-size: 12px !important;
 }
-
+.table-responsive td img {
+    border-radius: 2em;
+    height: auto;
+    width: 40px;
+    overflow: hidden;
+}
 /* Responsive adjustments for mobile devices */
 @media (max-width: 768px) {
     .master_table th, .master_table td {

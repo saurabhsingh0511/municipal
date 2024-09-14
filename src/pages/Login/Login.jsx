@@ -11,9 +11,10 @@ const Login = () => {
   const isLogin = useSelector((state) => state.myReducer.isLogin);
 
  const handleLogin = () =>{
+  localStorage.setItem('userLogin', true);
   dispatch({
     type: "ISLOGIN",
-    payload: true, // toggle the current state
+    payload: true, 
   });
   navigate("/dashboard");
  }

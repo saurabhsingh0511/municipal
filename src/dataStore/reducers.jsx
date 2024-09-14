@@ -1,6 +1,6 @@
 const initialState = {
     isClosed: true,
-    isLogin: false,
+    isLogin: true,
 }
 
 const myReducers =(state = initialState, action)=>{
