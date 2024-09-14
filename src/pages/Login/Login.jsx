@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button/Button";
@@ -7,14 +7,34 @@ import "./Login.css";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const resetError = () =>{
+    setTimeout(()=>{
+    setError("");
+    },3000)
+  }
 
  const handleLogin = () =>{
-  localStorage.setItem('userLogin', true);
-  dispatch({
-    type: "ISLOGIN",
-    payload: true, 
-  });
-  navigate("/dashboard");
+  if (!email || !password) {
+    setError('Email and Password are required.');
+    resetError();
+    return;
+  }
+  if(email === "admin@gmail.com" && password === "123456789"){
+    localStorage.setItem('userLogin', true);
+    dispatch({
+      type: "ISLOGIN",
+      payload: true, 
+    });
+    navigate("/dashboard");
+  }
+  else{
+    setError('Email or Password is incorrect.');
+    resetError();
+  }
  }
   return (
     <>
@@ -42,6 +62,7 @@ const Login = () => {
                   className="right-container__input"
                   name="email"
                   placeholder="Your email address"
+                  onChange={(e)=> setEmail(e.target.value)}
                 />
                 <label htmlFor="password" className="right-container__label">
                   Password
@@ -52,6 +73,7 @@ const Login = () => {
                   className="right-container__input"
                   name="password"
                   placeholder="Your password"
+                  onChange={(e)=> setPassword(e.target.value)}
                 />
               </div>
               <div className="toggle-container">
@@ -64,6 +86,7 @@ const Login = () => {
                 <label htmlFor="checkbox">Remember me</label>
               </div>
               <Button type="btn-success" buttonName="Login" onClick={()=> handleLogin()} />
+              <div className="text-danger">{error}</div>
             </div>
           </div>
         </div>
