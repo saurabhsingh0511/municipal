@@ -54,6 +54,8 @@ import CreateNewUnitMaster from "./pages/WaterUsersSetup/UnitMaster/CreateNewUni
 import UnitMaster from "./pages/WaterUsersSetup/UnitMaster/UnitMaster";
 import CreateWaterPropertyType from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/CreateWaterPropertyType";
 import WaterPropertyTypeMaster from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/WaterPropertyTypeMaster";
+import TradeApplication from "./pages/MunicipalLicenseSetup/TradeApplication/TradeApplication";
+import CreateTradeApplication from "./pages/MunicipalLicenseSetup/TradeApplication/CreateTradeApplication";
 
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
@@ -250,6 +252,14 @@ function App() {
           <Route
             path="/create-additional-fee"
             element={<CreateAdditionalFee />}
+          />
+          <Route
+            path="/trade-application"
+            element={<TradeApplication />}
+          />
+          <Route
+            path="/create-trade-application"
+            element={<CreateTradeApplication />}
           />
         </Routes>
       </div> :
