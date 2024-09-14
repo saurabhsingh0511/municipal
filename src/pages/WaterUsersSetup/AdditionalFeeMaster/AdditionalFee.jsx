@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../../components/homesection";
 import Button from "../../../components/button/Button";
+import axios from "axios";
+import siteConfig from "../../../siteConfig";
 
 const AdditionalFee = () => {
   const dispatch = useDispatch();
   const isClosed = useSelector((state) => state.myReducer.isClosed);
+  const [additionalFee, setAdditionalFee] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredData, setFilteredData] = useState(additionalFee);
 
   const toggleSidebar = () => {
     dispatch({
@@ -14,6 +19,38 @@ const AdditionalFee = () => {
       payload: !isClosed 
   });
   };
+
+  const fetchAdditionalFee = async () => {
+     try {
+      const response = await axios.get(`${siteConfig.API_BASE_URL}/${siteConfig.GET_ADDITIONAL_FEE_BY_MUNIID}`);
+      //Filtered pipeline types
+      const filteredAdditionalFee = response.data.filter(
+        (item) => item.suspendedStatus === 0
+      );
+      setAdditionalFee(filteredAdditionalFee);
+      console.log("Filtered Additional Fee: ", filteredAdditionalFee);
+      console.log("Additional Fee: ", response.data);
+     } catch (error) {
+      console.log("Failed to fetch data: ", error);
+     }
+  };
+
+  useEffect(() => {
+    fetchAdditionalFee();
+  }, []);
+
+  const handleSearch = (e) => {
+    const searchValue = e.target.value;
+    setSearchTerm(searchValue);
+
+    const filtered = additionalFee.filter((data) =>
+      data.feeHeadName.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilteredData(filtered);
+  };
+
+  const dataToDisplay = searchTerm ? filteredData : additionalFee;
+
   return (
     <>
     <HomeSection toggleSidebar={toggleSidebar} 
@@ -35,6 +72,8 @@ const AdditionalFee = () => {
             type="text"
             className="form-control"
             placeholder="Search By Fee Head Name"
+            value={searchTerm}
+            onChange={(e) => handleSearch(e)}
           />
           <button className="btn btn-success" type="button">
             <i className="bi bi-search"></i>
@@ -55,19 +94,30 @@ const AdditionalFee = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>fees</td>
-                <td>101</td>
-                <td>13/09/2024</td>
-                <td>Yes</td>
-                <td>
-                  <Button type="btn-info" buttonName="Update" />
-                </td>
-                <td>
-                  <Button type="btn-danger" buttonName="Delete" />
-                </td>
-              </tr>
+              {dataToDisplay.length > 0 ? (
+                <>
+                  {Array.isArray(additionalFee) && dataToDisplay.map((fee, index) => {
+                    return (
+                      <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{fee.feeHeadName}</td>
+                      <td>{fee.amount}</td>
+                      <td>{fee.effectedDate}</td>
+                      <td>{fee.active ? 'Yes' : 'No'}</td>
+                      <td>
+                        <Button type="btn-info" buttonName="Update" />
+                      </td>
+                      <td>
+                        <Button type="btn-danger" buttonName="Delete" />
+                      </td>
+                    </tr>
+                    )
+                  })}
+                </>
+              ) : (
+                <p>No results found</p>
+              )}
+             
               <tr>
                 <td>2</td>
                 <td>fees</td>

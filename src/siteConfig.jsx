@@ -1,5 +1,5 @@
 const municipalId = 15;
-const waterMuniId = 1; // will change
+// const waterMuniId = 1; // will change
 
 // src/api/siteConfig.js
 const siteConfig = {
@@ -292,19 +292,19 @@ const siteConfig = {
     DELETE_CONSUMER_CATEGORY: "/water/waterApplication/suspendedStatus/",
 
     //BuildupAreaMasters
-    GET_BUILDUP_AREA_BY_MUNIID: `water/buildupArea/municipal/${waterMuniId}`, 
+    GET_BUILDUP_AREA_BY_MUNIID: `water/buildupArea/municipal/${municipalId}`, 
     CREATE_BUILDUP_AREA: "/water/buildupArea/create",
     UPDATE_BUILDUP_AREA: "/water/buildupArea/update/",
     DELETE_BUILDUP_AREA: "/water/buildupArea/delete/",
 
     //FeeMaster
-    GET_FEE_BY_MUNIID: "/water/fee/municipal/15",
+    GET_FEE_BY_MUNIID: `water/fee/municipal/${municipalId}`,
     CREATE_FEE: "/water/fee/create?createdBy=1",
     UPDATE_FEE: "/water/fee/update/",
     DELETE_FEE: "/water/fee/delete/",
 
     //AdditionalFeeMaster
-    GET_ADDITIONAL_FEE_BY_MUNIID: "/water/additionalfee/municipal/15",
+    GET_ADDITIONAL_FEE_BY_MUNIID: `water/additionalfee/municipal/${municipalId}`,
     CREATE_ADDITIONAL_FEE: "/water/additionalfee/create",
     UPDATE_ADDITIONAL_FEE: "/water/additionalfee/update/",
     DELETE_ADDITIONAL_FEE: "/water/additionalfee/delete/",
