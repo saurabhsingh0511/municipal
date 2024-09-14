@@ -1,11 +1,11 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import '../../css/TableForm.css'
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/button/Button";
-import { useDispatch, useSelector } from "react-redux";
 import HomeSection from "../../components/homesection";
+import '../../css/TableForm.css';
 import siteConfig from "../../siteConfig";
-import axios from "axios";
 
 const MunicipalDetailsList = () => {
   const dispatch = useDispatch();
@@ -60,6 +60,8 @@ const MunicipalDetailsList = () => {
       const response = await axios.patch(
         `${siteConfig.BASE_URL}/${siteConfig.UPDATE_SUSPENDED_STATUS}/${id}?suspendedStatus=${newStatus}`
       );
+      fetchMasterFormData();
+      setSearchTerm("");
       console.log("Response data:", response.data);
     } catch (error) {
       console.error("Error while updating suspended status:", error);
