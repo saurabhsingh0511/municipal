@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button/Button";
 import "./Login.css";
@@ -7,8 +7,6 @@ import "./Login.css";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const isLogin = useSelector((state) => state.myReducer.isLogin);
 
  const handleLogin = () =>{
   localStorage.setItem('userLogin', true);

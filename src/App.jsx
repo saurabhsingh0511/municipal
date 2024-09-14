@@ -66,7 +66,7 @@ import WaterPropertyTypeMaster from "./pages/WaterUsersSetup/WaterPropertyTypeMa
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
   const isLogin = useSelector((state) => state.myReducer.isLogin);
-  const [userLogin, setUserLogin] = useState(false);
+  const [userLogin, setUserLogin] = useState(isLogin);
 
   const ROUTES = {
     LOGIN: "/login",
