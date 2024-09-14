@@ -103,8 +103,8 @@ const Sidebar = ({isClosed}) => {
           <ul className={`sub-menu ${activeMenu === 4 ? 'showMenu' : 'sub-menu-hide'}`}>
             <li><Link className="link_name" to="#">Municipal License</Link></li>
             <li><Link to="/trade-application">Trade Application Type Master</Link></li>
-            <li><Link to="#">Trade Type</Link></li>
-            <li><Link to="#">Firm Type</Link></li>
+            <li><Link to="/trade-type">Trade Type</Link></li>
+            <li><Link to="/firm-type">Firm Type</Link></li>
             <li><Link to="#">Business Nature</Link></li>
             <li><Link to="#">Business Premises</Link></li>
             <li><Link to="#">ML Rate Master</Link></li>

@@ -62,6 +62,10 @@ import CreateNewUnitMaster from "./pages/WaterUsersSetup/UnitMaster/CreateNewUni
 import UnitMaster from "./pages/WaterUsersSetup/UnitMaster/UnitMaster";
 import CreateWaterPropertyType from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/CreateWaterPropertyType";
 import WaterPropertyTypeMaster from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/WaterPropertyTypeMaster";
+import TradeType from "./pages/MunicipalLicenseSetup/TradeType/TradeType";
+import CreateTradeType from "./pages/MunicipalLicenseSetup/TradeType/CreateTradeType";
+import FirmType from "./pages/MunicipalLicenseSetup/FirmType/FirmType";
+import CreateFirmType from "./pages/MunicipalLicenseSetup/FirmType/CreateFirmType";
 
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
@@ -316,6 +320,30 @@ function App() {
             path="/create-trade-application"
             element={renderProtectedRoute(<CreateTradeApplication />)}
           />
+          <Route
+            path="/trade-type"
+            element={renderProtectedRoute(<TradeType />)}
+          />
+          <Route
+            path="/create-trade-type"
+            element={renderProtectedRoute(<CreateTradeType />)}
+          />
+          <Route
+            path="/firm-type"
+            element={renderProtectedRoute(<FirmType />)}
+          />
+          <Route
+            path="/create-firm-type"
+            element={renderProtectedRoute(<CreateFirmType />)}
+          />
+
+
+
+
+
+
+
+
           {/* Catch-all route for redirecting to login if no match is found */}
           <Route
             path={ROUTES.DEFAULT}
