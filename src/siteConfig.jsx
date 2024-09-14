@@ -202,12 +202,12 @@ const siteConfig = {
     UPDATE_APPLICATION: "water/waterApplication/update",
 
     //Application Type
-    CREATE_APPLICATION_TYPE: "water/applicationtype/create",
-    FETCH_ALL_APPLICATIONS_TYPE: "water/applicationtype/municipal/15",
-    SEARCH_BY_APPLICATION_ID: "water/applicationtype", // For searching by ID
-    UPDATE_SUSPENDEDAPP_TYPE_STATUS: "water/applicationtype/delete",
-    UPDATE_APPLICATION_TYPE: "water/applicationtype/updated",
-    ACTIVE_APPLICATION_TYPE: "water/applicationtype/active",
+    CREATE_APPLICATION_TYPE_WATER: "water/applicationtype/create",
+    FETCH_ALL_APPLICATIONS_TYPE_WATER: `water/applicationtype/municipal/${municipalId}`,
+    SEARCH_BY_APPLICATION_ID_WATER: "water/applicationtype", // For searching by ID
+    UPDATE_SUSPENDEDAPP_TYPE_STATUS_WATER: "water/applicationtype/delete",
+    UPDATE_APPLICATION_TYPE_WATER: "water/applicationtype/updated",
+    ACTIVE_APPLICATION_TYPE_WATER: "water/applicationtype/active",
 
     //Document Type Name
     CREATE_DOCUMENT_TYPE: "water/createDocumentTypeMaster",
