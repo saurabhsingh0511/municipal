@@ -56,6 +56,7 @@ const MasterPage = () => {
         `${siteConfig.BASE_URL}/${siteConfig.CREATE_MASTER_FORM}`, 
         dataToPost
       );
+      handleReset();
       console.log("Response data:", response.data);
     } catch (error) {
       console.error("Error while posting data:", error);
@@ -63,20 +64,21 @@ const MasterPage = () => {
   };
 
 
-  const updateMasterFormData = async (dataToPost) => {
+  const updateMasterFormData = async (id, dataToUpdate) => {
     try {
-      const response = await axios.post(
-        `${siteConfig.BASE_URL}/${siteConfig.UPDATE_RECORD}`, 
-        dataToPost
+      const response = await axios.put(
+        `${siteConfig.BASE_URL}/${siteConfig.UPDATE_RECORD}/${id}`, 
+        dataToUpdate
       );
+      handleReset();
       console.log("Response data:", response.data);
     } catch (error) {
-      console.error("Error while posting data:", error);
+      console.error("Error while updating data:", error);
     }
   };
   
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e,id) => {
     e.preventDefault();
     const dataToSend = new FormData();
     dataToSend.append("muniCode", formData.municipalCode);
@@ -90,8 +92,10 @@ const MasterPage = () => {
     dataToSend.append("tollFreeNumber", formData.tollFreeNumber);
     dataToSend.append("logoFile", formData.logoFile);
     if(municipalData){
-      updateMasterFormData(dataToSend);
+      dataToSend.append("updatedBy",siteConfig.userID);
+      updateMasterFormData(id,dataToSend);
     }else{
+      dataToSend.append("createdBy",siteConfig.userID);
       postMasterFormData(dataToSend);
     }
   }
@@ -277,21 +281,27 @@ const MasterPage = () => {
                     </div>
                   </div>
                   <div className="col-md-6 ">
-                    <div className="form-group text-start">
-                      <label htmlFor="logoFile" className="m-4">Logo File:</label>
-                      <input
-                        type="file"
-                        id="logoFile"
-                        name="logoFile"
-                        // value={formData.logoFile}
-                        className="form-control-file"
-                        onChange={(e)=> handleFileChange(e)}
-                        accept="image/*"
-                      />
+                    {municipalData && formData.logoFile ?
+                    <div>
+                    <img src={`${siteConfig.BASE_URL}/${siteConfig.LOGO_SRC}/${municipalData?.id}`} alt="logo" width="40" />
+                    <Button type="btn-primary" buttonName="Update Logo" onClick={()=> setFormData({...formData,logoFile: ""})} ariaLabel="Save the form" htmlType="button" />
                     </div>
+                    : 
+                    <div className="form-group text-start">
+                    <label htmlFor="logoFile" className="m-4">Logo File:</label>
+                    <input
+                      type="file"
+                      id="logoFile"
+                      name="logoFile"
+                      className="form-control-file"
+                      onChange={(e)=> handleFileChange(e)}
+                      accept="image/*"
+                    />
+                  </div>
+                    }
                   </div>
                   <div className="col-12 text-center my-3 d-flex justify-content-center gap-4">
-                    <Button type="btn-primary" buttonName="Save" onClick={()=> handleSubmit()} ariaLabel="Save the form" htmlType="button" />
+                    <Button type="btn-primary" buttonName="Save" onClick={(e)=> handleSubmit(e,municipalData?.id)} ariaLabel="Save the form" htmlType="button" />
                     <Button type="btn-danger" buttonName="Reset" onClick={()=> handleReset()} ariaLabel="Reset the form" htmlType="button" />
                   </div>
                 </div>
