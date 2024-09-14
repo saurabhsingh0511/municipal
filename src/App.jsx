@@ -1,259 +1,544 @@
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 import "./App.css";
 import Sidebar from "./components/sidebar";
-import { useSelector } from "react-redux";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import MunicipalDetailsList from "./pages/MunicipalMaster/MunicipalDetailsList";
+import Login from "./pages/Login/Login";
 import MasterPage from "./pages/MunicipalMaster/MasterPage";
-import RoadTypeName from "./pages/PropertyMasterSetup/RoadTypeName";
-import PropertyTaxComponentList from "./pages/PropertyMasterSetup/PropertyTaxComponentList";
-import PropertyTaxComponent from "./pages/PropertyMasterSetup/CreatePropertyTaxComponent";
-import ZoneData from "./pages/PropertyMasterSetup/ZoneData";
-import PropertyTaxCessRateList from "./pages/PropertyMasterSetup/MasterPropertyTaxCessRateList";
-import CreatePropertyTaxCess from "./pages/PropertyMasterSetup/CreatePropertyTaxCessRateList";
-import MasterPropertyTaxComponentName from "./pages/PropertyMasterSetup/MasterPropertyTaxComponentName";
-import FormPropertyTaxComponentName from "./pages/PropertyMasterSetup/FormPropertyTaxComponentName";
-import PropertyAreaRangeMasterList from "./pages/PropertyMasterSetup/PropertyAreaRangeMasterList";
-import CreatePropertyAreaRangeMaster from "./pages/PropertyMasterSetup/CreatePropertyAreaRangeMaster";
-import WardMaster from "./pages/PropertyMasterSetup/WardMaster";
-import CreateWardDetails from "./pages/PropertyMasterSetup/CreateWardDetails";
-import PropertyTypeMaster from "./pages/PropertyMasterSetup/PropertyTypeMaster";
-import CreatePropertyTypeMasterForm from "./pages/PropertyMasterSetup/CreatePropertyTypeMasterForm";
-import PropertyUseTypeMaster from "./pages/PropertyMasterSetup/PropertyUseTypeMaster";
-import CreatePropertyUseTypeMater from "./pages/PropertyMasterSetup/CreatePropertyUseTypeMater";
-import PropertyAssessmentTypeMaster from "./pages/PropertyMasterSetup/PropertyAssessmentTypeMaster";
-import CreatePropertyAssessmentType from "./pages/PropertyMasterSetup/CreatePropertyAssessmentType";
-import OwnershipTypeMaster from "./pages/PropertyMasterSetup/OwnershipTypeMaster";
+import MunicipalDetailsList from "./pages/MunicipalMaster/MunicipalDetailsList";
 import CreateOwnershipTypeMaster from "./pages/PropertyMasterSetup/CreateOwnershipTypeMaster";
+import CreatePropertyAreaRangeMaster from "./pages/PropertyMasterSetup/CreatePropertyAreaRangeMaster";
+import CreatePropertyAssessmentType from "./pages/PropertyMasterSetup/CreatePropertyAssessmentType";
+import CreatePropertyTaxCess from "./pages/PropertyMasterSetup/CreatePropertyTaxCessRateList";
+import PropertyTaxComponent from "./pages/PropertyMasterSetup/CreatePropertyTaxComponent";
+import CreatePropertyTypeMasterForm from "./pages/PropertyMasterSetup/CreatePropertyTypeMasterForm";
+import CreatePropertyUseTypeMater from "./pages/PropertyMasterSetup/CreatePropertyUseTypeMater";
 import CreateRoadType from "./pages/PropertyMasterSetup/CreateRoadType";
+import CreateWardDetails from "./pages/PropertyMasterSetup/CreateWardDetails";
 import CreateZoneData from "./pages/PropertyMasterSetup/CreateZoneData";
-import WaterPropertyTypeMaster from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/WaterPropertyTypeMaster";
-import CreateWaterPropertyType from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/CreateWaterPropertyType";
-import CreateNewUnitMaster from "./pages/WaterUsersSetup/UnitMaster/CreateNewUnitMaster";
-import UnitMaster from "./pages/WaterUsersSetup/UnitMaster/UnitMaster";
+import FormPropertyTaxComponentName from "./pages/PropertyMasterSetup/FormPropertyTaxComponentName";
+import PropertyTaxCessRateList from "./pages/PropertyMasterSetup/MasterPropertyTaxCessRateList";
+import MasterPropertyTaxComponentName from "./pages/PropertyMasterSetup/MasterPropertyTaxComponentName";
+import OwnershipTypeMaster from "./pages/PropertyMasterSetup/OwnershipTypeMaster";
+import PropertyAreaRangeMasterList from "./pages/PropertyMasterSetup/PropertyAreaRangeMasterList";
+import PropertyAssessmentTypeMaster from "./pages/PropertyMasterSetup/PropertyAssessmentTypeMaster";
+import PropertyTaxComponentList from "./pages/PropertyMasterSetup/PropertyTaxComponentList";
+import PropertyTypeMaster from "./pages/PropertyMasterSetup/PropertyTypeMaster";
+import PropertyUseTypeMaster from "./pages/PropertyMasterSetup/PropertyUseTypeMaster";
+import RoadTypeName from "./pages/PropertyMasterSetup/RoadTypeName";
+import WardMaster from "./pages/PropertyMasterSetup/WardMaster";
+import ZoneData from "./pages/PropertyMasterSetup/ZoneData";
+import AdditionalFee from "./pages/WaterUsersSetup/AdditionalFeeMaster/AdditionalFee";
+import CreateAdditionalFee from "./pages/WaterUsersSetup/AdditionalFeeMaster/CreateAdditionalFee";
 import ApplicationCategoryMaster from "./pages/WaterUsersSetup/ApplicationCategoryMaster/ApplicationCategoryMaster";
 import CreateApplication from "./pages/WaterUsersSetup/ApplicationCategoryMaster/CreateApplication";
 import ApplicationTypeMaster from "./pages/WaterUsersSetup/ApplicationTypeMaster/ApplicationTypeMaster";
 import CreateApplicationType from "./pages/WaterUsersSetup/ApplicationTypeMaster/CreateApplicationType";
-import DocumentTypeMaster from "./pages/WaterUsersSetup/DocumentTypeMaster/DocumentTypeMaster";
-import CreateDocumentType from "./pages/WaterUsersSetup/DocumentTypeMaster/CreateDocumentType";
-import DocumentGroupMaster from "./pages/WaterUsersSetup/DocumentGroupMaster/DocumentGroupMaster";
-import CreateNewDocumentGroup from "./pages/WaterUsersSetup/DocumentGroupMaster/CreateNewDocumentGroup";
-import PipelineType from "./pages/WaterUsersSetup/PipelineType/PipelineType";
-import CreatePipelineType from "./pages/WaterUsersSetup/PipelineType/CreatePipelineType";
+import BuildUpArea from "./pages/WaterUsersSetup/BuildUpAreaMaster/BuildUpArea";
+import CreateBuildUpArea from "./pages/WaterUsersSetup/BuildUpAreaMaster/CreateBuildUpArea";
 import CalculationTypeList from "./pages/WaterUsersSetup/CalculationTypeMaster/CalculationTypeList";
 import CreateCalculationType from "./pages/WaterUsersSetup/CalculationTypeMaster/CreateCalculationType";
 import ConnectionType from "./pages/WaterUsersSetup/ConnectionType/ConnectionType";
 import CreateConnection from "./pages/WaterUsersSetup/ConnectionType/CreateConnection";
 import ConsumerCategory from "./pages/WaterUsersSetup/ConsumerCategoryMaster/ConsumerCategory";
 import CreateConsumerCategory from "./pages/WaterUsersSetup/ConsumerCategoryMaster/CreateConsumerCategory";
-import BuildUpArea from "./pages/WaterUsersSetup/BuildUpAreaMaster/BuildUpArea";
-import CreateBuildUpArea from "./pages/WaterUsersSetup/BuildUpAreaMaster/CreateBuildUpArea";
-import FeeMaster from "./pages/WaterUsersSetup/FeeMaster/FeeMaster";
+import CreateNewDocumentGroup from "./pages/WaterUsersSetup/DocumentGroupMaster/CreateNewDocumentGroup";
+import DocumentGroupMaster from "./pages/WaterUsersSetup/DocumentGroupMaster/DocumentGroupMaster";
+import CreateDocumentType from "./pages/WaterUsersSetup/DocumentTypeMaster/CreateDocumentType";
+import DocumentTypeMaster from "./pages/WaterUsersSetup/DocumentTypeMaster/DocumentTypeMaster";
 import CreateFeeDetails from "./pages/WaterUsersSetup/FeeMaster/CreateFeeDetails";
-import AdditionalFee from "./pages/WaterUsersSetup/AdditionalFeeMaster/AdditionalFee";
-import CreateAdditionalFee from "./pages/WaterUsersSetup/AdditionalFeeMaster/CreateAdditionalFee";
-import  Login  from "./pages/Login/Login";
+import FeeMaster from "./pages/WaterUsersSetup/FeeMaster/FeeMaster";
+import CreatePipelineType from "./pages/WaterUsersSetup/PipelineType/CreatePipelineType";
+import PipelineType from "./pages/WaterUsersSetup/PipelineType/PipelineType";
+import CreateNewUnitMaster from "./pages/WaterUsersSetup/UnitMaster/CreateNewUnitMaster";
+import UnitMaster from "./pages/WaterUsersSetup/UnitMaster/UnitMaster";
+import CreateWaterPropertyType from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/CreateWaterPropertyType";
+import WaterPropertyTypeMaster from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/WaterPropertyTypeMaster";
+import TradeApplication from "./pages/MunicipalLicenseSetup/TradeApplication/TradeApplication";
+import CreateTradeApplication from "./pages/MunicipalLicenseSetup/TradeApplication/CreateTradeApplication";
 
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
   const isLogin = useSelector((state) => state.myReducer.isLogin);
+  const [userLogin, setUserLogin] = useState(false);
+
+  const ROUTES = {
+    LOGIN: "/login",
+    DASHBOARD: "/dashboard",
+    MUNICIPAL_DETAILS_LIST: "/municipal-details-list",
+    DEFAULT: "*",
+  };
+
+  useEffect(() => {
+    let userLogin = localStorage.getItem("userLogin");
+    if (isLogin) {
+      setUserLogin(userLogin);
+    } else {
+      setUserLogin(userLogin);
+    }
+  }, [isLogin]);
+
   return (
     <Router>
-     {isLogin ? 
       <div className="App">
-        <Sidebar isClosed={isClosed} />
+        {userLogin ? <Sidebar isClosed={isClosed} /> : null}
         <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
           <Route
-            path="/municipal-details-list"
+            path={ROUTES.LOGIN}
+            element={userLogin ? <Navigate to={ROUTES.DASHBOARD} /> : <Login />}
+          />
+
+          {/* Protected routes */}
+          <Route
+            path={ROUTES.DASHBOARD}
+            element={userLogin ? <Dashboard /> : <Navigate to={ROUTES.LOGIN} />}
+          />
+          <Route
+            path={ROUTES.MUNICIPAL_DETAILS_LIST}
             element={<MunicipalDetailsList />}
           />
-          <Route path="/master-page" element={<MasterPage />} />
-          <Route path="/road-type-name" element={<RoadTypeName />} />
-          <Route path="/create-road-type" element={<CreateRoadType />} />
-          <Route path="/zone-data" element={<ZoneData />} />
-          <Route path="/create-zone-data" element={<CreateZoneData />} />
+          <Route
+            path="/master-page"
+            element={
+              userLogin ? <MasterPage /> : <Navigate to={ROUTES.LOGIN} />
+            }
+          />
+          <Route
+            path="/road-type-name"
+            element={
+              userLogin ? <RoadTypeName /> : <Navigate to={ROUTES.LOGIN} />
+            }
+          />
+          <Route
+            path="/create-road-type"
+            element={
+              userLogin ? <CreateRoadType /> : <Navigate to={ROUTES.LOGIN} />
+            }
+          />
+          <Route
+            path="/zone-data"
+            element={userLogin ? <ZoneData /> : <Navigate to={ROUTES.LOGIN} />}
+          />
+          <Route
+            path="/create-zone-data"
+            element={
+              userLogin ? <CreateZoneData /> : <Navigate to={ROUTES.LOGIN} />
+            }
+          />
           <Route
             path="/property-tax"
-            element={<PropertyTaxComponentList />}
+            element={
+              userLogin ? (
+                <PropertyTaxComponentList />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/property-tax-calculation"
-            element={<PropertyTaxComponent />}
+            element={
+              userLogin ? (
+                <PropertyTaxComponent />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/state-cess-rate-calculation"
-            element={<PropertyTaxCessRateList />}
+            element={
+              userLogin ? (
+                <PropertyTaxCessRateList />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/create-property-tax-cess-rate"
-            element={<CreatePropertyTaxCess />}
+            element={
+              userLogin ? (
+                <CreatePropertyTaxCess />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/master-property-tax-component-name"
-            element={<MasterPropertyTaxComponentName />}
+            element={
+              userLogin ? (
+                <MasterPropertyTaxComponentName />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/form-property-tax-component-name"
-            element={<FormPropertyTaxComponentName />}
+            element={
+              userLogin ? (
+                <FormPropertyTaxComponentName />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/property-area-range-master-list"
-            element={<PropertyAreaRangeMasterList />}
+            element={
+              userLogin ? (
+                <PropertyAreaRangeMasterList />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/create-property-area-range-master"
-            element={<CreatePropertyAreaRangeMaster />}
+            element={
+              userLogin ? (
+                <CreatePropertyAreaRangeMaster />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/ward-master"
-            element={<WardMaster />}
+            element={
+              userLogin ? <WardMaster /> : <Navigate to={ROUTES.LOGIN} />
+            }
           />
           <Route
             path="/create-waard-details"
-            element={<CreateWardDetails />}
+            element={
+              userLogin ? <CreateWardDetails /> : <Navigate to={ROUTES.LOGIN} />
+            }
           />
           <Route
             path="/property-type-master"
-            element={<PropertyTypeMaster />}
+            element={
+              userLogin ? (
+                <PropertyTypeMaster />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/create-property-type-master-form"
-            element={<CreatePropertyTypeMasterForm />}
+            element={
+              userLogin ? (
+                <CreatePropertyTypeMasterForm />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/property-use-type-master"
-            element={<PropertyUseTypeMaster />}
+            element={
+              userLogin ? (
+                <PropertyUseTypeMaster />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/create-property-use-type-master"
-            element={<CreatePropertyUseTypeMater />}
+            element={
+              userLogin ? (
+                <CreatePropertyUseTypeMater />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/property-assessment-type-master"
-            element={<PropertyAssessmentTypeMaster />}
+            element={
+              userLogin ? (
+                <PropertyAssessmentTypeMaster />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/create-property-assessment-type-master"
-            element={<CreatePropertyAssessmentType />}
+            element={
+              userLogin ? (
+                <CreatePropertyAssessmentType />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/ownership-type-master"
-            element={<OwnershipTypeMaster />}
+            element={
+              userLogin ? (
+                <OwnershipTypeMaster />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/create-ownership-type-master"
-            element={<CreateOwnershipTypeMaster />}
+            element={
+              userLogin ? (
+                <CreateOwnershipTypeMaster />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/water-property-type-master"
-            element={<WaterPropertyTypeMaster />}
+            element={
+              userLogin ? (
+                <WaterPropertyTypeMaster />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/create-water-property-type"
-            element={<CreateWaterPropertyType />}
+            element={
+              userLogin ? (
+                <CreateWaterPropertyType />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/unit-master"
-            element={<UnitMaster />}
+            element={
+              userLogin ? <UnitMaster /> : <Navigate to={ROUTES.LOGIN} />
+            }
           />
           <Route
             path="/create-new-unit-master"
-            element={<CreateNewUnitMaster />}
+            element={
+              userLogin ? (
+                <CreateNewUnitMaster />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/application-category-master"
-            element={<ApplicationCategoryMaster />}
+            element={
+              userLogin ? (
+                <ApplicationCategoryMaster />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/create-application"
-            element={<CreateApplication />}
+            element={
+              userLogin ? <CreateApplication /> : <Navigate to={ROUTES.LOGIN} />
+            }
           />
           <Route
             path="/application-type-master"
-            element={<ApplicationTypeMaster />}
+            element={
+              userLogin ? (
+                <ApplicationTypeMaster />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/create-application-type"
-            element={<CreateApplicationType />}
+            element={
+              userLogin ? (
+                <CreateApplicationType />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/document-type"
-            element={<DocumentTypeMaster />}
+            element={
+              userLogin ? (
+                <DocumentTypeMaster />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/create-document-type"
-            element={<CreateDocumentType />}
+            element={
+              userLogin ? (
+                <CreateDocumentType />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/document-group-master"
-            element={<DocumentGroupMaster />}
+            element={
+              userLogin ? (
+                <DocumentGroupMaster />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/create-document-group"
-            element={<CreateNewDocumentGroup />}
+            element={
+              userLogin ? (
+                <CreateNewDocumentGroup />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/pipeline-type"
-            element={<PipelineType />}
+            element={
+              userLogin ? <PipelineType /> : <Navigate to={ROUTES.LOGIN} />
+            }
           />
           <Route
             path="/create-pipeline-type"
-            element={<CreatePipelineType />}
+            element={
+              userLogin ? (
+                <CreatePipelineType />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/calculation-type"
-            element={<CalculationTypeList />}
+            element={
+              userLogin ? (
+                <CalculationTypeList />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/create-calculation-type"
-            element={<CreateCalculationType />}
+            element={
+              userLogin ? (
+                <CreateCalculationType />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/connection-type"
-            element={<ConnectionType />}
+            element={
+              userLogin ? <ConnectionType /> : <Navigate to={ROUTES.LOGIN} />
+            }
           />
           <Route
             path="/create-connection"
-            element={<CreateConnection />}
+            element={
+              userLogin ? <CreateConnection /> : <Navigate to={ROUTES.LOGIN} />
+            }
           />
           <Route
             path="/consumer-category-master"
-            element={<ConsumerCategory />}
+            element={
+              userLogin ? <ConsumerCategory /> : <Navigate to={ROUTES.LOGIN} />
+            }
           />
           <Route
             path="/create-consumer-category"
-            element={<CreateConsumerCategory />}
+            element={
+              userLogin ? (
+                <CreateConsumerCategory />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
           <Route
             path="/buildup-area"
-            element={<BuildUpArea />}
+            element={
+              userLogin ? <BuildUpArea /> : <Navigate to={ROUTES.LOGIN} />
+            }
           />
           <Route
             path="/create-buildup-area"
-            element={<CreateBuildUpArea />}
+            element={
+              userLogin ? <CreateBuildUpArea /> : <Navigate to={ROUTES.LOGIN} />
+            }
           />
           <Route
             path="/fee-master"
-            element={<FeeMaster />}
+            element={userLogin ? <FeeMaster /> : <Navigate to={ROUTES.LOGIN} />}
           />
           <Route
             path="/create-fee-details"
-            element={<CreateFeeDetails />}
+            element={
+              userLogin ? <CreateFeeDetails /> : <Navigate to={ROUTES.LOGIN} />
+            }
           />
           <Route
             path="/additional-fee"
-            element={<AdditionalFee />}
+            element={
+              userLogin ? <AdditionalFee /> : <Navigate to={ROUTES.LOGIN} />
+            }
           />
           <Route
             path="/create-additional-fee"
-            element={<CreateAdditionalFee />}
+            element={
+              userLogin ? (
+                <CreateAdditionalFee />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
+          />
+          <Route
+            path="/trade-application"
+            element={
+              userLogin ? (
+                <TradeApplication />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
+          />
+          <Route
+            path="/create-trade-application"
+            element={
+              userLogin ? (
+                <CreateTradeApplication />
+              ) : (
+                <Navigate to={ROUTES.LOGIN} />
+              )
+            }
           />
         </Routes>
-      </div> :
-      <Login />
-       }
+      </div>
     </Router>
   );
 }

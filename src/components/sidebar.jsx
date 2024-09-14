@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../css/Sidebar.css'; // Import your CSS file here
-import icon from '../image/Courthouse.png'
 import { Link } from 'react-router-dom';
+import '../css/Sidebar.css'; // Import your CSS file here
+import icon from '../image/Courthouse.png';
 
 const Sidebar = ({isClosed}) => {
   const [activeMenu, setActiveMenu] = useState(null);
@@ -16,12 +16,12 @@ const Sidebar = ({isClosed}) => {
       </div>
       <ul className="nav-links">
         <li className='menuList'>
-          <Link to="/dashboard">
+          <Link to="/">
             <i className='bx bx-grid-alt'></i>
             <span className="link_name">Dashboard</span>
           </Link>
           <ul className="sub-menu blank">
-            <li><Link className="link_name" to="/dashboard">Dashboard</Link></li>
+            <li><Link className="link_name" to="/">Dashboard</Link></li>
           </ul>
         </li>
 
@@ -102,7 +102,7 @@ const Sidebar = ({isClosed}) => {
           </div>
           <ul className={`sub-menu ${activeMenu === 4 ? 'showMenu' : 'sub-menu-hide'}`}>
             <li><Link className="link_name" to="#">Municipal License</Link></li>
-            <li><Link to="#">Trade Application Type Master</Link></li>
+            <li><Link to="/trade-application">Trade Application Type Master</Link></li>
             <li><Link to="#">Trade Type</Link></li>
             <li><Link to="#">Firm Type</Link></li>
             <li><Link to="#">Business Nature</Link></li>
