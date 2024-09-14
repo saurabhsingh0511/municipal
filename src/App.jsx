@@ -10,6 +10,8 @@ import "./App.css";
 import Sidebar from "./components/sidebar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Login from "./pages/Login/Login";
+import CreateTradeApplication from "./pages/MunicipalLicenseSetup/TradeApplication/CreateTradeApplication";
+import TradeApplication from "./pages/MunicipalLicenseSetup/TradeApplication/TradeApplication";
 import MasterPage from "./pages/MunicipalMaster/MasterPage";
 import MunicipalDetailsList from "./pages/MunicipalMaster/MunicipalDetailsList";
 import CreateOwnershipTypeMaster from "./pages/PropertyMasterSetup/CreateOwnershipTypeMaster";
@@ -60,13 +62,11 @@ import CreateNewUnitMaster from "./pages/WaterUsersSetup/UnitMaster/CreateNewUni
 import UnitMaster from "./pages/WaterUsersSetup/UnitMaster/UnitMaster";
 import CreateWaterPropertyType from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/CreateWaterPropertyType";
 import WaterPropertyTypeMaster from "./pages/WaterUsersSetup/WaterPropertyTypeMaster/WaterPropertyTypeMaster";
-import TradeApplication from "./pages/MunicipalLicenseSetup/TradeApplication/TradeApplication";
-import CreateTradeApplication from "./pages/MunicipalLicenseSetup/TradeApplication/CreateTradeApplication";
 
 function App() {
   const isClosed = useSelector((state) => state.myReducer.isClosed);
   const isLogin = useSelector((state) => state.myReducer.isLogin);
-  const [userLogin, setUserLogin] = useState(false);
+  const [userLogin, setUserLogin] = useState(isLogin);
 
   const ROUTES = {
     LOGIN: "/login",
@@ -74,6 +74,16 @@ function App() {
     MUNICIPAL_DETAILS_LIST: "/municipal-details-list",
     DEFAULT: "*",
   };
+
+  const renderProtectedRoute = (element) =>
+    userLogin ? (
+      <div className="App">
+        <Sidebar isClosed={isClosed} />
+        {element}
+      </div>
+    ) : (
+      <Navigate to={ROUTES.LOGIN} />
+    );
 
   useEffect(() => {
     let userLogin = localStorage.getItem("userLogin");
@@ -87,7 +97,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {userLogin ? <Sidebar isClosed={isClosed} /> : null}
         <Routes>
           <Route
             path={ROUTES.LOGIN}
@@ -97,444 +106,221 @@ function App() {
           {/* Protected routes */}
           <Route
             path={ROUTES.DASHBOARD}
-            element={userLogin ? <Dashboard /> : <Navigate to={ROUTES.LOGIN} />}
+            element={renderProtectedRoute(<Dashboard />)}
           />
           <Route
             path={ROUTES.MUNICIPAL_DETAILS_LIST}
-            element={<MunicipalDetailsList />}
+            element={renderProtectedRoute(<MunicipalDetailsList />)}
           />
           <Route
             path="/master-page"
-            element={
-              userLogin ? <MasterPage /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<MasterPage />)}
           />
           <Route
             path="/road-type-name"
-            element={
-              userLogin ? <RoadTypeName /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<RoadTypeName />)}
           />
           <Route
             path="/create-road-type"
-            element={
-              userLogin ? <CreateRoadType /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<CreateRoadType />)}
           />
           <Route
             path="/zone-data"
-            element={userLogin ? <ZoneData /> : <Navigate to={ROUTES.LOGIN} />}
+            element={renderProtectedRoute(<ZoneData />)}
           />
           <Route
             path="/create-zone-data"
-            element={
-              userLogin ? <CreateZoneData /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<CreateZoneData />)}
           />
           <Route
             path="/property-tax"
-            element={
-              userLogin ? (
-                <PropertyTaxComponentList />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<PropertyTaxComponentList />)}
           />
           <Route
             path="/property-tax-calculation"
-            element={
-              userLogin ? (
-                <PropertyTaxComponent />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<PropertyTaxComponent />)}
           />
           <Route
             path="/state-cess-rate-calculation"
-            element={
-              userLogin ? (
-                <PropertyTaxCessRateList />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<PropertyTaxCessRateList />)}
           />
           <Route
             path="/create-property-tax-cess-rate"
-            element={
-              userLogin ? (
-                <CreatePropertyTaxCess />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreatePropertyTaxCess />)}
           />
           <Route
             path="/master-property-tax-component-name"
-            element={
-              userLogin ? (
-                <MasterPropertyTaxComponentName />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<MasterPropertyTaxComponentName />)}
           />
           <Route
             path="/form-property-tax-component-name"
-            element={
-              userLogin ? (
-                <FormPropertyTaxComponentName />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<FormPropertyTaxComponentName />)}
           />
           <Route
             path="/property-area-range-master-list"
-            element={
-              userLogin ? (
-                <PropertyAreaRangeMasterList />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<PropertyAreaRangeMasterList />)}
           />
           <Route
             path="/create-property-area-range-master"
-            element={
-              userLogin ? (
-                <CreatePropertyAreaRangeMaster />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreatePropertyAreaRangeMaster />)}
           />
           <Route
             path="/ward-master"
-            element={
-              userLogin ? <WardMaster /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<WardMaster />)}
           />
           <Route
             path="/create-waard-details"
-            element={
-              userLogin ? <CreateWardDetails /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<CreateWardDetails />)}
           />
           <Route
             path="/property-type-master"
-            element={
-              userLogin ? (
-                <PropertyTypeMaster />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<PropertyTypeMaster />)}
           />
           <Route
             path="/create-property-type-master-form"
-            element={
-              userLogin ? (
-                <CreatePropertyTypeMasterForm />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreatePropertyTypeMasterForm />)}
           />
           <Route
             path="/property-use-type-master"
-            element={
-              userLogin ? (
-                <PropertyUseTypeMaster />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<PropertyUseTypeMaster />)}
           />
           <Route
             path="/create-property-use-type-master"
-            element={
-              userLogin ? (
-                <CreatePropertyUseTypeMater />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreatePropertyUseTypeMater />)}
           />
           <Route
             path="/property-assessment-type-master"
-            element={
-              userLogin ? (
-                <PropertyAssessmentTypeMaster />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<PropertyAssessmentTypeMaster />)}
           />
           <Route
             path="/create-property-assessment-type-master"
-            element={
-              userLogin ? (
-                <CreatePropertyAssessmentType />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreatePropertyAssessmentType />)}
           />
           <Route
             path="/ownership-type-master"
-            element={
-              userLogin ? (
-                <OwnershipTypeMaster />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<OwnershipTypeMaster />)}
           />
           <Route
             path="/create-ownership-type-master"
-            element={
-              userLogin ? (
-                <CreateOwnershipTypeMaster />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreateOwnershipTypeMaster />)}
           />
           <Route
             path="/water-property-type-master"
-            element={
-              userLogin ? (
-                <WaterPropertyTypeMaster />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<WaterPropertyTypeMaster />)}
           />
           <Route
             path="/create-water-property-type"
-            element={
-              userLogin ? (
-                <CreateWaterPropertyType />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreateWaterPropertyType />)}
           />
           <Route
             path="/unit-master"
-            element={
-              userLogin ? <UnitMaster /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<UnitMaster />)}
           />
           <Route
             path="/create-new-unit-master"
-            element={
-              userLogin ? (
-                <CreateNewUnitMaster />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreateNewUnitMaster />)}
           />
           <Route
             path="/application-category-master"
-            element={
-              userLogin ? (
-                <ApplicationCategoryMaster />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<ApplicationCategoryMaster />)}
           />
           <Route
             path="/create-application"
-            element={
-              userLogin ? <CreateApplication /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<CreateApplication />)}
           />
           <Route
             path="/application-type-master"
-            element={
-              userLogin ? (
-                <ApplicationTypeMaster />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<ApplicationTypeMaster />)}
           />
           <Route
             path="/create-application-type"
-            element={
-              userLogin ? (
-                <CreateApplicationType />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreateApplicationType />)}
           />
           <Route
             path="/document-type"
-            element={
-              userLogin ? (
-                <DocumentTypeMaster />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<DocumentTypeMaster />)}
           />
           <Route
             path="/create-document-type"
-            element={
-              userLogin ? (
-                <CreateDocumentType />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreateDocumentType />)}
           />
           <Route
             path="/document-group-master"
-            element={
-              userLogin ? (
-                <DocumentGroupMaster />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<DocumentGroupMaster />)}
           />
           <Route
             path="/create-document-group"
-            element={
-              userLogin ? (
-                <CreateNewDocumentGroup />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreateNewDocumentGroup />)}
           />
           <Route
             path="/pipeline-type"
-            element={
-              userLogin ? <PipelineType /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<PipelineType />)}
           />
           <Route
             path="/create-pipeline-type"
-            element={
-              userLogin ? (
-                <CreatePipelineType />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreatePipelineType />)}
           />
           <Route
             path="/calculation-type"
-            element={
-              userLogin ? (
-                <CalculationTypeList />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CalculationTypeList />)}
           />
           <Route
             path="/create-calculation-type"
-            element={
-              userLogin ? (
-                <CreateCalculationType />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreateCalculationType />)}
           />
           <Route
             path="/connection-type"
-            element={
-              userLogin ? <ConnectionType /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<ConnectionType />)}
           />
           <Route
             path="/create-connection"
-            element={
-              userLogin ? <CreateConnection /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<CreateConnection />)}
           />
           <Route
             path="/consumer-category-master"
-            element={
-              userLogin ? <ConsumerCategory /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<ConsumerCategory />)}
           />
           <Route
             path="/create-consumer-category"
-            element={
-              userLogin ? (
-                <CreateConsumerCategory />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreateConsumerCategory />)}
           />
           <Route
             path="/buildup-area"
-            element={
-              userLogin ? <BuildUpArea /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<BuildUpArea />)}
           />
           <Route
             path="/create-buildup-area"
-            element={
-              userLogin ? <CreateBuildUpArea /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<CreateBuildUpArea />)}
           />
           <Route
             path="/fee-master"
-            element={userLogin ? <FeeMaster /> : <Navigate to={ROUTES.LOGIN} />}
+            element={renderProtectedRoute(<FeeMaster />)}
           />
           <Route
             path="/create-fee-details"
-            element={
-              userLogin ? <CreateFeeDetails /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<CreateFeeDetails />)}
           />
           <Route
             path="/additional-fee"
-            element={
-              userLogin ? <AdditionalFee /> : <Navigate to={ROUTES.LOGIN} />
-            }
+            element={renderProtectedRoute(<AdditionalFee />)}
           />
           <Route
             path="/create-additional-fee"
-            element={
-              userLogin ? (
-                <CreateAdditionalFee />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<CreateAdditionalFee />)}
           />
           <Route
             path="/trade-application"
-            element={
-              userLogin ? (
-                <TradeApplication />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
-            }
+            element={renderProtectedRoute(<TradeApplication />)}
           />
           <Route
             path="/create-trade-application"
+            element={renderProtectedRoute(<CreateTradeApplication />)}
+          />
+          {/* Catch-all route for redirecting to login if no match is found */}
+          <Route
+            path={ROUTES.DEFAULT}
             element={
-              userLogin ? (
-                <CreateTradeApplication />
-              ) : (
-                <Navigate to={ROUTES.LOGIN} />
-              )
+              <Navigate to={userLogin ? ROUTES.DASHBOARD : ROUTES.LOGIN} />
             }
           />
         </Routes>
