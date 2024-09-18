@@ -23,6 +23,7 @@ const MunicipalDetailsList = () => {
   };
 
   const fetchMasterFormData = async () => {
+    try {
     const response = await axios.get(`${siteConfig.BASE_URL}/${siteConfig.FETCH_MASTER_FORM}`);
      //filtered with suspended status 0 (active)
      const filteredMunicipal = response.data.filter(
@@ -30,6 +31,10 @@ const MunicipalDetailsList = () => {
     );
     console.log("iiiiiiiiiiiiiiiiii,", response.data)
     setMunicipalData(filteredMunicipal);
+  }
+  catch (error){
+    console.log(error,"error")
+  }
   }
 
   useEffect(() => {

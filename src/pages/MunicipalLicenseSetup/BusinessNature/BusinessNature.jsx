@@ -25,7 +25,7 @@ const BusinessNature = () => {
             <Button
               type="btn-success"
               buttonName="Add New Business Nature"
-              bootIcon={<i class="bi bi-plus-lg"></i>}
+              bootIcon={<i className="bi bi-plus-lg"></i>}
             />
           </Link>
         </div>

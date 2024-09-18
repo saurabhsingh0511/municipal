@@ -26,7 +26,7 @@ const CreateTradeApplication = () => {
                 <Button
                   type="btn-success"
                   buttonName="Back to Trade Application Type List"
-                  bootIcon={<i class="bi bi-list"></i>}
+                  bootIcon={<i className="bi bi-list"></i>}
                 />
               </Link>
             </div>

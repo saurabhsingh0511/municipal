@@ -26,7 +26,7 @@ const CreateBusinessPremises = () => {
                 <Button
                   type="btn-success"
                   buttonName="Back to Business Premises List"
-                  bootIcon={<i class="bi bi-list"></i>}
+                  bootIcon={<i className="bi bi-list"></i>}
                 />
               </Link>
             </div>
