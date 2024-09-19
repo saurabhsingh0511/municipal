@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/municipal/static/css/main.6b7c153a.css",
+    "main.js": "/municipal/static/js/main.cf3be560.js",
+    "static/js/453.ed3810f9.chunk.js": "/municipal/static/js/453.ed3810f9.chunk.js",
+    "static/media/boxicons.svg": "/municipal/static/media/boxicons.9e2b21b135bc7d4c803f.svg",
+    "static/media/boxicons.eot": "/municipal/static/media/boxicons.65a8ce52fc5427e8f94d.eot",
+    "static/media/boxicons.woff": "/municipal/static/media/boxicons.d12afc36557395143e4b.woff",
+    "static/media/boxicons.ttf": "/municipal/static/media/boxicons.db9ddb1898dbd76badca.ttf",
+    "static/media/bootstrap-icons.woff?": "/municipal/static/media/bootstrap-icons.39795c0b4513de014cf8.woff",
+    "static/media/bootstrap-icons.woff2?": "/municipal/static/media/bootstrap-icons.b7bcc075b395c14ce8c2.woff2",
+    "static/media/boxicons.woff2": "/municipal/static/media/boxicons.df635aaf04cd75132f62.woff2",
+    "static/media/Courthouse.png": "/municipal/static/media/Courthouse.df1de5cdbf53099c0e7a.png",
+    "index.html": "/municipal/index.html",
+    "main.6b7c153a.css.map": "/municipal/static/css/main.6b7c153a.css.map",
+    "main.cf3be560.js.map": "/municipal/static/js/main.cf3be560.js.map",
+    "453.ed3810f9.chunk.js.map": "/municipal/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6b7c153a.css",
+    "static/js/main.cf3be560.js"
+  ]
+}
